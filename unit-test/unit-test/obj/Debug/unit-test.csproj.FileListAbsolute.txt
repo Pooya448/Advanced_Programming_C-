@@ -1,0 +1,7 @@
+C:\Users\Pooya\source\repos\APClass Main\unit-test\unit-test\bin\Debug\unit-test.exe.config
+C:\Users\Pooya\source\repos\APClass Main\unit-test\unit-test\bin\Debug\unit-test.exe
+C:\Users\Pooya\source\repos\APClass Main\unit-test\unit-test\bin\Debug\unit-test.pdb
+C:\Users\Pooya\source\repos\APClass Main\unit-test\unit-test\obj\Debug\unit-test.csprojResolveAssemblyReference.cache
+C:\Users\Pooya\source\repos\APClass Main\unit-test\unit-test\obj\Debug\unit-test.csproj.CoreCompileInputs.cache
+C:\Users\Pooya\source\repos\APClass Main\unit-test\unit-test\obj\Debug\unit-test.exe
+C:\Users\Pooya\source\repos\APClass Main\unit-test\unit-test\obj\Debug\unit-test.pdb

@@ -6,46 +6,46 @@ using System.Threading.Tasks;
 
 namespace Unit_Testt_HW1
 {
-   
-        public class Program
+
+    public class Program
+    {
+        public static void Main(string[] args)
         {
-            public static void Main(string[] args)
-            {
-                
-            }
-            public static bool IsSorted(int[] grades, bool asc)
-            {
-                int LastGrade = grades[0];
-                foreach (int grade in grades)
-                {
-                    if (asc)
-                    {
-                        if (grade < LastGrade)
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            LastGrade = grade;
-                        }
-                    }
-
-                    else
-                    {
-                        if (grade > LastGrade)
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            LastGrade = grade;
-                        }
-                    }
-                }
-                return true;
-
-            }
 
         }
-    
-}
+        public static bool IsSorted(int[] grades, bool asc)
+        {
+            int LastGrade = grades[0];
+            foreach (int grade in grades)
+            {
+                if (asc)
+                {
+                    if (grade < LastGrade)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        LastGrade = grade;
+                    }
+                }
+
+                else
+                {
+                    if (grade > LastGrade)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        LastGrade = grade;
+                    }
+                }
+            }
+            return true;
+
+        }
+
+    }
+}   
+

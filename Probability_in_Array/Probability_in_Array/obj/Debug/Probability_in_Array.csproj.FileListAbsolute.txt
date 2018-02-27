@@ -1,0 +1,7 @@
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_Array\obj\Debug\Probability_in_Array.csprojResolveAssemblyReference.cache
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_Array\obj\Debug\Probability_in_Array.csproj.CoreCompileInputs.cache
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_Array\bin\Debug\Probability_in_Array.exe.config
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_Array\bin\Debug\Probability_in_Array.exe
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_Array\bin\Debug\Probability_in_Array.pdb
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_Array\obj\Debug\Probability_in_Array.exe
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_Array\obj\Debug\Probability_in_Array.pdb

@@ -1,0 +1,16 @@
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Probability_in_ArrayTests.dll
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Probability_in_ArrayTests.pdb
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Probability_in_Array.exe
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Probability_in_Array.pdb
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Probability_in_Array.exe.config
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\obj\Debug\Probability_in_ArrayTests.csprojResolveAssemblyReference.cache
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\obj\Debug\Probability_in_ArrayTests.csproj.CoreCompileInputs.cache
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\obj\Debug\Probability_in_ArrayTests.dll
+C:\Users\Pooya\source\repos\APClass Main\Probability_in_Array\Probability_in_ArrayTests\obj\Debug\Probability_in_ArrayTests.pdb

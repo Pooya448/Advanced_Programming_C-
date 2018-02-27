@@ -18,18 +18,18 @@ namespace Probability_in_Array
         /// <returns></returns>
         public static double calculate_prob (int[] num_array, int input)
         {
-            /* declaration and initiation of t as integer used for counting the quantity 
+            /* declaration and initiation of counter as integer used for counting the quantity 
             of the selected integer in num_array */
-            double t = 0;
+            double counter = 0;
             foreach (int num in num_array)
             {
                 if (num == input)
                 {
-                    t++;
+                    counter++;
                 }
             }
             // the final quantity of the probability calculation
-            double prob = t / 8;
+            double prob = counter / 8;
             // returning the final result to the main function
             return prob;
         }

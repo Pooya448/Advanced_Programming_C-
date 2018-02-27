@@ -15,7 +15,7 @@ namespace Probability_in_Array
         /// <param name="num_array"> the main array which hosts the selected integer</param>
         /// <param name="input"> the selected integer by the user for calculating it's probability
         /// of being chosen by a random selection </param>
-        /// <returns></returns>
+        /// <returns> returns the probability result </returns>
         public static double calculate_prob (int[] num_array, int input)
         {
             /* declaration and initiation of counter as integer used for counting the quantity 

@@ -29,10 +29,9 @@ namespace Probability_in_Array
                     counter++;
                 }
             }
-            // the final quantity of the probability calculation
-            double prob = counter / 8;
+            
             // returning the final result to the main function
-            return prob;
+            return counter / array.Length;
         }
         /// <summary>
         /// getting the selected integer from user ans returning the integer value
@@ -44,6 +43,7 @@ namespace Probability_in_Array
         public static int input_selected(TextReader selected_int)
         {
             // getting integer from user as string value and changing it into int value
+            
             return int.Parse(selected_int.ReadLine());
         }
         /// <summary>
@@ -55,15 +55,16 @@ namespace Probability_in_Array
         /// <param name="reader"> manual text stream having the default value of null </param>
         /// <param name="starting_pos"> the starting position of for loop for unit testing 
         /// having the default value of 0 when called in the main function </param>
-        public static void input_arr(ref int[] array, TextReader reader = null, int starting_pos = 0)
+        public static int[] input_arr(int[] array, TextReader reader = null, int starting_pos = 0)
         {
 
-            for (int i = starting_pos; i < 8; i++)
+            for (int i = starting_pos; i < array.Length; i++)
             {
                 /* getting the array element of index i from user by calling input_selected function
                    and changing it to int value at the same time */
                 array[i] = input_selected(reader);
             }
+            return array;
         }
 
 
@@ -90,7 +91,7 @@ namespace Probability_in_Array
             // the main integer array with 8 elements
             int[] array = new int[8];
             // getting the integer array from user by calling input_arr function
-            input_arr(ref array, Console.In);
+            input_arr(array, Console.In);
             // holder of the selected integer by user
             int input = 0;
             do

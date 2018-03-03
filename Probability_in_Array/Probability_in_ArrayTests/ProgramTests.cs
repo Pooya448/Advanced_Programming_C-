@@ -54,18 +54,18 @@ namespace Probability_in_Array.Tests
             // 2 arrays for testing
             int[] test1 = new int[8];
             int[] arr_test1 = new int[] { 1, 3, 7, 3, 7, 3, 5, 8 };
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < test1.Length; i++)
             {
                 // creating a StringReader and assigning a string value to it
                 using (StringReader test_reader = new StringReader(arr_test1[i].ToString()))
                 {
-                    Program.input_arr(ref test1, test_reader,i);
+                    Program.input_arr(test1, test_reader,i);
                 }
             }
             // counting the number of elements of 2 arrays which should be equal one by one
             // counter counts the number of equality between 2 test arrays' elements
             int counter = 0;
-            for (int j = 0; j < 8; j++)
+            for (int j = 0; j < test1.Length; j++)
                 if (test1[j] == arr_test1[j])
                     counter++;
             // comparing counter and the number 8 : 

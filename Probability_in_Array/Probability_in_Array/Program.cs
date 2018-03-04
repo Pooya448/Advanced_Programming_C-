@@ -46,26 +46,7 @@ namespace Probability_in_Array
             
             return int.Parse(selected_int.ReadLine());
         }
-        /// <summary>
-        /// getting the main array from user (using console or a manual text stream) and calling 
-        /// input_selected function fro every element in the array
-        /// </summary>
-        /// <param name="array"> the main array of integers' allocated space in the memory passed
-        /// to the function by reference type of passing </param>
-        /// <param name="reader"> manual text stream having the default value of null </param>
-        /// <param name="starting_pos"> the starting position of for loop for unit testing 
-        /// having the default value of 0 when called in the main function </param>
-        public static int[] input_arr(int[] array, TextReader reader = null, int starting_pos = 0)
-        {
-
-            for (int i = starting_pos; i < array.Length; i++)
-            {
-                /* getting the array element of index i from user by calling input_selected function
-                   and changing it to int value at the same time */
-                array[i] = input_selected(reader);
-            }
-            return array;
-        }
+      
 
 
 
@@ -76,10 +57,10 @@ namespace Probability_in_Array
         /// </summary>
         /// <param name="result"> double value of final result of calculation </param>
         /// <param name="writer"> a Textwriter stream of System.IO </param>
-        public static void output_result(double result, TextWriter writer)
+        public static void output_result (double result, TextWriter writer)
         {
             // printing the final result into TextWriter stream of choice (Console by program running)
-            writer.WriteLine(result);
+            writer.WriteLine(result.ToString());
         }
         /// <summary>
         /// getting the main array of integers and the selected integer grom user and calculating
@@ -91,7 +72,11 @@ namespace Probability_in_Array
             // the main integer array with 8 elements
             int[] array = new int[8];
             // getting the integer array from user by calling input_arr function
-            input_arr(array, Console.In);
+            for(int i = 0; i < array.Length; i++)
+            {
+                array[i] = input_selected(Console.In);
+            }
+            
             // holder of the selected integer by user
             int input = 0;
             do
@@ -104,6 +89,24 @@ namespace Probability_in_Array
                 /* writing the result to console using output_result function call and passing the
                    calculate_prob function return value as the argument */
                 output_result(calculate_prob(array, input), Console.Out);
+
+
+                // test double value for testing
+                const double test = 0.264;
+                // creating a StringWriter 
+                using (StringWriter test_writer = new StringWriter())
+                {
+                    output_result(test, test_writer);
+                    /* getting the written value by output_result function from the test_writer 
+                       StringWriter and comparing it to the expected string value */
+                    string output_test = test_writer.ToString();
+                    //Assert.AreEqual(output_test, test.ToString());
+                    output_test.Split('\r','\n');
+                    bool b = false;
+                    if (output_test == "0.264")
+                        b = true;
+                    Console.WriteLine(b);
+                }
             } while (input != -1);
         }
     }

@@ -15,13 +15,21 @@ namespace Probability_in_Array.Tests
         public void CalculateProbTest()
         {
             // 3 DoubleTest arrays for unit DoubleTest assessment
-            int[] ArrayTest1 = new int[] { 1, 3, 7, 3, 7, 9, 10, 5 };
-            int[] ArrayTest2 = new int[] { 2, 7, 3, 8, 3, 9, 5, 8 };
-            int[] ArrayTest3 = new int[] { 3, 8, 3, 6, 23, 3, 2, 7 };
+            int [] ArrayTest1 = new int[] { 1, 3, 7, 3, 7, 9, 10, 5 };
+            int [] ArrayTest2 = new int[] { 2, 7, 3, 8, 3, 9, 5, 8 };
+            int [] ArrayTest3 = new int[] { 3, 8, 3, 6, 23, 3, 2, 7 };
+            // 3 Sample elements
+            const int SampleTest1 = 3;
+            const int SampleTest2 = 2;
+            const int SampleTest3 = 3;
+            // 3 result of the aboce tests
+            const double SampleResult1 =0.250;
+            const double SampleResult2 =0.125;
+            const double SampleResult3 =0.375;
             // Testing the three reliable cases using Assert function and AreEqual attribute
-            Assert.AreEqual(0.250, Program.CalculateProb(ArrayTest1, 3));
-            Assert.AreEqual(0.125, Program.CalculateProb(ArrayTest2, 2));
-            Assert.AreEqual(0.375, Program.CalculateProb(ArrayTest3, 3));
+            Assert.AreEqual(SampleResult1, Program.CalculateProb(ArrayTest1, SampleTest1));
+            Assert.AreEqual(SampleResult2, Program.CalculateProb(ArrayTest2, SampleTest2));
+            Assert.AreEqual(SampleResult3, Program.CalculateProb(ArrayTest3, SampleTest3));
         }
         [TestMethod()]
         public void InputSelectedTest()
@@ -48,7 +56,7 @@ namespace Probability_in_Array.Tests
         [TestMethod()]
         public void InputArrTest()
         {
-            string StringTest = "1 3 7 3 8 5 9 3";
+            const string StringTest = "1 3 7 3 8 5 9 3";
             int[] IntArrayTest = { 1, 3, 7, 3, 8, 5, 9, 3 };
             using(StringReader StringReaderTest = new StringReader(StringTest))
             {

@@ -39,10 +39,21 @@ namespace Probability_in_Array
         /// can be passed to </param>
         /// <returns> Returns ineteger value Parsed from a string value taken from the 
         /// text stream "SelectedInt" </returns>
-        public static int InputSelected(TextReader SelectedInt)
+        public static int InputSelected (TextReader SelectedInt)
         {
             // getting integer from user as string value and changing it into int value
             return int.Parse(SelectedInt.ReadLine());
+        }
+        public static int[] InputArray (TextReader StringUnsplit)
+        {
+            string StringInput = StringUnsplit.ReadLine();
+            string[] StringArr = StringInput.Split();
+            int[] IntArr = new int[StringArr.Length];
+            for(int i = 0; i < StringArr.Length; i++)
+            {
+                IntArr[i] = int.Parse(StringArr[i]);
+            }
+            return IntArr;
         }
         /// <summary>
         /// Writing the Result output in a textwriter stream : System Console in the main program run calling and
@@ -62,13 +73,10 @@ namespace Probability_in_Array
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            // The main integer Array with 8 elements
-            int[] Array = new int[8];
-            // Getting the integer Array from user by calling InputSelected function
-            for (int i = 0; i < Array.Length; i++)
-            {
-                Array[i] = InputSelected(Console.In);
-            }
+            // The main array size value
+            const int MainArraySize = 8;
+            // The main integer Array with MainArraySize elements
+            int[] Array = InputArray(Console.In);
             // Holder of the selected integer by user
             int InputNum = 0;
             do

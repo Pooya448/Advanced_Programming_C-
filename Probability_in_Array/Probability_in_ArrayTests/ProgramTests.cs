@@ -34,17 +34,27 @@ namespace Probability_in_Array.Tests
             using (StringReader ReaderTest1 = new StringReader(IntTest1.ToString()))
             {
                 // Comparing the function return value and expected value
-                Assert.AreEqual(Program.InputSelected(ReaderTest1), 8);
+                Assert.AreEqual(Program.InputSelected(ReaderTest1), IntTest1);
             }
             using (StringReader Readertest2 = new StringReader(IntTest2.ToString()))
             {
-                Assert.AreEqual(Program.InputSelected(Readertest2), 5);
+                Assert.AreEqual(Program.InputSelected(Readertest2), IntTest2);
             }
             using (StringReader ReaderTest3 = new StringReader(IntTest3.ToString()))
             {
-                Assert.AreEqual(Program.InputSelected(ReaderTest3), 2);
+                Assert.AreEqual(Program.InputSelected(ReaderTest3), IntTest3);
             }
-        }   
+        }
+        [TestMethod()]
+        public void InputArrTest()
+        {
+            string StringTest = "1 3 7 3 8 5 9 3";
+            int[] IntArrayTest = { 1, 3, 7, 3, 8, 5, 9, 3 };
+            using(StringReader StringReaderTest = new StringReader(StringTest))
+            {
+                CollectionAssert.AreEqual(Program.InputArray(StringReaderTest), IntArrayTest);
+            }
+        }
         [TestMethod()]
         public void OutputTest()
         {
@@ -56,9 +66,9 @@ namespace Probability_in_Array.Tests
                 Program.Output(DoubleTest, WriterTest);
                 /* Getting the written value by output_result function from the WriterTest 
                    StringWriter and comparing it to the expected string value */
-                string output_test = WriterTest.GetStringBuilder().ToString();
-                output_test = output_test.Remove(output_test.Length - 2);
-                Assert.AreEqual(output_test, DoubleTest.ToString());  
+                string OutputTestString = WriterTest.GetStringBuilder().ToString();
+                OutputTestString = OutputTestString.Remove(OutputTestString.Length - 2);
+                Assert.AreEqual(OutputTestString, DoubleTest.ToString());  
             }
         }
     }

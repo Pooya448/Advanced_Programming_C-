@@ -15,16 +15,21 @@ namespace Assignment5.Tests
         public void RecipeAddRemoveTest()
         {
 
-            //string TestTitle = "Test";
-            //string TestInstructions = "Test";
-            //string TestCuisine = "Test";
-            //string[] TestKeywords = new string[] { "Test1", "Test2" };
-            //int TestServingCount = 2;
-            //int TestInCount = 5;
-            //Recipe TestRecipe = new Recipe(TestTitle, TestInstructions, TestInCount, TestServingCount, TestCuisine, TestKeywords);
-            //Ingredient TestIn = new Ingredient("Test","Test",1,"Test");
-            //Assert.IsTrue(TestRecipe.AddIngredient(TestIn));
-            //Assert.IsTrue(TestRecipe.RemoveIngredient(TestIn.Name));
+            string TestTitle = "Test";
+            string TestInstructions = "Test";
+            string TestCuisine = "Test";
+            string[] TestKeywords = new string[] { "Test1", "Test2" };
+            int TestServingCount = 2;
+            int TestInCount = 5;
+            
+            Recipe TestRecipe = new Recipe(TestTitle, TestInstructions, TestInCount, TestServingCount, TestCuisine, TestKeywords);
+            string InName = "Name";
+            string InDiscription = "Discription";
+            double InQuantity = 0.350;
+            string InUnit = "Unit";
+            Ingredient TestIn = new Ingredient(InName,InDiscription,InQuantity,InUnit);
+            Assert.IsTrue(TestRecipe.AddIngredient(TestIn));
+            Assert.IsTrue(TestRecipe.RemoveIngredient(TestIn.Name));
 
             const int TestCount = 5;
             TestRecipe.UpdateServingCount(TestCount);

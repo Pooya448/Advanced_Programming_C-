@@ -16,11 +16,11 @@ namespace Assignment5
         private int _ServingCount;
         private string _Instructions;
         private int _IngredientCount;
-        private int Indicator = 0;
         public string[] KeyWords;
-        public Ingredient[] RecipeIngredients;
+        public List<Ingredient> IngredientsList = new List <Ingredient>();
         public bool IsIngredientsAdded = false;
-
+        private int Indicator = 0;
+        
         /// <summary>
         /// ایجاد دستور پخت جدید
         /// </summary>
@@ -38,10 +38,10 @@ namespace Assignment5
             this._Instructions = instructions;
             this.KeyWords = new string[keywords.Length];
             keywords.CopyTo(this.KeyWords, 0);
-            ingredient.CopyTo(this._Ingredients, 0);
+            this.IngredientsList = ingredient.ToList<Ingredient>();
             this._IngredientCount = ingredient.Length;
             this.IsIngredientsAdded = true;
-
+            this.Indicator = ingredient.Length;
         }
 
         /// <summary>
@@ -72,17 +72,15 @@ namespace Assignment5
         /// <returns>عمل اضافه کردن موفقیت آمیز انجام شد یا خیر. در صورت تکمیل ظرفیت مقدار برگشتی "خیر" میباشد.</returns>
         public bool AddIngredient (Ingredient ingredient)
         {
-
-            
-            if (this.Indicator > this._IngredientCount)
-                return false;
-            else
+            if(this.Indicator == this._IngredientCount)
             {
-                _Ingredients[Indicator] = ingredient;
-                Indicator++;
-                this.IsIngredientsAdded = false;
-                return true;
+                return false;
             }
+
+            this.IngredientsList.Add(ingredient);
+            if (this.IngredientsList.Contains(ingredient))
+                return true;
+            return false;
         }
         /// <summary>
         /// حذف تمام مواد اولیه که با نام ورودی تطبیق میکند
@@ -91,20 +89,15 @@ namespace Assignment5
         /// <returns>آیا حداقل یک ماده اولیه حذف شد؟</returns>
         public bool RemoveIngredient(string name)
         {
-            for(int i = 0; i < this._IngredientCount; i++)
-                if(_Ingredients[i].Name == name)
+            for (int i = 0; i < IngredientsList.Count; i++)
+            {
+                if (IngredientsList[i].Name == name)
                 {
-                    _Ingredients[i] = null;
-                    for(int t = i+1; t < this._IngredientCount; t++)
-                    {
-                        _Ingredients[t - 1] = _Ingredients[t];
-                    }
+                    IngredientsList.RemoveAt(i);
                     this._IngredientCount--;
-                    this.Indicator--;
-                    if (this._IngredientCount == 0)
-                        this.IsIngredientsAdded = false;
-                    return true;
                 }
+                return true;
+            }
             return false;
         }
 

@@ -153,7 +153,7 @@ namespace Assignment5
                 {
                     Console.WriteLine("No Ingredients Added !");
                 }
-                Console.WriteLine(recipe.RecipeIngredients[i].ToString());
+                Console.WriteLine(recipe.IngredientsList[i].ToString());
             }
             
         }

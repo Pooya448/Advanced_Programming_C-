@@ -14,9 +14,12 @@ namespace Assignment5.Tests
         [TestMethod()]
         public void IngredientconstTest()
         {
-            Ingredient Test1 = new Ingredient(null, null, 0, null);
-            Ingredient Test2 = new Ingredient(null, null, 0, null);
-            Assert.AreEqual<Ingredient>(Test1, Test2);
+            Ingredient Test1 = new Ingredient("Test", "Test", 1, "Test");
+            Ingredient Test2 = new Ingredient("Test", "Test", 1, "Test");
+            Assert.AreEqual(Test1.Name, Test2.Name);
+            Assert.AreEqual(Test1.Unit, Test2.Unit);
+            Assert.AreEqual(Test1.Description, Test2.Description);
+            Assert.AreEqual(Test1.Quantity, Test2.Quantity);
         }
 
         [TestMethod()]

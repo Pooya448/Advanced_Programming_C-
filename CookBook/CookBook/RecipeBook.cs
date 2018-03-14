@@ -19,8 +19,8 @@ namespace Assignment5
         /// <param name="capacity">ظرفیت کتابچه</param>
         public RecipeBook(string title, int capacity)
         {
-            this.Capacity = capacity;
-            this.BookTitle = title;
+            this._Capacity = capacity;
+            this._BookTitle = title;
         }
 
         /// <summary>
@@ -164,8 +164,8 @@ namespace Assignment5
                 Console.WriteLine($"{i + 1}. {list[i].Title}");
             }
         }
-        int Capacity;
-        string BookTitle;
+        int _Capacity;
+        string _BookTitle;
         public List <Recipe> ListOfRecipes = new List <Recipe> ();
         public int NumberOfRecipes
         {
@@ -178,7 +178,28 @@ namespace Assignment5
                 this._NumberOfRecipes = value;
             }
         }
-        
+        public int Capacity
+        {
+            get
+            {
+                return this._Capacity;
+            }
+            set
+            {
+                this._Capacity = value;
+            }
+        }
+        public string BookTitle
+        {
+            get
+            {
+                return this._BookTitle;
+            }
+            set
+            {
+                this._BookTitle = value;
+            }
+        }
        
     }
 }

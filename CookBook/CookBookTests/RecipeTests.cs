@@ -14,14 +14,21 @@ namespace Assignment5.Tests
         [TestMethod()]
         public void RecipeAddRemoveTest()
         {
-            Recipe Test = new Recipe(null,null,null,0,null,null);
-            Ingredient TestIn = new Ingredient("Test",null,0,null);
-            Assert.IsTrue(Test.AddIngredient(TestIn));
-            Assert.IsTrue(Test.RemoveIngredient(TestIn.Name));
+
+            //string TestTitle = "Test";
+            //string TestInstructions = "Test";
+            //string TestCuisine = "Test";
+            //string[] TestKeywords = new string[] { "Test1", "Test2" };
+            //int TestServingCount = 2;
+            //int TestInCount = 5;
+            //Recipe TestRecipe = new Recipe(TestTitle, TestInstructions, TestInCount, TestServingCount, TestCuisine, TestKeywords);
+            //Ingredient TestIn = new Ingredient("Test","Test",1,"Test");
+            //Assert.IsTrue(TestRecipe.AddIngredient(TestIn));
+            //Assert.IsTrue(TestRecipe.RemoveIngredient(TestIn.Name));
 
             const int TestCount = 5;
-            Test.UpdateServingCount(TestCount);
-            Assert.AreEqual(Test.ServingCount, TestCount);
+            TestRecipe.UpdateServingCount(TestCount);
+            Assert.AreEqual(TestRecipe.ServingCount, TestCount);
         }
         [TestMethod()]
         public void RecipeToStringOverrideTest()
@@ -29,11 +36,13 @@ namespace Assignment5.Tests
             string TestTitle = "Test";
             string TestInstructions = "Test";
             string TestCuisine = "Test";
+            string[] TestKeywords = new string[] {"Test1","Test2" };
             int TestServingCount = 0;
             int TestInCount = 0;
-            Recipe Test = new Recipe(TestTitle,TestInstructions,TestInCount,TestServingCount,TestCuisine,null);
+            Recipe Test = new Recipe(TestTitle,TestInstructions,TestInCount,TestServingCount,TestCuisine,TestKeywords);
             string TestRes = $" Title : {TestTitle}\n Instructions : {TestInstructions}\n Cuisine : {TestCuisine}\n Serving Count : {TestServingCount} \n Ingredients Count : {TestInCount}\n";
-            Assert.AreEqual(TestRes,Test.ToString());
+            string Actual = Test.ToString();
+            Assert.AreEqual(TestRes,Actual);
         }
 
 

@@ -16,29 +16,47 @@ namespace Assignment5.Tests
         {
             RecipeBook TestBook1 = new RecipeBook("Test1", 30);
             RecipeBook TestBook2 = new RecipeBook("Test1", 30);
-            Assert.AreEqual<RecipeBook>(TestBook1, TestBook2);
+            Assert.AreEqual(TestBook1.BookTitle, TestBook2.BookTitle);
+            Assert.AreEqual(TestBook1.Capacity, TestBook2.Capacity);
         }
 
         [TestMethod()]
         public void RecipeBookAddRemoveTest()
         {
             RecipeBook Test = new RecipeBook("Test", 10);
-            Recipe Test1 = new Recipe(null, null, null, 0, null, null);
-            Assert.IsTrue(Test.Add(Test1));
-            Assert.IsTrue(Test.Remove(Test1.Title));
+            string TestTitle = "Test";
+            string TestInstructions = "Test";
+            string TestCuisine = "Test";
+            string[] TestKeywords = new string[] { "Test1", "Test2" };
+            int TestServingCount = 5;
+            int TestInCount = 0;
+            Recipe TestRecipe = new Recipe(TestTitle, TestInstructions, TestInCount, TestServingCount, TestCuisine, TestKeywords);
+            Assert.IsTrue(Test.Add(TestRecipe));
+            Assert.IsTrue(Test.Remove(TestRecipe.Title));
 
         }
         [TestMethod()]
         public void RecipeBookLookUpTest()
         {
             RecipeBook Test = new RecipeBook("Test", 10);
-            string[] TestKeywords = new string[] {"TestKeyword1","Testkeyword2" };
-            string TestCuisine = "TestCuisine";
-            string TestTitle = "TestTitle";
+            
+            
             string TestKeyword = "TestKeyword1";
-            Test.Add(new Recipe(null,null,null,0,TestCuisine,null));
-            Test.Add(new Recipe(null, null, null, 0, null, TestKeywords));
-            Test.Add(new Recipe(TestTitle, null, null, 0, null, null));
+
+            string TestTitle = "Test";
+            string TestInstructions = "Test";
+            string TestCuisine = "Test";
+            string[] TestKeywords = new string[] { "Test1", "Test2" };
+            int TestServingCount = 0;
+            int TestInCount = 0;
+            Recipe TestRecipe = new Recipe(TestTitle, TestInstructions, TestInCount, TestServingCount, TestCuisine, TestKeywords);
+
+
+
+
+            Test.Add(TestRecipe);
+            Test.Add(TestRecipe);
+            Test.Add(TestRecipe);
             Assert.IsNotNull(Test.LookupByCuisine(TestCuisine));
             Assert.IsNotNull(Test.LookupByTitle(TestTitle));
             Assert.IsNotNull(Test.LookupByKeyword(TestKeyword));

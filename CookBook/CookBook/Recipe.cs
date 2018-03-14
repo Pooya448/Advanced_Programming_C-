@@ -141,7 +141,7 @@ namespace Assignment5
                 Console.WriteLine($"Please Enter the quantity of ingredient {i} :");
                 double quantity = double.Parse(Console.ReadLine());
                 Console.Clear();
-                Temp[i] = new Ingredient(name, description, quantity, unit);
+                Temp[i-1] = new Ingredient(name, description, quantity, unit);
             }
             return Temp;
         }
@@ -168,7 +168,7 @@ namespace Assignment5
         public override string ToString()
         {
             return $" Title : {this.Title}\n Instructions : {this.Instructions}\n Cuisine : {this.Cuisine}\n Serving Count : {this.ServingCount} \n Ingredients Count : {this._IngredientCount}\n";
-            //return null;
+
         }
         public string Title
         {

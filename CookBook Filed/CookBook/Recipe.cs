@@ -174,7 +174,7 @@ namespace Assignment5
             Writer.WriteLine(Instructions);
             Writer.WriteLine(IngredientCount);
             Writer.WriteLine(String.Join(" ",KeyWords));
-            using (StreamWriter IngWriter = new StreamWriter(Ingredient.IngredientsFileAddress, true))
+            using (StreamWriter IngWriter = new StreamWriter(Ingredient.IngredientsFileAddress, true, Encoding.UTF8))
                 foreach(Ingredient Sample in IngredientsList)
                 {
                     Sample.Serilize(IngWriter);

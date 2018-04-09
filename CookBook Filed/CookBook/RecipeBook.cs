@@ -20,8 +20,8 @@ namespace Assignment5
         /// <param name="capacity">ظرفیت کتابچه</param>
         public RecipeBook(string title, int capacity)
         {
-            this._Capacity = capacity;
-            this._BookTitle = title;
+            Capacity = capacity;
+            BookTitle = title;
         }
 
         /// <summary>
@@ -56,9 +56,7 @@ namespace Assignment5
                     ListOfRecipes.RemoveAt(i);
                     NumberOfRecipes--;
                 }
-                using (StreamWriter Writer = new StreamWriter(Recipe.RecipeFileAddress))
-                    Serialize(Writer);
-                    return true;
+                return true;
             }
             return false;  
         }
@@ -168,12 +166,31 @@ namespace Assignment5
         int _Capacity;
         string _BookTitle;
         public List <Recipe> ListOfRecipes = new List <Recipe> ();
-        public void Serialize (StreamWriter Writer)
+        public void Save (string Path)
         {
-            foreach(Recipe sample in ListOfRecipes)
+            using (StreamWriter Writer = new StreamWriter(Path, false, Encoding.UTF8))
             {
-                sample.Serialize(Writer);
+                foreach (Recipe sample in ListOfRecipes)
+                {
+                    if (sample != null)
+                        sample.Serialize(Writer);
+                }
             }
+        }
+        public bool Load (string Path)
+        {
+            if (File.Exists(Path))
+            {
+                Recipe Temp;
+                using (StreamReader Reader = new StreamReader(Path))
+                    while ((Temp = Recipe.Deserialize(Reader)) != null)
+                    {
+                        Add(Temp);
+                    }
+                return true;
+            }
+            else
+                return false;
         }
 
 

@@ -44,8 +44,6 @@ namespace Assignment5
                     Ingredient[] ingredients = new Ingredient[ingredientscount1];
                     Recipe.InitialIngredient(ingredientscount1).CopyTo(ingredients, 0);
                     Recipe Temp1 = new Recipe(Aname, instructions, ingredients, servingcount, cuisine, keywords);
-                    using (StreamWriter Writer = new StreamWriter(Recipe.RecipeFileAddress,true))
-                        Temp1.Serialize(Writer);
                     return Temp1;
                     break;
                 case ConsoleKey.N:
@@ -54,8 +52,6 @@ namespace Assignment5
                     Console.WriteLine("Please enter number of ingredients for this recipe");
                     int ingredientscount2 = int.Parse(Console.ReadLine());
                     Recipe Temp2 = new Recipe(Aname, instructions, ingredientscount2, servingcount, cuisine, keywords);
-                    using (StreamWriter Writer = new StreamWriter(Recipe.RecipeFileAddress,true))
-                        Temp2.Serialize(Writer);
                     return Temp2;
                     break;
                 default:
@@ -73,24 +69,32 @@ namespace Assignment5
         }
         public static void Main(string[] args)
         {
-            RecipeBook fromMom = new RecipeBook("دستور پخت های مادر", 20);
-            Recipe Temp;
-            if(File.Exists(Recipe.RecipeFileAddress))
-                using (StreamReader Reader = new StreamReader (Recipe.RecipeFileAddress))
-                    while((Temp = Recipe.Deserialize(Reader)) != null) {
-                        fromMom.Add(Temp);
-                    }
-
+            Console.WriteLine("Enter the title of your CookBOOK :");
+            string CookBookTitle = Console.ReadLine();
+            Console.WriteLine("Enter the capacity of your CookBOOK :");
+            int CookBookCap = int.Parse(Console.ReadLine());
+            RecipeBook CookBook = new RecipeBook(CookBookTitle, CookBookCap);
+            Console.WriteLine("Your CookBOOK successfully created :-)");
+            Pause();
+            Clear();
             ConsoleKeyInfo cki;
             do
             {
-                Console.WriteLine($"Press N(ew), D(el), S(earch) or L(ist)");
+                Console.WriteLine($"Press (N)ew, (D)el, (S)earch, (L)ist, sa(V)e or l(O)ad");
                 cki = Console.ReadKey();
                 Console.WriteLine();
                 switch (cki.Key)
                 {
+                    case ConsoleKey.O:
+                        CookBook.Load(Recipe.RecipeFileAddress);
+                        Console.WriteLine("Seccessfully Loaded");
+                        break;
+                    case ConsoleKey.V:
+                        CookBook.Save(Recipe.RecipeFileAddress);
+                        Console.WriteLine("Successfully Saved");
+                        break;
                     case ConsoleKey.N:
-                        switch (fromMom.Add(NewRecipeGet(fromMom)))
+                        switch (CookBook.Add(NewRecipeGet(CookBook)))
                         {
                             case true:
                                 Clear();
@@ -108,7 +112,7 @@ namespace Assignment5
                         Pause();
                         Clear();
                         Console.WriteLine("Please enter the name of your recipe");
-                        switch (fromMom.Remove(Console.ReadLine()))
+                        switch (CookBook.Remove(Console.ReadLine()))
                         {
                             case true:
                                 Clear();
@@ -139,30 +143,30 @@ namespace Assignment5
                             case ConsoleKey.K:
                                 Clear();
                                 Console.WriteLine("Enter the Keyword :");
-                                Recipe[] TempResult = fromMom.LookupByKeyword(Console.ReadLine());
-                                fromMom.ListRecipes(TempResult);
+                                Recipe[] TempResult = CookBook.LookupByKeyword(Console.ReadLine());
+                                CookBook.ListRecipes(TempResult);
                                 Console.WriteLine("\nSelect recipe : ");
 
-                                fromMom.ShowRecipe(fromMom.SelectRecipe(TempResult, int.Parse(Console.ReadLine())));
+                                CookBook.ShowRecipe(CookBook.SelectRecipe(TempResult, int.Parse(Console.ReadLine())));
 
                                 break;
                             
                             case ConsoleKey.T:
                                 Clear();
                                 Console.WriteLine("Enter the Title :");
-                                Recipe TempRecipe = fromMom.LookupByTitle(Console.ReadLine());
+                                Recipe TempRecipe = CookBook.LookupByTitle(Console.ReadLine());
                                 Console.WriteLine($"1. {TempRecipe.Title}");
                                 Console.WriteLine("Press any key to show the recipe !");
                                 Console.ReadKey();
-                                fromMom.ShowRecipe(TempRecipe);
+                                CookBook.ShowRecipe(TempRecipe);
                                 break;
                             case ConsoleKey.C:
                                 Clear();
                                 Console.WriteLine("Enter the Cuisine :");
-                                Recipe[] TempResultC = fromMom.LookupByCuisine(Console.ReadLine());
-                                fromMom.ListRecipes(TempResultC);
+                                Recipe[] TempResultC = CookBook.LookupByCuisine(Console.ReadLine());
+                                CookBook.ListRecipes(TempResultC);
                                 Console.WriteLine("\nSelect recipe : ");
-                                fromMom.ShowRecipe(fromMom.SelectRecipe(TempResultC, int.Parse(Console.ReadLine())));
+                                CookBook.ShowRecipe(CookBook.SelectRecipe(TempResultC, int.Parse(Console.ReadLine())));
                                 break;
                             default:
                                 Console.WriteLine($"Invalid Key: {cki.KeyChar}");
@@ -174,11 +178,11 @@ namespace Assignment5
                         Console.WriteLine("List Recipes");
                         Pause();
                         Clear();
-                        if (fromMom.NumberOfRecipes != 0)
+                        if (CookBook.NumberOfRecipes != 0)
                         {
-                            fromMom.ListRecipes(fromMom.ListOfRecipes.ToArray());
+                            CookBook.ListRecipes(CookBook.ListOfRecipes.ToArray());
                             Console.WriteLine("\nSelect recipe : ");
-                            fromMom.ShowRecipe(fromMom.SelectRecipe(fromMom.ListOfRecipes.ToArray(), int.Parse(Console.ReadLine())));
+                            CookBook.ShowRecipe(CookBook.SelectRecipe(CookBook.ListOfRecipes.ToArray(), int.Parse(Console.ReadLine())));
                         }
                             
                         else

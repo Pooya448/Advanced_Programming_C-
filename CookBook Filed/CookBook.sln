@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook", "CookBook\CookBook.csproj", "{026562D9-FE4D-474B-A444-634522C80657}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBookTests", "CookBookTests\CookBookTests.csproj", "{A35D3512-612F-4CF4-9A01-C123951735F5}"
 EndProject

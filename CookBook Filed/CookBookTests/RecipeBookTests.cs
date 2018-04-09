@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Assignment5;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Assignment5.Tests
             Assert.AreEqual(TestBook1.BookTitle, TestBook2.BookTitle);
             Assert.AreEqual(TestBook1.Capacity, TestBook2.Capacity);
         }
-
+        
         [TestMethod()]
         public void RecipeBookAddRemoveTest()
         {
@@ -61,12 +62,34 @@ namespace Assignment5.Tests
             Assert.IsNotNull(Test.LookupByTitle(TestTitle));
             Assert.IsNotNull(Test.LookupByKeyword(TestKeyword));
         }
+        [TestMethod()]
         public void RecipeBookSelectRecipeTest()
         {
-            RecipeBook Test = new RecipeBook("Test", 10);
-            Recipe[] TestList = new Recipe[] {new Recipe(null, null, null, 0, null, null),new Recipe(null, null, null, 0, null, null)};
+            RecipeBook TestBook = new RecipeBook("Test", 10);
+            Ingredient TestIng = new Ingredient("Name", "Description", 1, "Unit");
+            Ingredient[] TestArr = new Ingredient[1];
+            TestArr[0] = TestIng;
+            string[] TestKeywords = new string[] { "Test1", "Test2" };
+            Recipe TestRecipe = new Recipe("Title", "Instructions", TestArr, 1, "Cuisine", TestKeywords);
+            Recipe[] TestList = new Recipe[] {TestRecipe};
             const int TestIndex = 1;
-            Assert.IsNotNull(Test.SelectRecipe(TestList, TestIndex));
+            Assert.IsNotNull(TestBook.SelectRecipe(TestList, TestIndex));
+        }
+        [TestMethod()]
+        public void SaveTests()
+        {
+            string Path = @"SaveLoadTest.txt";
+            RecipeBook Test = new RecipeBook("Test", 10);
+            Test.Save(Path);
+            Assert.IsTrue(File.Exists(Path));
+            
+        }
+        [TestMethod()]
+        public void LoadTests()
+        {
+            string Path = @"SaveLoadTest.txt";
+            RecipeBook Test = new RecipeBook("Test", 10);
+            Assert.IsTrue(Test.Load(Path));
         }
     }
 }

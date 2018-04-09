@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Assignment5;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,26 @@ namespace Assignment5.Tests
             Assert.AreEqual(Test1.Description, Test2.Description);
             Assert.AreEqual(Test1.Quantity, Test2.Quantity);
         }
+        [TestMethod()]
+        public void SerializeTests()
+        {
+            Ingredient Test = new Ingredient("Name", "Description", 1, "Unit");
 
+            using (StreamWriter Writer = new StreamWriter(@"IngTest.txt"))
+            {
+                Test.Serilize(Writer);
+            }
+            Ingredient TestIng;
+            using (StreamReader Reader = new StreamReader(@"IngTest.txt"))
+            {
+                TestIng = Ingredient.Deserialize(Reader);
+            }
+            Assert.AreEqual(Test.Name,TestIng.Name);
+            Assert.AreEqual(Test.Unit, TestIng.Unit);
+            Assert.AreEqual(Test.Description, TestIng.Description);
+            Assert.AreEqual(Test.Quantity, TestIng.Quantity);
+
+        }
         [TestMethod()]
         public void ToStringTest()
         {

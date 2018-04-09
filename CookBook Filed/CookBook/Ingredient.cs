@@ -63,6 +63,13 @@ namespace Assignment5
             Writer.WriteLine(Quantity);
             Writer.WriteLine(Unit);
         }
+        public bool IsEqual (Ingredient First, Ingredient Second)
+        {
+            if (First == Second)
+                return true;
+            return false;
+                    
+        }
         public static Ingredient Deserialize (StreamReader Reader)
         {
             string RName = Reader.ReadLine();

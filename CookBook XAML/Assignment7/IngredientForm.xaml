@@ -1,0 +1,123 @@
+﻿<Window x:Class="Assignment7.IngredientForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment7"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="New Ingredient" Height="300" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Title"
+                   Name="TitleBlock"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Center"
+                 Margin="5" />
+        <TextBox Grid.Column="1"
+                 Name="TitleBox"
+                 
+               Height="20"
+               HorizontalAlignment="Stretch"
+                 VerticalAlignment="Center"
+               Margin="5" />
+
+        <TextBlock Text="Unit"
+                   Name="UnitBlock"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Center"                   
+                 Grid.Row="1"
+                 Margin="5" />
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <TextBox Grid.Column="1"
+                DockPanel.Dock="Left"
+                     
+                Name="UnitTxtBox"
+                
+                Height="20"
+                Width="70"
+                IsEnabled="False"
+                Grid.Row="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="5" />
+            <Button  Name="MenuBtn" Click="MenuBtn_Click" Grid.Column="1" Grid.Row="1" DockPanel.Dock="Left" Height="20" Width="40" HorizontalAlignment="Left" Margin="5">
+            <Button.Content>
+                <Path x:Name="BtnArrow" Margin="4" VerticalAlignment="Center" Width="10" Fill="#FF527DB5" Stretch="Uniform" HorizontalAlignment="Right" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "/>
+            </Button.Content>
+            <Button.ContextMenu>
+                <ContextMenu >
+                    <MenuItem Foreground="Black" Header="Grams"  Name="Gram" Click="Gram_Click" />
+                    <MenuItem Foreground="Black" Header="Kilo Grams" IsEnabled="True" Name="KGram" Click="KGram_Click"/>
+                    <MenuItem Foreground="Black" Header="Number" IsEnabled="True" Name="Number" Click="Number_Click"/>
+                    <MenuItem Foreground="Black" Header="lbs" IsEnabled="True" Name="LBS" Click="LBS_Click"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+            </Button>
+            
+        </DockPanel>
+        <TextBlock Text="Quantity"
+                   
+                   Name="QuantityBlock"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Center"                   
+                 Grid.Row="2"
+                 Margin="5" />
+        <TextBox Grid.Column="1"
+                 Name="QuantityBox"
+                 
+               Height="20"
+                Width="40"
+               Grid.Row="2"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+               Margin="5" />
+        <TextBlock Text="Description"
+                   Name="DescriptionBlock"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Top"                   
+                 Grid.Row="3"
+                 Margin="5" />
+        <TextBox Grid.Column="1"
+                 Name="DescriptionBox"
+                 
+               Grid.Row="3"
+               HorizontalAlignment="Stretch"
+               Margin="5" />
+        <DockPanel Grid.Row="5" Grid.Column="1">
+            <Button DockPanel.Dock="Right" Margin="2" Padding="2" HorizontalAlignment="Right" Name="SaveBtn" Click="SaveBtn_Click" >Save</Button>
+            <Button DockPanel.Dock="Right" Margin="2" Padding="2" HorizontalAlignment="Right" Click="CancleBtn_Click" Name="CancleBtn" IsCancel="True" >Cancle</Button>
+        </DockPanel>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+</Window>

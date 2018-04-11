@@ -1,0 +1,16 @@
+﻿<Window x:Class="Assignment7.SaveWarning"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment7"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Changes Not Saved" Height="150" Width="300">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="65,19,0,0" TextWrapping="Wrap" Text="Do You Want To Save Changes ?" VerticalAlignment="Top" TextAlignment="Center" FontSize="18"/>
+        <Button Content="Yes, Save" HorizontalAlignment="Left" Margin="161,85,0,0" VerticalAlignment="Top" Width="75" Height="25" Name="YesBtn" Click="YesBtn_Click" IsDefault="True"/>
+        <Button Content="No, Exit" HorizontalAlignment="Left" Margin="66,85,0,0" VerticalAlignment="Top" Width="75" Height="25" Name="NoBtn" Click="NoBtn_Click" IsCancel="True"/>
+
+    </Grid>
+</Window>

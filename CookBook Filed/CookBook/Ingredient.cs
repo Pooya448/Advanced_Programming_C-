@@ -78,6 +78,6 @@ namespace Assignment5
             string RUnit = Reader.ReadLine();
             return new Ingredient(RName, RDescription, RQuantity, RUnit);
         }
-        public static string IngredientsFileAddress = @"Ingredients.txt";
+        
     }
 }

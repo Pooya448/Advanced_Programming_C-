@@ -174,10 +174,9 @@ namespace Assignment5
             Writer.WriteLine(Instructions);
             Writer.WriteLine(IngredientCount);
             Writer.WriteLine(String.Join(" ",KeyWords));
-            using (StreamWriter IngWriter = new StreamWriter(Ingredient.IngredientsFileAddress, true, Encoding.UTF8))
                 foreach(Ingredient Sample in IngredientsList)
                 {
-                    Sample.Serilize(IngWriter);
+                    Sample.Serilize(Writer);
                 }
 
         }
@@ -192,13 +191,10 @@ namespace Assignment5
             int RIngredientCount = int.Parse(Reader.ReadLine());
             string[] RKeywords = Reader.ReadLine().Split();
             Ingredient[] RIng = new Ingredient[RIngredientCount];
-            using (StreamReader IngReader = new StreamReader(Ingredient.IngredientsFileAddress))
-            {
                 for (int i = 0; i < RIngredientCount; i++)
                 {
-                    RIng[i] = Ingredient.Deserialize(IngReader);
+                    RIng[i] = Ingredient.Deserialize(Reader);
                 }
-            }
             return new Recipe(RTitle,RInstructions,RIng,RServingCount,RCuisine,RKeywords);
 
         }

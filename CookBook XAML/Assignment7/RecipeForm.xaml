@@ -23,6 +23,7 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <TextBlock Text="Title"
+                   Name="TitleBlock"
                  HorizontalAlignment="Right"
                  VerticalAlignment="Center"
                  Margin="5" />
@@ -34,6 +35,7 @@
                Margin="5" />
 
         <TextBlock Text="Serving Count"
+                   Name="SCountBlock"
                  HorizontalAlignment="Right"
                  VerticalAlignment="Center"
                  Grid.Row="1"
@@ -48,6 +50,7 @@
                Margin="5" />
 
         <TextBlock Text="Cuisine"
+                   Name="CuisineBlock"
                  HorizontalAlignment="Right"
                  VerticalAlignment="Center"                   
                  Grid.Row="2"
@@ -61,6 +64,7 @@
                Margin="5" />
 
         <TextBlock Text="Keywords"
+                   Name="KeywordsBlock"
                  HorizontalAlignment="Right"
                  Grid.Row="3"
                  Margin="5" />

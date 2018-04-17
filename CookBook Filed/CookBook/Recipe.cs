@@ -18,8 +18,20 @@ namespace Assignment5
         private int _ServingCount;
         private string _Instructions;
         private int _IngredientCount;
+        private string _SearchMethod;
+        public string SearchMethod
+        {
+            get
+            {
+                return _SearchMethod;
+            }
+            set
+            {
+                _SearchMethod = value;
+            }
+        }
         public string[] KeyWords;
-        public List<Ingredient> IngredientsList = new List <Ingredient>();
+        public List<Ingredient> IngredientsList = new List<Ingredient>();
         public bool IsIngredientsAdded = false;
         private int Indicator = 0;
         
@@ -65,6 +77,27 @@ namespace Assignment5
             keywords.CopyTo(this.KeyWords, 0);
             this._IngredientCount = ingredientCount;
             
+        }
+        public Recipe (List<Ingredient> List)
+        {
+            IngredientsList = List;
+        }
+        /// <summary>
+        /// used for looking up an ingredient in a arecipe using its title
+        /// </summary>
+        /// <param name="IngTitle">search by this title</param>
+        /// <returns></returns>
+        public Ingredient IngLookUp (string IngTitle)
+        {
+            foreach (Ingredient item in IngredientsList)
+            {
+                if (item.Name == IngTitle)
+                {
+                    return item;
+                    
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -159,13 +192,19 @@ namespace Assignment5
                 Ingredients.CopyTo(_Ingredients, 0);
             }
         }
-
+        /// <summary>
+        /// transforming recipe data into string
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $" Title : {Title}\n Instructions : {Instructions}\n Cuisine : {Cuisine}\n Serving Count : {ServingCount} \n Ingredients Count : {_IngredientCount}\n";
 
         }
-
+        /// <summary>
+        /// method used for writing recipe data into sreamwriter
+        /// </summary>
+        /// <param name="Writer">streamwriter used for writing</param>
         public void Serialize (StreamWriter Writer)
         {
             Writer.WriteLine(Title);
@@ -181,6 +220,11 @@ namespace Assignment5
                 }
 
         }
+        /// <summary>
+        /// method for reading recipe data from a streamreader
+        /// </summary>
+        /// <param name="Reader">streamreader used in method</param>
+        /// <returns></returns>
         public static Recipe Deserialize (StreamReader Reader)
         {
             string RTitle = Reader.ReadLine();

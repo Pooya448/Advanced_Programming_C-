@@ -32,7 +32,10 @@ namespace Assignment7
                 _Sample = value;
             }
         }
-        
+        /// <summary>
+        /// constructor for show recipe form class and used for showing and editting a recipe
+        /// </summary>
+        /// <param name="Rec"></param>
         public ShowRecipe(Recipe Rec)
         {
             InitializeComponent();
@@ -88,6 +91,10 @@ namespace Assignment7
             CloseBtn.IsEnabled = false;
 
         }
+        /// <summary>
+        /// showing ingredient list box in recipe form
+        /// </summary>
+        /// <param name="Rec">recipe which it's ingredient are shown</param>
         private void ShowListBox (Recipe Rec)
         {
             foreach(Ingredient item in Rec.IngredientsList)
@@ -97,18 +104,31 @@ namespace Assignment7
                 IngredientsListBox.Items.Add(NewItem.Content);
             }
         }
+        /// <summary>
+        /// closing the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
             Close();
         }
-
+        /// <summary>
+        /// when clicked the edit shape of the current form shows up
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
             Close();
         }
-
+        /// <summary>
+        /// button for viewing the current ingredients
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnView_Click(object sender, RoutedEventArgs e)
         {
             foreach (Ingredient item in Sample.IngredientsList)
@@ -122,7 +142,11 @@ namespace Assignment7
                 }
             }
         }
-
+        /// <summary>
+        /// editing the selected ingredient from the list box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditIngBtn_Click(object sender, RoutedEventArgs e)
         {
             
@@ -142,7 +166,11 @@ namespace Assignment7
                 
             
         }
-
+        /// <summary>
+        /// updating the recipe and saving the changes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             Sample.KeyWords = KeywordsBox.Text.Split();
@@ -152,7 +180,11 @@ namespace Assignment7
             DialogResult = true;
             Close();
         }
-
+        /// <summary>
+        /// cancling the edit procedure
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancleBtn_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;

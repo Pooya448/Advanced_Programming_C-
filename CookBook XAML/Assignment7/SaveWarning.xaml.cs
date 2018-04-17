@@ -24,13 +24,21 @@ namespace Assignment7
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// event handler for "Yes" button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void YesBtn_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
             Close();
         }
-
+        /// <summary>
+        /// event handler for "No" button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NoBtn_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;

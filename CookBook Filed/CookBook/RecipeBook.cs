@@ -55,10 +55,12 @@ namespace Assignment5
                 {
                     ListOfRecipes.RemoveAt(i);
                     NumberOfRecipes--;
+                    return true;
                 }
-                return true;
+                
             }
-            return false;  
+            return false;
+              
         }
 
         /// <summary>
@@ -71,7 +73,12 @@ namespace Assignment5
             for (int i = 0; i < ListOfRecipes.Count; i++)
             {
                 if (ListOfRecipes[i].Title == title)
-                    return ListOfRecipes[i];
+                {
+                    Recipe Temp = ListOfRecipes[i];
+                    Temp.SearchMethod = ": By Title";
+                    return Temp;
+                }
+                    
             }
             return null;
         }
@@ -102,7 +109,9 @@ namespace Assignment5
                 {
                     if (ListOfRecipes[i].KeyWords[j] == keyword)
                     {
+                        
                         KeyWordResult[Indicator] = ListOfRecipes[i];
+                        KeyWordResult[Indicator].SearchMethod = ": By Keyword";
                         Indicator++;
                     }    
                 }                   
@@ -132,11 +141,18 @@ namespace Assignment5
                 if (ListOfRecipes[i].Cuisine == cuisine)
                 {
                     CuisineResult[Indicator] = ListOfRecipes[i];
+                    CuisineResult[Indicator].SearchMethod = ": By Cuisine";
                     Indicator++;
                 }
             }
             return CuisineResult;
         }
+        /// <summary>
+        /// selecting recipe
+        /// </summary>
+        /// <param name="list">list used for searching</param>
+        /// <param name="index">index used</param>
+        /// <returns></returns>
         public Recipe SelectRecipe (Recipe[] list, int index)
         {
             return list[index-1];
@@ -166,6 +182,10 @@ namespace Assignment5
         int _Capacity;
         string _BookTitle;
         public List <Recipe> ListOfRecipes = new List <Recipe> ();
+        /// <summary>
+        /// saving recipebook into file
+        /// </summary>
+        /// <param name="Path">path using for save</param>
         public void Save (string Path)
         {
             using (StreamWriter Writer = new StreamWriter(Path, false, Encoding.UTF8))
@@ -177,8 +197,15 @@ namespace Assignment5
                 }
             }
         }
+        /// <summary>
+        /// used for loading data from a file
+        /// </summary>
+        /// <param name="Path">path using for loading data</param>
+        /// <returns></returns>
         public bool Load (string Path)
         {
+            ListOfRecipes.Clear();
+
             if (File.Exists(Path))
             {
                 Recipe Temp;

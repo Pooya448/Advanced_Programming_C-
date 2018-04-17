@@ -23,6 +23,7 @@
                         <MenuItem Foreground="Black" Header="Search By Keyword" IsEnabled="True" Name="SBKeywordItem" Click="SBKeywordItem_Click" />
                         <MenuItem Foreground="Black" Header="Search by Title" IsEnabled="True" Name="SBTitkeItem" Click="SBTitkeItem_Click"/>
                         <MenuItem Foreground="Black" Header="Search by Cuisine" IsEnabled="True" Name="SBCuisineItem" Click="SBCuisineItem_Click"/>
+                        <MenuItem Foreground="Black" Header="Search by All Methods" IsEnabled="True" Name="SBAllItem" Click="SBAllItem_Click"/>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>

@@ -21,58 +21,97 @@ namespace Assignment7
     /// </summary>
     public partial class RecipeForm : Window
     {
-        //static string TestTitle = "Test";
-        //static string TestInstructions = "Test";
-        //static string TestCuisine = "Test";
-        //static string[] TestKeywords = new string[] { "Test1", "Test2" };
-        //static int TestServingCount = 5;
-        //static int TestInCount = 0;
-        //private Recipe _TempRec = new Recipe(TestTitle, TestInstructions, TestInCount, TestServingCount, TestCuisine, TestKeywords);
-        //public Recipe TempRec { set; get; }
+        
+        
         public List<Ingredient> IngList = new List<Ingredient>();
         private Recipe _TempRec;
         public Recipe TempRec { set { _TempRec = value; } get { return _TempRec; } }
         public RecipeForm()
         {
             InitializeComponent();
+            TempRec = new Recipe(IngList);
             
         }
-        
+        /// <summary>
+        /// creating new ingredient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {
             IngredientForm IngForm = new IngredientForm();
             
             if (IngForm.ShowDialog().Value)
             {
-                Ingredient TempIng = IngForm.TempIng;
-                IngList.Add(TempIng);
+                IngList.Add(IngForm.TempIng);
                 UpdateIngredientListbox();
             }
 
 
         }
+        /// <summary>
+        /// saving the recipe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                int Counter = 0;
 
-                if (int.Parse(SCountBox.Text) < 0)
-                    throw new System.FormatException();
+
                 if (TitleBox.Text == "")
-                    throw new NullReferenceException();
+                {
+                    TitleBlock.Foreground = Brushes.Red;
+                    Counter++;
+                }
+                else
+                {
+                    TitleBlock.Foreground = Brushes.Black;
+                }
                 if (CuisineBox.Text == "")
-                    throw new NullReferenceException();
+                {
+                    CuisineBlock.Foreground = Brushes.Red;
+                    Counter++;
+                }
+                else
+                {
+                    CuisineBlock.Foreground = Brushes.Black;
+                }
                 if (KeywordsBox.Text == "")
+                {
+                    KeywordsBlock.Foreground = Brushes.Red;
+                    Counter++;
+                }
+                else
+                {
+                    KeywordsBlock.Foreground = Brushes.Black;
+                }
+                if (int.Parse(SCountBox.Text) < 0)
+                {
+                    SCountBlock.Foreground = Brushes.Red;
+                    Counter++;
+                }
+                else
+                {
+                    SCountBlock.Foreground = Brushes.Black;
+                }
+                if (Counter > 0)
                     throw new NullReferenceException();
                 TempRec = new Recipe(TitleBox.Text, "Instructions", IngList.ToArray(), int.Parse(SCountBox.Text), CuisineBox.Text, KeywordsBox.Text.Split());
-                this.DialogResult = true;
+                DialogResult = true;
             }
-            catch (System.FormatException Exp)
+            catch (System.FormatException Exp1)
             {
-                MessageBox.Show("Please Enter a Valid Positive Number");
+                SCountBlock.Foreground = Brushes.Red;
+                MessageBox.Show("Please Enter a Valid Positive Number \n Complete All Fields");
                 Hide();
                 ShowDialog();
             }
+
+            
+            
             catch (NullReferenceException Exp)
             {
                 MessageBox.Show("Please Complete All Fields");
@@ -81,6 +120,9 @@ namespace Assignment7
             }
             Close();
         }
+        /// <summary>
+        /// updating the ingredient list box in recipeform
+        /// </summary>
         private void UpdateIngredientListbox()
         {
             IngredientsListBox.Items.Clear();
@@ -92,35 +134,32 @@ namespace Assignment7
 
             }
         }
+        /// <summary>
+        /// deleting an ingredient from the ingredient list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnDel_Click(object sender, RoutedEventArgs e)
         {
-            
-            foreach (Ingredient item in IngList)
-            {
-                if (item.Name == IngredientsListBox.SelectedItem.ToString())
-                {
-                    IngList.Remove(item);
-                    break;
-                }
-            }
+            IngList.Remove(TempRec.IngLookUp(IngredientsListBox.SelectedItem.ToString()));
             UpdateIngredientListbox();
         }
-
+        /// <summary>
+        /// viewing selected ingredient from the list box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnView_Click(object sender, RoutedEventArgs e)
-        {
-            
-            foreach(Ingredient item in IngList)
-            {
-                if (item.Name == IngredientsListBox.SelectedItem.ToString())
-                {
-                    IngredientShowForm ShowIng = new IngredientShowForm(item);
-                    ShowIng.ShowDialog();
-                    break;
-                   
-                }
-            }
+        {  
+            Ingredient Result = TempRec.IngLookUp(IngredientsListBox.SelectedItem.ToString());
+            IngredientShowForm ShowIng = new IngredientShowForm(Result);
+            ShowIng.ShowDialog();
         }
-
+        /// <summary>
+        /// cancling the recipe adding procedure
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CanclBtn_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;

@@ -23,7 +23,6 @@ namespace Assignment7
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private RecipeBook _MainBook;
         public RecipeBook MainBook
         {
@@ -37,6 +36,7 @@ namespace Assignment7
             }
         }
         private bool IsInSearch = false;
+        private bool IsInAllSearch = false;
         private bool IsSaved = false;
         public MainWindow()
         {
@@ -52,7 +52,11 @@ namespace Assignment7
             
             
         }
-
+        /// <summary>
+        /// button used for creating new recipe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {
             RecipeForm frm = new RecipeForm();
@@ -66,18 +70,30 @@ namespace Assignment7
 
             
         }
-
+        /// <summary>
+        /// button used for loading existing data from a file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         {
+            IsInSearch = false;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             string LoadFilePath = null;
-            openFileDialog.ShowDialog();
-            LoadFilePath = openFileDialog.FileName;
-            MainBook.ListOfRecipes.Clear();
-            MainBook.Load(LoadFilePath);
-            UpdateRecipeListBox();
-            MessageBox.Show("Successfully Loaded Your File");
+            if (openFileDialog.ShowDialog().Value)
+            {
+                LoadFilePath = openFileDialog.FileName;
+                MainBook.ListOfRecipes.Clear();
+                MainBook.Load(LoadFilePath);
+                UpdateRecipeListBox();
+            }
+            
+               
+            
         }
+        /// <summary>
+        /// updating recipe list box in main form
+        /// </summary>
         private void UpdateRecipeListBox()
         {
             RecipeListBox.Items.Clear();
@@ -88,13 +104,23 @@ namespace Assignment7
                 RecipeListBox.Items.Add(NewItem.Content);
             }
         }
-        private void ShowSearchResult (params Recipe[] Result)
+        /// <summary>
+        /// showing search result in recipe list box 
+        /// </summary>
+        /// <param name="Result">the list containing recipe search info</param>
+        private void ShowSearchResult(params Recipe[] Result)
         {
+            if (Result.Length == 0)
+            {
+                MessageBox.Show("No Result Found");
+
+                return;
+            }
             BtnLoad.IsEnabled = false;
             BtnSave.IsEnabled = false;
             BtnNew.IsEnabled = false;
             BtnReturn.Visibility = Visibility.Visible;
-            IsInSearch = true;
+            
             RecipeListBox.Items.Clear();
             foreach (Recipe item in Result)
             {
@@ -104,18 +130,42 @@ namespace Assignment7
             }
 
         }
-        private void BtnDel_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// showing result of an all method search in recipe list box
+        /// </summary>
+        /// <param name="Result">the list containing recipe search info</param>
+        private void ShowAllSearchResult (List<Recipe> Result)
         {
-            
-            foreach (Recipe item in MainBook.ListOfRecipes)
+            if (Result.Count == 0)
             {
-                if(item.Title == RecipeListBox.SelectedItem.ToString())
-                {
-                    MainBook.ListOfRecipes.Remove(item);
-                    IsSaved = false;
-                    break;
-                }
+                MessageBox.Show("No Result Found");
+
+                return;
             }
+                    
+            
+            BtnLoad.IsEnabled = false;
+            BtnSave.IsEnabled = false;
+            BtnNew.IsEnabled = false;
+            BtnReturn.Visibility = Visibility.Visible;
+            
+            RecipeListBox.Items.Clear();
+                
+            foreach (Recipe item in Result)
+            {
+                ListBoxItem NewItem = new ListBoxItem();
+                NewItem.Content = item.Title + item.SearchMethod;
+                RecipeListBox.Items.Add(NewItem.Content);
+                }
+        }
+        /// <summary>
+        /// method used for removing a recipe from the recipe list
+        /// </summary>
+        /// <param name="TitleSubject">title of the recipe</param>
+        private void RemoveAction (string TitleSubject)
+        {
+            MainBook.Remove(TitleSubject);
+            IsSaved = false;
             if (IsInSearch)
             {
                 RecipeListBox.Items.Remove(RecipeListBox.SelectedItem);
@@ -124,91 +174,160 @@ namespace Assignment7
             {
                 UpdateRecipeListBox();
             }
+        }
+        /// <summary>
+        /// button used for deleting a recipe from the cookbook
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDel_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (IsInAllSearch)
+            {
+                RemoveAction((RecipeListBox.SelectedItem.ToString()).Remove((RecipeListBox.SelectedItem.ToString()).IndexOf(':')));
+            }
+            else
+            {
+                RemoveAction(RecipeListBox.SelectedItem.ToString());
+            }
             
         }
-
+        /// <summary>
+        /// button used for saving the current cookbook into a file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog SaveDialog = new SaveFileDialog();
             string SaveFilePath = null;
-            SaveDialog.ShowDialog();
-            SaveFilePath = SaveDialog.FileName;
+            if (SaveDialog.ShowDialog().Value)
+            {
+                SaveFilePath = SaveDialog.FileName;
+                MainBook.Save(SaveFilePath);
+                MessageBox.Show("Successfully Saved At : \n" + SaveFilePath);
+                IsSaved = true;
+            }
             
-            MainBook.Save(SaveFilePath);
-            MessageBox.Show("Successfully Saved At : \n" + SaveFilePath);
-            IsSaved = true;
 
 
         }
-
-        private void BtnView_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// method performing view action
+        /// </summary>
+        /// <param name="TitleSubject">recipe title for performinh view action</param>
+        private void ViewAction (string TitleSubject)
         {
-            for (int i = 0; i < MainBook.ListOfRecipes.Count; i++)
-            { 
-                if (MainBook.ListOfRecipes[i].Title == RecipeListBox.SelectedItem.ToString())
+            Recipe Result = MainBook.LookupByTitle(TitleSubject);
+            ShowRecipe ShowForm = new ShowRecipe(Result);
+            if (ShowForm.ShowDialog().Value)
+            {
+                ShowRecipe EditForm = new ShowRecipe(Result, true);
+                if (EditForm.ShowDialog().Value)
                 {
-                    ShowRecipe ShowForm = new ShowRecipe(MainBook.ListOfRecipes[i]);
-                    switch (ShowForm.ShowDialog().Value)
-                    {
-                        case true:
-                            ShowRecipe EditForm = new ShowRecipe(MainBook.ListOfRecipes[i],true);
-                            if (EditForm.ShowDialog().Value)
-                            {
-                                MainBook.ListOfRecipes[i] = EditForm.Sample;
-                                IsSaved = false;
-                            }
-
-
-                            break;
-
-                        case false:
-
-
-
-                            break;
-                    }
-                    break;
-
+                    //Predicate<Recipe> RecipeFinder = (Recipe x) => { return x.Title == Result.Title; };
+                    MainBook.ListOfRecipes[MainBook.ListOfRecipes.IndexOf(Result)] = EditForm.Sample;
+                    IsSaved = false;
                 }
             }
         }
+        /// <summary>
+        /// button used for creating a new recipe and adding it to the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnView_Click(object sender, RoutedEventArgs e)
+        {
 
-       
+            if (IsInAllSearch)
+            {
+                ViewAction((RecipeListBox.SelectedItem.ToString()).Remove((RecipeListBox.SelectedItem.ToString()).IndexOf(':')));
+            }
+            else
+            {
+                ViewAction(RecipeListBox.SelectedItem.ToString());
+            }
+        }
+        /// <summary>
+        /// method called when keyword search method clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SBKeywordItem_Click(object sender, RoutedEventArgs e)
         {
+            IsInAllSearch = false;
+            IsInSearch = true;
             ShowSearchResult(MainBook.LookupByKeyword(SearchBox.Text));
         }
-
+        /// <summary>
+        /// method called when title search method clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SBTitkeItem_Click(object sender, RoutedEventArgs e)
         {
+            IsInAllSearch = false;
+            IsInSearch = true;
             ShowSearchResult(MainBook.LookupByTitle(SearchBox.Text));
         }
-
+        /// <summary>
+        /// method called when cuisine search method clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SBCuisineItem_Click(object sender, RoutedEventArgs e)
         {
+            IsInAllSearch = false;
+            IsInSearch = true;
             ShowSearchResult(MainBook.LookupByCuisine(SearchBox.Text));
         }
-
-        
+        /// <summary>
+        /// the mai search button code
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (SearchBox.Text == "")
+                    throw new NullReferenceException();
+                (sender as Button).ContextMenu.IsEnabled = true;
+                (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
+                (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+                (sender as Button).ContextMenu.IsOpen = true;
+            }
+            catch (NullReferenceException exp)
+            {
+                MessageBox.Show("Search Field Is Empty !");
 
-            (sender as Button).ContextMenu.IsEnabled = true;
-            (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
-            (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
-            (sender as Button).ContextMenu.IsOpen = true;
+            }
+
+            
 
         }
-
+        /// <summary>
+        /// code for return button, the button returns to the main cookbook search after a search is happened
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnReturn_Click(object sender, RoutedEventArgs e)
         {
+            IsInSearch = false;
+            IsInAllSearch = false;
             BtnReturn.Visibility = Visibility.Collapsed;
             BtnLoad.IsEnabled = true;
             BtnSave.IsEnabled = true;
             BtnNew.IsEnabled = true;
+            SearchBox.Text = "";
             UpdateRecipeListBox();
         }
-
+        /// <summary>
+        /// event handler of mainform closing event, used for asking the user if he/she wants to save in case of new changes added to the cookbook
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!IsSaved)
@@ -227,6 +346,22 @@ namespace Assignment7
                     
                 }
             }
+        }
+        /// <summary>
+        /// method called when All methods search method clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SBAllItem_Click(object sender, RoutedEventArgs e)
+        {
+            IsInAllSearch = true;
+            IsInSearch = true;
+            List<Recipe> AllSearchResult = new List<Recipe>();
+            AllSearchResult.Add(MainBook.LookupByTitle(SearchBox.Text));
+            AllSearchResult.AddRange(MainBook.LookupByKeyword(SearchBox.Text)); 
+            AllSearchResult.AddRange(MainBook.LookupByCuisine(SearchBox.Text));
+            
+            ShowAllSearchResult(AllSearchResult);
         }
     }
 }

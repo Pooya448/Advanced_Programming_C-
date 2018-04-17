@@ -37,7 +37,11 @@ namespace Assignment7
             WelcomeBlock.Text ="Welcome, " + name + "!";
 
         }
-
+        /// <summary>
+        /// button indicating if the user pressed enter button on keyboard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;

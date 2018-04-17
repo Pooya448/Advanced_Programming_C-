@@ -32,6 +32,10 @@ namespace Assignment7
                 _Sample = value;
             }
         }
+        /// <summary>
+        /// constructor for creating an ingredient show form and indicating if the form should be in edit mode or view form
+        /// </summary>
+        /// <param name="Ing">name of the ingredient</param>
         public IngredientShowForm(Ingredient Ing)
         {
             InitializeComponent();

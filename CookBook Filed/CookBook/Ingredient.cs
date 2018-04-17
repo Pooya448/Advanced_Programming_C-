@@ -56,6 +56,10 @@ namespace Assignment5
         {
             return $"{Name}:\t{Quantity} {Unit} - {Description}\n";
         }
+        /// <summary>
+        /// Method used for writing an Ingredient to a file
+        /// </summary>
+        /// <param name="Writer">StreamWriter passed as parameter</param>
         public void Serilize (StreamWriter Writer)
         {
             Writer.WriteLine(Name);
@@ -63,13 +67,11 @@ namespace Assignment5
             Writer.WriteLine(Quantity);
             Writer.WriteLine(Unit);
         }
-        public bool IsEqual (Ingredient First, Ingredient Second)
-        {
-            if (First == Second)
-                return true;
-            return false;
-                    
-        }
+        /// <summary>
+        /// static method used for reading Ingredient data from a file
+        /// </summary>
+        /// <param name="Reader">StreamReader used for reading file path</param>
+        /// <returns></returns>
         public static Ingredient Deserialize (StreamReader Reader)
         {
             string RName = Reader.ReadLine();

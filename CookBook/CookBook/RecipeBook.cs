@@ -11,7 +11,10 @@ namespace Assignment5
     /// </summary>
     public class RecipeBook
     {
-        private int _NumberOfRecipes = 0;
+        public List<Recipe> ListOfRecipes = new List<Recipe>();
+        public int Capacity { set; get; }
+        public string BookTitle { set; get; }
+
         /// <summary>
         /// ایجاد شیء کتابچه دستور غذا
         /// </summary>
@@ -19,8 +22,8 @@ namespace Assignment5
         /// <param name="capacity">ظرفیت کتابچه</param>
         public RecipeBook(string title, int capacity)
         {
-            this._Capacity = capacity;
-            this._BookTitle = title;
+            Capacity = capacity;
+            BookTitle = title;
         }
 
         /// <summary>
@@ -30,13 +33,9 @@ namespace Assignment5
         /// <returns>آیا اضافه کردن موفقیت آمیز انجام شد؟</returns>
         public bool Add (Recipe recipe)
         {
-            this.ListOfRecipes.Add(recipe);
-            if (ListOfRecipes.Contains(recipe))
-            {
-                this._NumberOfRecipes++;
+            ListOfRecipes.Add(recipe);
+            if (ListOfRecipes[ListOfRecipes.IndexOf(recipe)]==recipe)
                 return true;
-            }
-                
             return false;
             
         }
@@ -53,10 +52,10 @@ namespace Assignment5
                 if (ListOfRecipes[i].Title == recipeTitle)
                 {
                     ListOfRecipes.RemoveAt(i);
-                    this._NumberOfRecipes--;
+                    return true;
                 }
                     
-                return true;
+                
             }
             return false;
                 
@@ -84,31 +83,19 @@ namespace Assignment5
         /// <returns>دستور غذاهای دارای کلمه کلیدی</returns>
         public Recipe[] LookupByKeyword(string keyword)
         {
-            int Indicator = 0;
-            int Counter = 0;
+            List<Recipe> foundRecipe = new List<Recipe>();
             for (int i = 0; i < ListOfRecipes.Count; i++)
             {
                 for (int j = 0; j < ListOfRecipes[i].KeyWords.Length; j++)
                 {
                     if (ListOfRecipes[i].KeyWords[j] == keyword)
                     {
-                        Counter++;
+                        foundRecipe.Add(ListOfRecipes[i]);
+                        break;
                     }
                 }
             }
-            Recipe[] KeyWordResult = new Recipe[Counter];
-            for (int i = 0; i < ListOfRecipes.Count; i++)
-            {
-                for(int j = 0; j< ListOfRecipes[i].KeyWords.Length; j++)
-                {
-                    if (ListOfRecipes[i].KeyWords[j] == keyword)
-                    {
-                        KeyWordResult[Indicator] = ListOfRecipes[i];
-                        Indicator++;
-                    }    
-                }                   
-            }
-            return KeyWordResult;
+            return foundRecipe.ToArray();
         }
 
         /// <summary>
@@ -118,38 +105,26 @@ namespace Assignment5
         /// <returns>لیست دستور غذاهای سبک پخت داده شده</returns>
         public Recipe[] LookupByCuisine(string cuisine)
         {
-            int Indicator = 0;
-            int Counter = 0;
+            List<Recipe> recipeFound = new List<Recipe>();
             for (int i = 0; i < ListOfRecipes.Count; i++)
             {
                 if (ListOfRecipes[i].Cuisine == cuisine)
                 {
-                    Counter++;
+                    recipeFound.Add(ListOfRecipes[i]);
+                    break;
                 }
             }
-            Recipe[] CuisineResult = new Recipe[Counter];
-            for (int i = 0; i < ListOfRecipes.Count; i++)
-            {
-                if (ListOfRecipes[i].Cuisine == cuisine)
-                {
-                    CuisineResult[Indicator] = ListOfRecipes[i];
-                    Indicator++;
-                }
-            }
-            return CuisineResult;
+            return recipeFound.ToArray();
         }
-        public Recipe SelectRecipe (Recipe[] list, int index)
-        {
-            return list[index-1];
-        }
+        
         public void ShowRecipe (Recipe recipe)
         {
             Console.Clear();
             Console.WriteLine(recipe.ToString());
 
-            for(int i = 0; i < recipe.IngredientCount; i++)
+            for(int i = 0; i < recipe.IngredientsList.Count; i++)
             {
-                if (!recipe.IsIngredientsAdded)
+                if (recipe.IngredientsList.Count == 0)
                 {
                     Console.WriteLine("No Ingredients Added !");
                 }
@@ -164,42 +139,7 @@ namespace Assignment5
                 Console.WriteLine($"{i + 1}. {list[i].Title}");
             }
         }
-        int _Capacity;
-        string _BookTitle;
-        public List <Recipe> ListOfRecipes = new List <Recipe> ();
-        public int NumberOfRecipes
-        {
-            get
-            {
-                return this._NumberOfRecipes;
-            }
-            set
-            {
-                this._NumberOfRecipes = value;
-            }
-        }
-        public int Capacity
-        {
-            get
-            {
-                return this._Capacity;
-            }
-            set
-            {
-                this._Capacity = value;
-            }
-        }
-        public string BookTitle
-        {
-            get
-            {
-                return this._BookTitle;
-            }
-            set
-            {
-                this._BookTitle = value;
-            }
-        }
+        
        
     }
 }

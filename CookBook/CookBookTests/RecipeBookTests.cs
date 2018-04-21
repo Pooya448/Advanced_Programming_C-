@@ -11,6 +11,7 @@ namespace Assignment5.Tests
     [TestClass()]
     public class RecipeBookTests
     {
+
         [TestMethod()]
         public void RecipeBookconstTest()
         {
@@ -18,6 +19,10 @@ namespace Assignment5.Tests
             RecipeBook TestBook2 = new RecipeBook("Test1", 30);
             Assert.AreEqual(TestBook1.BookTitle, TestBook2.BookTitle);
             Assert.AreEqual(TestBook1.Capacity, TestBook2.Capacity);
+            Assert.IsNotNull(TestBook1.BookTitle);
+            Assert.IsNotNull(TestBook2.BookTitle);
+            Assert.IsNotNull(TestBook1.Capacity);
+            Assert.IsNotNull(TestBook2.Capacity);
         }
 
         [TestMethod()]
@@ -33,6 +38,7 @@ namespace Assignment5.Tests
             Recipe TestRecipe = new Recipe(TestTitle, TestInstructions, TestInCount, TestServingCount, TestCuisine, TestKeywords);
             Assert.IsTrue(Test.Add(TestRecipe));
             Assert.IsTrue(Test.Remove(TestRecipe.Title));
+            Assert.IsFalse(Test.ListOfRecipes.Contains(TestRecipe));
 
         }
         [TestMethod()]
@@ -61,12 +67,6 @@ namespace Assignment5.Tests
             Assert.IsNotNull(Test.LookupByTitle(TestTitle));
             Assert.IsNotNull(Test.LookupByKeyword(TestKeyword));
         }
-        public void RecipeBookSelectRecipeTest()
-        {
-            RecipeBook Test = new RecipeBook("Test", 10);
-            Recipe[] TestList = new Recipe[] {new Recipe(null, null, null, 0, null, null),new Recipe(null, null, null, 0, null, null)};
-            const int TestIndex = 1;
-            Assert.IsNotNull(Test.SelectRecipe(TestList, TestIndex));
-        }
+        
     }
 }

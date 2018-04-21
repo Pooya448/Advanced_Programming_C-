@@ -9,18 +9,39 @@ namespace Assignment5
     /// <summary>
     /// دستور پخت 
     /// </summary>
-    public class Recipe
+    public class Recipe: IEquatable<Recipe>
     {
-        private string _Title;
-        private string _Cuisine;
-        private int _ServingCount;
-        private string _Instructions;
-        private int _IngredientCount;
-        public string[] KeyWords;
-        public List<Ingredient> IngredientsList = new List <Ingredient>();
-        public bool IsIngredientsAdded = false;
-        private int Indicator = 0;
         
+        /// <summary>
+        /// the list for holding ingredient items
+        /// </summary>
+        public List<Ingredient> IngredientsList = new List <Ingredient>();
+        /// <summary>
+        /// array for holding keywords of a recipe
+        /// </summary>
+        public string[] KeyWords;
+        /// <summary>
+        /// property of title of the recipe
+        /// </summary>
+        public string Title { set; get; }
+        /// <summary>
+        /// property of cuisine of the recipe
+        /// </summary>
+        public string Cuisine { set; get; }
+        /// <summary>
+        /// property of serving count for the recipe
+        /// </summary>
+        public int ServingCount { set; get; }
+        /// <summary>
+        /// property of instructions for the recipe
+        /// </summary>
+        public string Instructions { get; set; }
+        /// <summary>
+        /// property of ingredient count for this recipe
+        /// </summary>
+        public int IngredientCount { get; set; }
+
+
         /// <summary>
         /// ایجاد دستور پخت جدید
         /// </summary>
@@ -32,16 +53,17 @@ namespace Assignment5
         /// <param name="keywords">کلمات کلیدی</param>
         public Recipe(string title, string instructions, Ingredient[] ingredient, int servingCount, string cuisine, string[] keywords)
         {
-            this._Title = title;
-            this._Cuisine = cuisine;
-            this._ServingCount = servingCount;
-            this._Instructions = instructions;
-            this.KeyWords = new string[keywords.Length];
-            keywords.CopyTo(this.KeyWords, 0);
-            this.IngredientsList = ingredient.ToList<Ingredient>();
-            this._IngredientCount = ingredient.Length;
-            this.IsIngredientsAdded = true;
-            this.Indicator = ingredient.Length;
+            Title = title;
+            Cuisine = cuisine;
+            ServingCount = servingCount;
+            Instructions = instructions;
+            KeyWords = new string[keywords.Length];
+            keywords.CopyTo(KeyWords, 0);
+            IngredientsList = new List<Ingredient>();
+            IngredientsList.AddRange(ingredient);
+            IngredientCount = ingredient.Length;
+            AreIngsAdded = true;
+            //Indicator = ingredient.Length;
         }
 
         /// <summary>
@@ -55,13 +77,13 @@ namespace Assignment5
         /// <param name="keywords">کلمات کلیدی</param>
         public Recipe(string title, string instructions, int ingredientCount, int servingCount, string cuisine, string[] keywords)
         {
-            this._Title = title;
-            this._Cuisine = cuisine;
-            this._ServingCount = servingCount;
-            this._Instructions = instructions;
-            this.KeyWords = new string[keywords.Length];
+            Title = title;
+            Cuisine = cuisine;
+            ServingCount = servingCount;
+            Instructions = instructions;
+            KeyWords = new string[keywords.Length];
             keywords.CopyTo(this.KeyWords, 0);
-            this._IngredientCount = ingredientCount;
+            IngredientCount = ingredientCount;
             
         }
 
@@ -72,13 +94,8 @@ namespace Assignment5
         /// <returns>عمل اضافه کردن موفقیت آمیز انجام شد یا خیر. در صورت تکمیل ظرفیت مقدار برگشتی "خیر" میباشد.</returns>
         public bool AddIngredient (Ingredient ingredient)
         {
-            if(this.Indicator == this._IngredientCount)
-            {
-                return false;
-            }
-
-            this.IngredientsList.Add(ingredient);
-            if (this.IngredientsList.Contains(ingredient))
+            IngredientsList.Add(ingredient);
+            if (IngredientsList.Contains(ingredient))
                 return true;
             return false;
         }
@@ -94,9 +111,8 @@ namespace Assignment5
                 if (IngredientsList[i].Name == name)
                 {
                     IngredientsList.RemoveAt(i);
-                    this._IngredientCount--;
-                }
-                return true;
+                    return true;
+                }  
             }
             return false;
         }
@@ -108,18 +124,18 @@ namespace Assignment5
         /// <param name="newServingCount">تعداد افراد جدید</param>
         public void UpdateServingCount(int newServingCount)
         {
-            //if(newServingCount > this._ServingCount)
-            //    for(int i=0;i < newServingCount - this._ServingCount; i++)
-            //    {
-
-            //    }
-            this._ServingCount = newServingCount;
+            double ratio = newServingCount / ServingCount;
+            ServingCount = newServingCount;
+            foreach(var item in IngredientsList)
+                {
+                    item.Quantity *= ratio;
+                }
             
         }
         public static Ingredient[] InitialIngredient(int ingredientCount)
         {
             Ingredient[] Temp = new Ingredient[ingredientCount];
-            for (int i = 1; i <= ingredientCount; i++)
+            for (int i = 0; i < ingredientCount; i++)
             {
                 Console.Clear();
                 Console.WriteLine($"Please Enter name of ingredient {i} :");
@@ -134,7 +150,7 @@ namespace Assignment5
                 Console.WriteLine($"Please Enter the quantity of ingredient {i} :");
                 double quantity = double.Parse(Console.ReadLine());
                 Console.Clear();
-                Temp[i-1] = new Ingredient(name, description, quantity, unit);
+                Temp[i] = new Ingredient(name, description, quantity, unit);
             }
             return Temp;
         }
@@ -160,66 +176,13 @@ namespace Assignment5
 
         public override string ToString()
         {
-            return $" Title : {this.Title}\n Instructions : {this.Instructions}\n Cuisine : {this.Cuisine}\n Serving Count : {this.ServingCount} \n Ingredients Count : {this._IngredientCount}\n";
+            return $" Title : {Title}\n Instructions : {Instructions}\n Cuisine : {Cuisine}\n Serving Count : {ServingCount} \n Ingredients Count : {IngredientsList.Count}\n";
 
         }
-        public string Title
-        {
-            get
-            {
-                return this._Title;
-            }
-            set
-            {
-                _Title = value; 
-            }
-        }
-        public string Cuisine
-        {
-            get
-            {
-                return this._Cuisine;
-            }
-            set
-            {
-                _Cuisine = value;
-            }
-        }
-        public int ServingCount
-        {
-            get
-            {
-                return this._ServingCount;
-            }
-            set
-            {
-                _ServingCount = value;
-            }
-        }
-        public string Instructions
-        {
-            get
-            {
-                return this._Instructions;
-            }
-            set
-            {
-                _Instructions = value;
-            }
-        }
-        public int IngredientCount
-        {
-            get
-            {
-                return this._IngredientCount;
-            }
-            set
-            {
-                _IngredientCount = value;
-            }
-        }
 
-
-
+        bool IEquatable<Recipe>.Equals(Recipe other)
+        {
+            return this.Title == other.Title;
+        }
     }
 }

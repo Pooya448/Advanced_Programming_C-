@@ -20,6 +20,7 @@ namespace Assignment5.Tests
             Assert.AreEqual(Test1.Unit, Test2.Unit);
             Assert.AreEqual(Test1.Description, Test2.Description);
             Assert.AreEqual(Test1.Quantity, Test2.Quantity);
+
         }
 
         [TestMethod()]

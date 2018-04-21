@@ -8,8 +8,98 @@ using System.Threading.Tasks;
 namespace Assignment5
 {
     class Program
-    {
-        public static Recipe NewRecipeGet (RecipeBook fromMom)
+    { 
+        public static void Main(string[] args)
+        {
+            RecipeBook fromMom = new RecipeBook("دستور پخت های مادر", 20);
+
+            ConsoleKeyInfo cki;
+            do
+            {
+                Console.WriteLine($"Press N(ew), D(el), S(earch) or L(ist)");
+                cki = Console.ReadKey();
+                Console.WriteLine();
+                switch (cki.Key)
+                {
+                    case ConsoleKey.N:
+                        Console.WriteLine(SuccessMessage(fromMom.Add(NewRecipeGet(fromMom)),true));
+                        break;
+                    case ConsoleKey.D:
+                        Console.WriteLine("Delete Recipe");
+                        Pause();
+                        Clear();
+                        Console.WriteLine("Please enter the name of your recipe");
+                        Console.WriteLine(SuccessMessage(fromMom.Remove(Console.ReadLine()), false));
+                        break;
+                    case ConsoleKey.S:
+                        Console.WriteLine("Search Recipe");
+                        Pause();
+                        Clear();
+                        Console.WriteLine("How do you want to search for recipe ?");
+                        Console.WriteLine("Search by (T)itle");
+                        Console.WriteLine("Search by (K)eyword");
+                        Console.WriteLine("Search by (C)uisine");
+                        ConsoleKeyInfo SearchMethod = Console.ReadKey();
+                        Clear();
+                        switch (SearchMethod.Key)
+                        {
+                            case ConsoleKey.K:
+                                Clear();
+                                Console.WriteLine("Enter the Keyword :");
+                                Recipe[] TempResult = fromMom.LookupByKeyword(Console.ReadLine());
+                                fromMom.ListRecipes(TempResult);
+                                Console.WriteLine("\nSelect recipe : ");
+                                fromMom.ShowRecipe(TempResult[int.Parse(Console.ReadLine()) - 1]);
+                                break;                            
+                            case ConsoleKey.T:
+                                Clear();
+                                Console.WriteLine("Enter the Title :");
+                                Recipe TempRecipe = fromMom.LookupByTitle(Console.ReadLine());
+                                Console.WriteLine($"1. {TempRecipe.Title}");
+                                Console.WriteLine("Press any key to show the recipe !");
+                                Console.ReadKey();
+                                fromMom.ShowRecipe(TempRecipe);
+                                break;
+                            case ConsoleKey.C:
+                                Clear();
+                                Console.WriteLine("Enter the Cuisine :");
+                                Recipe[] TempResultC = fromMom.LookupByCuisine(Console.ReadLine());
+                                fromMom.ListRecipes(TempResultC);
+                                Console.WriteLine("\nSelect recipe : ");
+                                fromMom.ShowRecipe(TempResultC[int.Parse(Console.ReadLine()) - 1]);
+                                break;
+                            default:
+                                Console.WriteLine($"Invalid Key: {cki.KeyChar}");
+                                break;
+                        }
+                        break;
+                    case ConsoleKey.L:
+                        Console.WriteLine("List Recipes");
+                        Pause();
+                        Clear();
+                        if (fromMom.ListOfRecipes.Count == 0)
+                        {
+                            fromMom.ListRecipes(fromMom.ListOfRecipes.ToArray());
+                            Console.WriteLine("\nSelect recipe : ");
+                            fromMom.ShowRecipe(fromMom.ListOfRecipes[int.Parse(Console.ReadLine())-1]);
+                        }     
+                        else
+                            Console.WriteLine("No Recipes Added !!");
+                        break;
+                    case ConsoleKey.Escape:
+                        Console.WriteLine("Esc");
+                        break;
+                    default:
+                        Console.WriteLine($"Invalid Key: {cki.KeyChar}");
+                        break;
+                }
+                Console.WriteLine("Press any key to continue, Esc to exit");
+                cki = Console.ReadKey();
+                Clear();
+            }
+            while (cki.Key != ConsoleKey.Escape);
+        }
+        public static Recipe NewRecipeGet(RecipeBook fromMom)
         {
             Console.WriteLine("New Recipe");
             Pause();
@@ -44,14 +134,12 @@ namespace Assignment5
                     Ingredient[] ingredients = new Ingredient[ingredientscount1];
                     Recipe.InitialIngredient(ingredientscount1).CopyTo(ingredients, 0);
                     return new Recipe(Aname, instructions, ingredients, servingcount, cuisine, keywords);
-                    break;
                 case ConsoleKey.N:
                     Clear();
                     Console.WriteLine();
                     Console.WriteLine("Please enter number of ingredients for this recipe");
                     int ingredientscount2 = int.Parse(Console.ReadLine());
                     return new Recipe(Aname, instructions, ingredientscount2, servingcount, cuisine, keywords);
-                    break;
                 default:
                     return null;
             }
@@ -65,128 +153,23 @@ namespace Assignment5
             Console.WriteLine("Press any key to continue !");
             Console.ReadKey();
         }
-        public static void Main(string[] args)
+        public static string SuccessMessage (bool result, bool isAdd)
         {
-            RecipeBook fromMom = new RecipeBook("دستور پخت های مادر", 20);
-
-            ConsoleKeyInfo cki;
-            do
+            if (isAdd)
             {
-                Console.WriteLine($"Press N(ew), D(el), S(earch) or L(ist)");
-                cki = Console.ReadKey();
-                Console.WriteLine();
-                switch (cki.Key)
-                {
-                    case ConsoleKey.N:
-                        switch (fromMom.Add(NewRecipeGet(fromMom)))
-                        {
-                            case true:
-                                Clear();
-                                Console.WriteLine("Recipe successfully added !");
-                                break;
-                            case false:
-                                Clear();
-                                Console.WriteLine("Failed to add your Recipe !!");
-                                break;
-
-                        }
-                        break;
-                    case ConsoleKey.D:
-                        Console.WriteLine("Delete Recipe");
-                        Pause();
-                        Clear();
-                        Console.WriteLine("Please enter the name of your recipe");
-                        switch (fromMom.Remove(Console.ReadLine()))
-                        {
-                            case true:
-                                Clear();
-                                Console.WriteLine("Recipe successfully removed !");
-                                break;
-                            case false:
-                                Clear();
-                                Console.WriteLine("Failed to remove your recipe of choice :( ");
-                                break;
-                            default:
-                                Console.WriteLine($"Invalid Key: {cki.KeyChar}");
-                                break;
-                        }
-
-                        break;
-                    case ConsoleKey.S:
-                        Console.WriteLine("Search Recipe");
-                        Pause();
-                        Clear();
-                        Console.WriteLine("How do you want to search for recipe ?");
-                        Console.WriteLine("Search by (T)itle");
-                        Console.WriteLine("Search by (K)eyword");
-                        Console.WriteLine("Search by (C)uisine");
-                        ConsoleKeyInfo SearchMethod = Console.ReadKey();
-                        Clear();
-                        switch (SearchMethod.Key)
-                        {
-                            case ConsoleKey.K:
-                                Clear();
-                                Console.WriteLine("Enter the Keyword :");
-                                Recipe[] TempResult = fromMom.LookupByKeyword(Console.ReadLine());
-                                fromMom.ListRecipes(TempResult);
-                                Console.WriteLine("\nSelect recipe : ");
-
-                                fromMom.ShowRecipe(fromMom.SelectRecipe(TempResult, int.Parse(Console.ReadLine())));
-
-                                break;
-                            
-                            case ConsoleKey.T:
-                                Clear();
-                                Console.WriteLine("Enter the Title :");
-                                Recipe TempRecipe = fromMom.LookupByTitle(Console.ReadLine());
-                                Console.WriteLine($"1. {TempRecipe.Title}");
-                                Console.WriteLine("Press any key to show the recipe !");
-                                Console.ReadKey();
-                                fromMom.ShowRecipe(TempRecipe);
-                                break;
-                            case ConsoleKey.C:
-                                Clear();
-                                Console.WriteLine("Enter the Cuisine :");
-                                Recipe[] TempResultC = fromMom.LookupByCuisine(Console.ReadLine());
-                                fromMom.ListRecipes(TempResultC);
-                                Console.WriteLine("\nSelect recipe : ");
-                                fromMom.ShowRecipe(fromMom.SelectRecipe(TempResultC, int.Parse(Console.ReadLine())));
-                                break;
-                            default:
-                                Console.WriteLine($"Invalid Key: {cki.KeyChar}");
-                                break;
-
-                        }
-                        break;
-                    case ConsoleKey.L:
-                        Console.WriteLine("List Recipes");
-                        Pause();
-                        Clear();
-                        if (fromMom.NumberOfRecipes != 0)
-                        {
-                            fromMom.ListRecipes(fromMom.ListOfRecipes.ToArray());
-                            Console.WriteLine("\nSelect recipe : ");
-                            fromMom.ShowRecipe(fromMom.SelectRecipe(fromMom.ListOfRecipes.ToArray(), int.Parse(Console.ReadLine())));
-                        }
-                            
-                        else
-                            Console.WriteLine("No Recipes Added !!");
-                        break;
-                    case ConsoleKey.Escape:
-                        Console.WriteLine("Esc");
-                        break;
-                    default:
-                        Console.WriteLine($"Invalid Key: {cki.KeyChar}");
-                        break;
-                }
-
-                Console.WriteLine("Press any key to continue, Esc to exit");
-                cki = Console.ReadKey();
-                Clear();
+                if (result)
+                    return "Recipe successfully added !";
+                else
+                    return "Failed to add your Recipe !!";
             }
-            while (cki.Key != ConsoleKey.Escape);
+            else
+            {
+                if (result)
+                    return "Recipe successfully removed !";
+                else
+                    return "Failed to remove your Recipe !";
+            }
         }
-
 
     }
 }

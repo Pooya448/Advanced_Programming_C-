@@ -9,10 +9,19 @@ namespace Assignment5
     /// <summary>
     /// کتابچه دستور غذا
     /// </summary>
-    public class RecipeBook
-    {
+    public class RecipeBook{
+
+        /// <summary>
+        /// the list for holding recipes of a recipebook
+        /// </summary>
         public List<Recipe> ListOfRecipes = new List<Recipe>();
+        /// <summary>
+        /// property of capacity of the recipebook
+        /// </summary>
         public int Capacity { set; get; }
+        /// <summary>
+        /// property of recipebook title
+        /// </summary>
         public string BookTitle { set; get; }
 
         /// <summary>

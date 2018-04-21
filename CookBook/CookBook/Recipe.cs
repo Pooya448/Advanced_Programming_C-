@@ -62,8 +62,6 @@ namespace Assignment5
             IngredientsList = new List<Ingredient>();
             IngredientsList.AddRange(ingredient);
             IngredientCount = ingredient.Length;
-            AreIngsAdded = true;
-            //Indicator = ingredient.Length;
         }
 
         /// <summary>

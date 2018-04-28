@@ -7,76 +7,14 @@ using System.Threading.Tasks;
 
 namespace Assignment5
 {
-    class Program
+    public class Program
     {
-        public static Recipe NewRecipeGet (RecipeBook fromMom)
-        {
-            Console.WriteLine("New Recipe");
-            Pause();
-            Clear();
-            Console.WriteLine("Enter recipe Name :");
-            string Aname = Console.ReadLine();
-            Clear();
-            Console.WriteLine("Write recipe instructions :");
-            string instructions = Console.ReadLine();
-            Clear();
-            Console.WriteLine("Enter recipe Cuisine :");
-            string cuisine = Console.ReadLine();
-            Clear();
-            Console.WriteLine("Enter Serving Count for your recipe :");
-            int servingcount = int.Parse(Console.ReadLine());
-            Clear();
-            Console.WriteLine("Please enter keywords in a row, Seperate using Space ");
-            string keywordUnsplit = Console.ReadLine();
-            string[] keywords = keywordUnsplit.Split(' ');
-            Clear();
-            Console.WriteLine("Do you want to add the Ingredients now ?");
-            ConsoleKeyInfo YN;
-            Console.WriteLine("(Y)es");
-            Console.WriteLine("(N)o");
-            YN = Console.ReadKey();
-            switch (YN.Key)
-            {
-                case ConsoleKey.Y:
-                    Clear();
-                    Console.WriteLine("Please enter number of ingredients for this recipe :");
-                    int ingredientscount1 = int.Parse(Console.ReadLine());
-                    Ingredient[] ingredients = new Ingredient[ingredientscount1];
-                    Recipe.InitialIngredient(ingredientscount1).CopyTo(ingredients, 0);
-                    Recipe Temp1 = new Recipe(Aname, instructions, ingredients, servingcount, cuisine, keywords);
-                    return Temp1;
-                    break;
-                case ConsoleKey.N:
-                    Clear();
-                    Console.WriteLine();
-                    Console.WriteLine("Please enter number of ingredients for this recipe");
-                    int ingredientscount2 = int.Parse(Console.ReadLine());
-                    Recipe Temp2 = new Recipe(Aname, instructions, ingredientscount2, servingcount, cuisine, keywords);
-                    return Temp2;
-                    break;
-                default:
-                    return null;
-            }
-        }
-        public static void Clear()
-        {
-            Console.Clear();
-        }
-        public static void Pause()
-        {
-            Console.WriteLine("Press any key to continue !");
-            Console.ReadKey();
-        }
+        
+
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter the title of your CookBOOK :");
-            string CookBookTitle = Console.ReadLine();
-            Console.WriteLine("Enter the capacity of your CookBOOK :");
-            int CookBookCap = int.Parse(Console.ReadLine());
-            RecipeBook CookBook = new RecipeBook(CookBookTitle, CookBookCap);
-            Console.WriteLine("Your CookBOOK successfully created :-)");
-            Pause();
-            Clear();
+            RecipeBook fromMom = new RecipeBook("دستور پخت های مادر", 20);
+            
             ConsoleKeyInfo cki;
             do
             {
@@ -86,87 +24,38 @@ namespace Assignment5
                 switch (cki.Key)
                 {
                     case ConsoleKey.O:
-                        CookBook.Load(Recipe.RecipeFileAddress);
-                        Console.WriteLine("Seccessfully Loaded");
+                        LoadCase(fromMom);
                         break;
                     case ConsoleKey.V:
-                        CookBook.Save(Recipe.RecipeFileAddress);
-                        Console.WriteLine("Successfully Saved");
+                        SaveCase(fromMom);
                         break;
                     case ConsoleKey.N:
-                        switch (CookBook.Add(NewRecipeGet(CookBook)))
-                        {
-                            case true:
-                                Clear();
-                                Console.WriteLine("Recipe successfully added !");
-                                break;
-                            case false:
-                                Clear();
-                                Console.WriteLine("Failed to add your Recipe !!");
-                                break;
-
-                        }
+                    
+                        Console.WriteLine(SuccessMessage(fromMom.Add(NewRecipeGet()), true));
+                        Clear();
                         break;
                     case ConsoleKey.D:
-                        Console.WriteLine("Delete Recipe");
-                        Pause();
-                        Clear();
-                        Console.WriteLine("Please enter the name of your recipe");
-                        switch (CookBook.Remove(Console.ReadLine()))
-                        {
-                            case true:
-                                Clear();
-                                Console.WriteLine("Recipe successfully removed !");
-                                break;
-                            case false:
-                                Clear();
-                                Console.WriteLine("Failed to remove your recipe of choice :( ");
-                                break;
-                            default:
-                                Console.WriteLine($"Invalid Key: {cki.KeyChar}");
-                                break;
-                        }
-
+                        DeleteCase(fromMom);
                         break;
                     case ConsoleKey.S:
-                        Console.WriteLine("Search Recipe");
-                        Pause();
-                        Clear();
-                        Console.WriteLine("How do you want to search for recipe ?");
-                        Console.WriteLine("Search by (T)itle");
-                        Console.WriteLine("Search by (K)eyword");
-                        Console.WriteLine("Search by (C)uisine");
+                        SearchInit();
                         ConsoleKeyInfo SearchMethod = Console.ReadKey();
                         Clear();
                         switch (SearchMethod.Key)
                         {
                             case ConsoleKey.K:
                                 Clear();
-                                Console.WriteLine("Enter the Keyword :");
-                                Recipe[] TempResult = CookBook.LookupByKeyword(Console.ReadLine());
-                                CookBook.ListRecipes(TempResult);
-                                Console.WriteLine("\nSelect recipe : ");
-
-                                CookBook.ShowRecipe(CookBook.SelectRecipe(TempResult, int.Parse(Console.ReadLine())));
-
+                                KeywordSearchCase(fromMom);
                                 break;
-                            
+
                             case ConsoleKey.T:
+                                
                                 Clear();
-                                Console.WriteLine("Enter the Title :");
-                                Recipe TempRecipe = CookBook.LookupByTitle(Console.ReadLine());
-                                Console.WriteLine($"1. {TempRecipe.Title}");
-                                Console.WriteLine("Press any key to show the recipe !");
-                                Console.ReadKey();
-                                CookBook.ShowRecipe(TempRecipe);
+                                TitleSearchCase(fromMom);
                                 break;
                             case ConsoleKey.C:
                                 Clear();
-                                Console.WriteLine("Enter the Cuisine :");
-                                Recipe[] TempResultC = CookBook.LookupByCuisine(Console.ReadLine());
-                                CookBook.ListRecipes(TempResultC);
-                                Console.WriteLine("\nSelect recipe : ");
-                                CookBook.ShowRecipe(CookBook.SelectRecipe(TempResultC, int.Parse(Console.ReadLine())));
+                                CuisineSearchCase(fromMom);
                                 break;
                             default:
                                 Console.WriteLine($"Invalid Key: {cki.KeyChar}");
@@ -175,18 +64,7 @@ namespace Assignment5
                         }
                         break;
                     case ConsoleKey.L:
-                        Console.WriteLine("List Recipes");
-                        Pause();
-                        Clear();
-                        if (CookBook.NumberOfRecipes != 0)
-                        {
-                            CookBook.ListRecipes(CookBook.ListOfRecipes.ToArray());
-                            Console.WriteLine("\nSelect recipe : ");
-                            CookBook.ShowRecipe(CookBook.SelectRecipe(CookBook.ListOfRecipes.ToArray(), int.Parse(Console.ReadLine())));
-                        }
-                            
-                        else
-                            Console.WriteLine("No Recipes Added !!");
+                        ListCase(fromMom);
                         break;
                     case ConsoleKey.Escape:
                         Console.WriteLine("Esc");
@@ -202,7 +80,165 @@ namespace Assignment5
             }
             while (cki.Key != ConsoleKey.Escape);
         }
+        public static Recipe NewRecipeGet(bool IsTest = false)
+        {
+            Console.WriteLine("New Recipe");
+            Pause();
+            
+            Console.WriteLine("Enter recipe Name :");
+            string Aname = Console.ReadLine();
+            
+            Console.WriteLine("Write recipe instructions :");
+            string instructions = Console.ReadLine();
+            
+            Console.WriteLine("Enter recipe Cuisine :");
+            string cuisine = Console.ReadLine();
+            
+            Console.WriteLine("Enter Serving Count for your recipe :");
+            int servingcount = int.Parse(Console.ReadLine());
+            
+            Console.WriteLine("Please enter keywords in a row, Seperate using Space ");
+            string keywordUnsplit = Console.ReadLine();
+            string[] keywords = keywordUnsplit.Split(' ');
+            if (!IsTest)
+            {
+                Console.WriteLine("Do you want to add the Ingredients now ?");
+                ConsoleKeyInfo YN;
+                Console.WriteLine("(Y)es");
+                Console.WriteLine("(N)o");
+                YN = Console.ReadKey();
+                switch (YN.Key)
+                {
+                    case ConsoleKey.Y:
+                        return new Recipe(Aname, instructions, CaseY(), servingcount, cuisine, keywords);
+                    case ConsoleKey.N:
 
+                        
+                        return new Recipe(Aname, instructions, CaseN(), servingcount, cuisine, keywords);
+                    default:
+                        return null;
+                }
+            }
+            else
+            {
+                int ingredientscount3 = int.Parse(Console.ReadLine());
+                return new Recipe(Aname, instructions, ingredientscount3, servingcount, cuisine, keywords);
+            }
+           
+            
+        }
+        public static void Clear()
+        {
+            Console.Clear();
+        }
+        public static void Pause()
+        {
+            Console.WriteLine("Press any key to continue !");
+            Console.ReadLine();
+
+        }
+        public static string SuccessMessage(bool result, bool isAdd)
+        {
+            if (isAdd)
+            {
+                if (result)
+                    return "Recipe successfully added !";
+                else
+                    return "Failed to add your Recipe !!";
+            }
+            else
+            {
+                if (result)
+                    return "Recipe successfully removed !";
+                else
+                    return "Failed to remove your Recipe !";
+            }
+        }
+
+        public static void LoadCase(RecipeBook fromMom)
+        {
+            fromMom.Load(Recipe.RecipeFileAddress);
+            Console.WriteLine("Seccessfully Loaded");
+        }
+        public static void SaveCase(RecipeBook fromMom)
+        {
+            fromMom.Save(Recipe.RecipeFileAddress);
+            Console.WriteLine("Successfully Saved");
+        }
+
+        public static void DeleteCase(RecipeBook fromMom)
+        {
+            Console.WriteLine("Delete Recipe");
+            Pause();
+            Console.WriteLine("Please enter the name of your recipe");
+            Console.WriteLine(SuccessMessage(fromMom.Remove(Console.ReadLine()), false));
+        }
+
+        public static void SearchInit()
+        {
+            Console.WriteLine("Search Recipe");
+            Pause();
+            Console.WriteLine();
+            Console.WriteLine("How do you want to search for recipe ?");
+            Console.WriteLine("Search by (T)itle");
+            Console.WriteLine("Search by (K)eyword");
+            Console.WriteLine("Search by (C)uisine");
+        }
+        public static void KeywordSearchCase(RecipeBook fromMom)
+        {
+            Console.WriteLine("Enter the Keyword :");
+            List<Recipe> TempResult = fromMom.LookupByKeyword(Console.ReadLine());
+            fromMom.ListRecipes(TempResult);
+            Console.WriteLine("\nSelect recipe : ");
+            fromMom.ShowRecipe(TempResult[int.Parse(Console.ReadLine()) - 1]);
+        }
+        public static void TitleSearchCase(RecipeBook fromMom)
+        {
+            Console.WriteLine("Enter the Title :");
+            Recipe TempRecipe = fromMom.LookupByTitle(Console.ReadLine());
+            Console.WriteLine($"1. {TempRecipe.Title}");
+            Console.WriteLine("Press any key to show the recipe !");
+            Console.Read();
+            fromMom.ShowRecipe(TempRecipe);
+        }
+        public static void CuisineSearchCase(RecipeBook fromMom)
+        {
+            Console.WriteLine("Enter the Cuisine :");
+            List<Recipe> TempResultC = fromMom.LookupByCuisine(Console.ReadLine());
+            fromMom.ListRecipes(TempResultC);
+            Console.WriteLine("\nSelect recipe : ");
+            fromMom.ShowRecipe(TempResultC[int.Parse(Console.ReadLine()) - 1]);
+        }
+        public static void ListCase (RecipeBook fromMom)
+        {
+            Console.WriteLine("List Recipes");
+            Pause();
+
+            if (fromMom.ListOfRecipes.Count > 0)
+            {
+                fromMom.ListRecipes(fromMom.ListOfRecipes);
+                Console.WriteLine("\nSelect recipe : ");
+                int idx = int.Parse(Console.ReadLine()) - 1;
+                fromMom.ShowRecipe(fromMom.ListOfRecipes[idx]);
+            }
+            else
+                Console.WriteLine("No Recipes Added !!");
+        }
+        public static List<Ingredient> CaseY(bool IsTest = false)
+        {
+            Console.WriteLine("Please enter number of ingredients for this recipe :");
+            int ingredientscount1 = int.Parse(Console.ReadLine());
+            List<Ingredient> ingredients = new List<Ingredient>();
+            if (!IsTest) ingredients = (Ingredient.InitialIngredient(ingredientscount1));
+            return ingredients;
+        }
+        public static int CaseN ()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Please enter number of ingredients for this recipe");
+            int ingredientscount = int.Parse(Console.ReadLine());
+            return ingredientscount;
+        }
 
     }
 }

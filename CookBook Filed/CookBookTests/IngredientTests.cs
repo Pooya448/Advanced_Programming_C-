@@ -12,6 +12,7 @@ namespace Assignment5.Tests
     [TestClass()]
     public class IngredientTests
     {
+        
         [TestMethod()]
         public void IngredientconstTest()
         {
@@ -51,6 +52,45 @@ namespace Assignment5.Tests
             double TestQuantity = 0.234;
             Ingredient Test = new Ingredient(TestName,TestDiscription,TestQuantity,TestUnit);
             Assert.AreEqual(Test.ToString(), $"{TestName}:\t{TestQuantity} {TestUnit} - {TestDiscription}\n");
+        }
+        [TestMethod]
+        public void InitiationTest()
+        {
+            int ingNum = 1;
+            string InName = "Name";
+            string InDiscription = "Discription";
+            double InQuantity = 0.350;
+            string InUnit = "Unit";
+            Ingredient TestIn = new Ingredient(InName, InDiscription, InQuantity, InUnit);
+            var DefOut = Console.Out;
+            var DefIn = Console.In;
+            
+            using (StreamWriter SWriter = new StreamWriter(@"test.txt"))
+            {
+                SWriter.WriteLine(TestIn.Name);
+                SWriter.WriteLine(TestIn.Description);
+                SWriter.WriteLine(TestIn.Unit);
+                SWriter.WriteLine(TestIn.Quantity);
+            }
+            using (StreamReader SReader = new StreamReader(@"test.txt"))
+            {
+                try
+                {
+                    Console.SetIn(SReader);
+                    List<Ingredient> resultList = Ingredient.InitialIngredient(ingNum, true);
+                    Assert.AreEqual(resultList[ingNum - 1].Name, TestIn.Name);
+                    Assert.AreEqual(resultList[ingNum - 1].Description, TestIn.Description);
+                    Assert.AreEqual(resultList[ingNum - 1].Quantity, TestIn.Quantity);
+                    Assert.AreEqual(resultList[ingNum - 1].Unit, TestIn.Unit);
+                }
+                finally
+                {
+                    Console.SetIn(DefIn);
+                    Console.SetOut(DefOut);
+                }
+            }
+            
+
         }
     }
 }

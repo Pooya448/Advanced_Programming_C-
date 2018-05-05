@@ -79,6 +79,7 @@ namespace Assignment5
             {
                 if (ListOfRecipes[i].Title == title)
                 {
+                    ListOfRecipes[i].SearchMethod = " : By Title";
                     return ListOfRecipes[i];
                 }
                 
@@ -100,6 +101,7 @@ namespace Assignment5
                 {
                     if (ListOfRecipes[i].KeyWords[j] == keyword)
                     {
+                        ListOfRecipes[i].SearchMethod = " : By Keywords";
                         foundRecipe.Add(ListOfRecipes[i]);
                         break;
                     }
@@ -123,6 +125,7 @@ namespace Assignment5
             {
                 if (ListOfRecipes[i].Cuisine == cuisine)
                 {
+                    ListOfRecipes[i].SearchMethod = " : By Cuisine";
                     recipeFound.Add(ListOfRecipes[i]);
                     break;
                 }

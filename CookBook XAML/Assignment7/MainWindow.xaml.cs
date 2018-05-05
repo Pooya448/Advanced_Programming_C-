@@ -135,7 +135,7 @@ namespace Assignment7
             }
             else
             {
-                if (result.Count == 0)
+                if (result==null)
                 {
                     MessageBox.Show("No Result Found");
 
@@ -216,7 +216,7 @@ namespace Assignment7
 
             if (IsInAllSearch)
             {
-                RemoveAction((RecipeListBox.SelectedItem.ToString()).Remove((RecipeListBox.SelectedItem.ToString()).IndexOf(':')));
+                RemoveAction((RecipeListBox.SelectedItem.ToString()).Remove((RecipeListBox.SelectedItem.ToString()).IndexOf(" :")));
             }
             else
             {
@@ -273,7 +273,7 @@ namespace Assignment7
 
             if (IsInAllSearch)
             {
-                ViewAction((RecipeListBox.SelectedItem.ToString()).Remove((RecipeListBox.SelectedItem.ToString()).IndexOf(':')));
+                ViewAction((RecipeListBox.SelectedItem.ToString()).Remove((RecipeListBox.SelectedItem.ToString()).IndexOf(" : ")));
             }
             else
             {
@@ -388,10 +388,14 @@ namespace Assignment7
             IsInAllSearch = true;
             IsInSearch = true;
             List<Recipe> AllSearchResult = new List<Recipe>();
-            AllSearchResult.Add(MainBook.LookupByTitle(SearchBox.Text));
-            AllSearchResult.AddRange(MainBook.LookupByKeyword(SearchBox.Text)); 
-            AllSearchResult.AddRange(MainBook.LookupByCuisine(SearchBox.Text));
-            
+            Recipe tempResTitle = MainBook.LookupByTitle(SearchBox.Text);
+            if (tempResTitle != null) AllSearchResult.Add(tempResTitle);
+            List<Recipe> tempResCuisine = new List<Recipe>();
+            tempResCuisine = MainBook.LookupByCuisine(SearchBox.Text);
+            if (tempResCuisine != null) AllSearchResult.AddRange(tempResCuisine);
+            List<Recipe> tempResKey = new List<Recipe>();
+            tempResKey = MainBook.LookupByKeyword(SearchBox.Text);
+            if (tempResKey != null) AllSearchResult.AddRange(tempResKey);
             ShowAllSearchResult(AllSearchResult);
         }
     }

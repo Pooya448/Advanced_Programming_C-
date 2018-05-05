@@ -12,29 +12,36 @@ namespace Assignment5
     /// </summary>
     public class Recipe
     {
-        public static string RecipeFileAddress = @"Recipe.txt";
-        private string _Title;
-        private string _Cuisine;
-        private int _ServingCount;
-        private string _Instructions;
-        private int _IngredientCount;
-        private string _SearchMethod;
-        public string SearchMethod
-        {
-            get
-            {
-                return _SearchMethod;
-            }
-            set
-            {
-                _SearchMethod = value;
-            }
-        }
+        /// <summary>
+        /// the list for holding ingredient items
+        /// </summary>
+        public List<Ingredient> IngredientsList = new List <Ingredient>();
+        /// <summary>
+        /// array for holding keywords of a recipe
+        /// </summary>
         public string[] KeyWords;
-        public List<Ingredient> IngredientsList = new List<Ingredient>();
-        public bool IsIngredientsAdded = false;
-        private int Indicator = 0;
-        
+        /// <summary>
+        /// property of title of the recipe
+        /// </summary>
+        public string Title { set; get; }
+        /// <summary>
+        /// property of cuisine of the recipe
+        /// </summary>
+        public string Cuisine { set; get; }
+        /// <summary>
+        /// property of serving count for the recipe
+        /// </summary>
+        public int ServingCount { set; get; }
+        /// <summary>
+        /// property of instructions for the recipe
+        /// </summary>
+        public string Instructions { get; set; }
+        /// <summary>
+        /// property of ingredient count for this recipe
+        /// </summary>
+        public int IngredientCount { get; set; }
+
+
         /// <summary>
         /// ایجاد دستور پخت جدید
         /// </summary>
@@ -44,18 +51,17 @@ namespace Assignment5
         /// <param name="servingCount">تعداد افراد</param>
         /// <param name="cuisine">سبک غذا</param>
         /// <param name="keywords">کلمات کلیدی</param>
-        public Recipe(string title, string instructions, Ingredient[] ingredient, int servingCount, string cuisine, string[] keywords)
+        public Recipe(string title, string instructions, List<Ingredient> ingredient, int servingCount, string cuisine, string[] keywords)
         {
-            this._Title = title;
-            this._Cuisine = cuisine;
-            this._ServingCount = servingCount;
-            this._Instructions = instructions;
-            this.KeyWords = new string[keywords.Length];
-            keywords.CopyTo(this.KeyWords, 0);
-            this.IngredientsList = ingredient.ToList<Ingredient>();
-            this._IngredientCount = ingredient.Length;
-            this.IsIngredientsAdded = true;
-            this.Indicator = ingredient.Length;
+            Title = title;
+            Cuisine = cuisine;
+            ServingCount = servingCount;
+            Instructions = instructions;
+            KeyWords = new string[keywords.Length];
+            keywords.CopyTo(KeyWords, 0);
+            IngredientsList = new List<Ingredient>();
+            IngredientsList.AddRange(ingredient);
+            IngredientCount = ingredient.Count;
         }
 
         /// <summary>
@@ -69,36 +75,30 @@ namespace Assignment5
         /// <param name="keywords">کلمات کلیدی</param>
         public Recipe(string title, string instructions, int ingredientCount, int servingCount, string cuisine, string[] keywords)
         {
-            this._Title = title;
-            this._Cuisine = cuisine;
-            this._ServingCount = servingCount;
-            this._Instructions = instructions;
-            this.KeyWords = new string[keywords.Length];
+            Title = title;
+            Cuisine = cuisine;
+            ServingCount = servingCount;
+            Instructions = instructions;
+            KeyWords = new string[keywords.Length];
             keywords.CopyTo(this.KeyWords, 0);
-            this._IngredientCount = ingredientCount;
-            
+            IngredientCount = ingredientCount;
+
         }
-        public Recipe (List<Ingredient> List)
+        public Recipe(List<Ingredient> list)
         {
-            IngredientsList = List;
+            this.IngredientsList = list;
         }
-        /// <summary>
-        /// used for looking up an ingredient in a arecipe using its title
-        /// </summary>
-        /// <param name="IngTitle">search by this title</param>
-        /// <returns></returns>
-        public Ingredient IngLookUp (string IngTitle)
+
+        public Ingredient IngLookUp (string selectedTitle)
         {
             foreach (Ingredient item in IngredientsList)
             {
-                if (item.Name == IngTitle)
-                {
-                    return item;
-                    
-                }
+                if (item.Name == selectedTitle) return item;
             }
             return null;
+            
         }
+
 
         /// <summary>
         /// اضافه کردن ماده اولیه 
@@ -107,15 +107,10 @@ namespace Assignment5
         /// <returns>عمل اضافه کردن موفقیت آمیز انجام شد یا خیر. در صورت تکمیل ظرفیت مقدار برگشتی "خیر" میباشد.</returns>
         public bool AddIngredient (Ingredient ingredient)
         {
-            if(this.Indicator == this._IngredientCount)
-            {
-                return false;
-            }
-
-            this.IngredientsList.Add(ingredient);
-            if (this.IngredientsList.Contains(ingredient))
+            IngredientsList.Add(ingredient);
+            
                 return true;
-            return false;
+            
         }
         /// <summary>
         /// حذف تمام مواد اولیه که با نام ورودی تطبیق میکند
@@ -129,9 +124,8 @@ namespace Assignment5
                 if (IngredientsList[i].Name == name)
                 {
                     IngredientsList.RemoveAt(i);
-                    this._IngredientCount--;
+                    return true;
                 }
-                return true;
             }
             return false;
         }
@@ -143,68 +137,27 @@ namespace Assignment5
         /// <param name="newServingCount">تعداد افراد جدید</param>
         public void UpdateServingCount(int newServingCount)
         {
-            //if(newServingCount > this._ServingCount)
-            //    for(int i=0;i < newServingCount - this._ServingCount; i++)
-            //    {
-
-            //    }
-            this._ServingCount = newServingCount;
-            
-        }
-        public static Ingredient[] InitialIngredient(int ingredientCount)
-        {
-            Ingredient[] Temp = new Ingredient[ingredientCount];
-            for (int i = 1; i <= ingredientCount; i++)
+            double ratio = newServingCount / ServingCount;
+            ServingCount = newServingCount;
+            foreach (var item in IngredientsList)
             {
-                Console.Clear();
-                Console.WriteLine($"Please Enter name of ingredient {i} :");
-                string name = Console.ReadLine();
-                Console.Clear();
-                Console.WriteLine($"Please Enter description of ingredient {i} :");
-                string description = Console.ReadLine();
-                Console.Clear();
-                Console.WriteLine($"Please Enter the unit of ingredient {i} :");
-                string unit = Console.ReadLine();
-                Console.Clear();
-                Console.WriteLine($"Please Enter the quantity of ingredient {i} :");
-                double quantity = double.Parse(Console.ReadLine());
-                Console.Clear();
-                Temp[i-1] = new Ingredient(name, description, quantity, unit);
+                item.Quantity *= ratio;
             }
-            return Temp;
-        }
 
-        /// <summary>
-        /// فیلد پیشتیبان برای Ingredients.
-        /// </summary>
-        private Ingredient[] _Ingredients;
-
-        /// <summary>
-        /// مواد اولیه
-        /// </summary>
-        public Ingredient[] Ingredients {
-            get
-            {
-                return _Ingredients;
-            }
-            private set
-            {
-                Ingredients.CopyTo(_Ingredients, 0);
-            }
         }
-        /// <summary>
-        /// transforming recipe data into string
-        /// </summary>
-        /// <returns></returns>
+       
+
+        
+
+        public static string RecipeFileAddress { get; internal set; } = @"Recipe.txt";
+        public string SearchMethod { get; set; }
+
         public override string ToString()
         {
-            return $" Title : {Title}\n Instructions : {Instructions}\n Cuisine : {Cuisine}\n Serving Count : {ServingCount} \n Ingredients Count : {_IngredientCount}\n";
+            return $" Title : {Title}\n Instructions : {Instructions}\n Cuisine : {Cuisine}\n Serving Count : {ServingCount} \n Ingredients Count : {IngredientsList.Count}\n";
 
         }
-        /// <summary>
-        /// method used for writing recipe data into sreamwriter
-        /// </summary>
-        /// <param name="Writer">streamwriter used for writing</param>
+
         public void Serialize (StreamWriter Writer)
         {
             Writer.WriteLine(Title);
@@ -213,18 +166,12 @@ namespace Assignment5
             Writer.WriteLine(Instructions);
             Writer.WriteLine(IngredientCount);
             Writer.WriteLine(String.Join(" ",KeyWords));
-            
                 foreach(Ingredient Sample in IngredientsList)
                 {
                     Sample.Serilize(Writer);
                 }
 
         }
-        /// <summary>
-        /// method for reading recipe data from a streamreader
-        /// </summary>
-        /// <param name="Reader">streamreader used in method</param>
-        /// <returns></returns>
         public static Recipe Deserialize (StreamReader Reader)
         {
             string RTitle = Reader.ReadLine();
@@ -235,88 +182,18 @@ namespace Assignment5
             string RInstructions = Reader.ReadLine();
             int RIngredientCount = int.Parse(Reader.ReadLine());
             string[] RKeywords = Reader.ReadLine().Split();
-            Ingredient[] RIng = new Ingredient[RIngredientCount];
-            
+            List <Ingredient> RIng = new List<Ingredient>();
                 for (int i = 0; i < RIngredientCount; i++)
                 {
-                    RIng[i] = Ingredient.Deserialize(Reader);
+                RIng.Add(Ingredient.Deserialize(Reader));
                 }
-            
             return new Recipe(RTitle,RInstructions,RIng,RServingCount,RCuisine,RKeywords);
 
         }
+        
+        
 
-        public static bool operator true (Recipe Subject)
-        {
-            if (Subject.Title == null)
-                return false;
-            else
-                return true;
-        }
-        public static bool operator false(Recipe Subject)
-        {
-            if (Subject.Title == null)
-                return true;
-            else
-                return false;
-        }
-
-        public string Title
-        {
-            get
-            {
-                return this._Title;
-            }
-            set
-            {
-                _Title = value; 
-            }
-        }
-        public string Cuisine
-        {
-            get
-            {
-                return this._Cuisine;
-            }
-            set
-            {
-                _Cuisine = value;
-            }
-        }
-        public int ServingCount
-        {
-            get
-            {
-                return this._ServingCount;
-            }
-            set
-            {
-                _ServingCount = value;
-            }
-        }
-        public string Instructions
-        {
-            get
-            {
-                return this._Instructions;
-            }
-            set
-            {
-                _Instructions = value;
-            }
-        }
-        public int IngredientCount
-        {
-            get
-            {
-                return this._IngredientCount;
-            }
-            set
-            {
-                _IngredientCount = value;
-            }
-        }
-
+       
 
 
     }

@@ -133,6 +133,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CookBook Filed\CookBookTests\CookBookTests.csproj">
+      <Project>{a35d3512-612f-4cf4-9a01-c123951735f5}</Project>
+      <Name>CookBookTests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CookBook Filed\CookBook\CookBook.csproj">
       <Project>{026562d9-fe4d-474b-a444-634522c80657}</Project>
       <Name>CookBook</Name>

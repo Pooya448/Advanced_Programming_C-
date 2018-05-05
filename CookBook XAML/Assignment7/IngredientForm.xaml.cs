@@ -173,14 +173,14 @@ namespace Assignment7
                 TempIng = new Ingredient(TitleBox.Text, DescriptionBox.Text, double.Parse(QuantityBox.Text), UnitTxtBox.Text);
                 DialogResult = true;
             }
-            catch (System.FormatException Exp)
+            catch (System.FormatException)
             {
                 MessageBox.Show("Please Enter a Valid Positive Number");
                 QuantityBlock.Foreground = Brushes.Red;
                 Hide();
                 ShowDialog();
             }
-            catch (NullReferenceException Exp)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("Please Complete All Fields");
                 Hide();

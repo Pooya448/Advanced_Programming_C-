@@ -108,26 +108,57 @@ namespace Assignment7
         /// showing search result in recipe list box 
         /// </summary>
         /// <param name="Result">the list containing recipe search info</param>
-        private void ShowSearchResult(params Recipe[] Result)
+        private void ShowSearchResult(List<Recipe> result, Recipe titleResult, bool isTitle)
         {
-            if (Result.Length == 0)
+            if (isTitle)
             {
-                MessageBox.Show("No Result Found");
+                if (titleResult == null)
+                {
+                    MessageBox.Show("No Result Found");
 
-                return;
+                    return;
+                }
+                else
+                {
+                    BtnLoad.IsEnabled = false;
+                    BtnSave.IsEnabled = false;
+                    BtnNew.IsEnabled = false;
+                    BtnReturn.Visibility = Visibility.Visible;
+
+                    RecipeListBox.Items.Clear();
+                    ListBoxItem NewItem = new ListBoxItem();
+                    NewItem.Content = titleResult.Title;
+                    RecipeListBox.Items.Add(NewItem.Content);
+                }
+                
+                
             }
-            BtnLoad.IsEnabled = false;
-            BtnSave.IsEnabled = false;
-            BtnNew.IsEnabled = false;
-            BtnReturn.Visibility = Visibility.Visible;
-            
-            RecipeListBox.Items.Clear();
-            foreach (Recipe item in Result)
+            else
             {
-                ListBoxItem NewItem = new ListBoxItem();
-                NewItem.Content = item.Title;
-                RecipeListBox.Items.Add(NewItem.Content);
+                if (result.Count == 0)
+                {
+                    MessageBox.Show("No Result Found");
+
+                    return;
+                }
+                else
+                {
+                    BtnLoad.IsEnabled = false;
+                    BtnSave.IsEnabled = false;
+                    BtnNew.IsEnabled = false;
+                    BtnReturn.Visibility = Visibility.Visible;
+
+                    RecipeListBox.Items.Clear();
+                    foreach (Recipe item in result)
+                    {
+                        ListBoxItem NewItem = new ListBoxItem();
+                        NewItem.Content = item.Title;
+                        RecipeListBox.Items.Add(NewItem.Content);
+                    }
+                }
+                
             }
+            
 
         }
         /// <summary>
@@ -258,7 +289,7 @@ namespace Assignment7
         {
             IsInAllSearch = false;
             IsInSearch = true;
-            ShowSearchResult(MainBook.LookupByKeyword(SearchBox.Text));
+            ShowSearchResult(MainBook.LookupByKeyword(SearchBox.Text),null,false);
         }
         /// <summary>
         /// method called when title search method clicked
@@ -269,7 +300,7 @@ namespace Assignment7
         {
             IsInAllSearch = false;
             IsInSearch = true;
-            ShowSearchResult(MainBook.LookupByTitle(SearchBox.Text));
+            ShowSearchResult(null,MainBook.LookupByTitle(SearchBox.Text),true);
         }
         /// <summary>
         /// method called when cuisine search method clicked
@@ -280,7 +311,7 @@ namespace Assignment7
         {
             IsInAllSearch = false;
             IsInSearch = true;
-            ShowSearchResult(MainBook.LookupByCuisine(SearchBox.Text));
+            ShowSearchResult(MainBook.LookupByCuisine(SearchBox.Text),null,false);
         }
         /// <summary>
         /// the mai search button code
@@ -298,7 +329,7 @@ namespace Assignment7
                 (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
                 (sender as Button).ContextMenu.IsOpen = true;
             }
-            catch (NullReferenceException exp)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("Search Field Is Empty !");
 

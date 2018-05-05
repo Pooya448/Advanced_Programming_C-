@@ -19,18 +19,7 @@ namespace Assignment7
     /// </summary>
     public partial class Welcome : Window
     {
-        private string _Title;
-        public string Title
-        {
-            set
-            {
-                _Title = value;
-            }
-            get
-            {
-                return _Title;
-            }
-        }
+        public new string Title { get; set; }
         public Welcome(string name)
         {
             InitializeComponent();

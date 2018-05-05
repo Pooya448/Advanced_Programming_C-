@@ -56,10 +56,6 @@ namespace Assignment5
         {
             return $"{Name}:\t{Quantity} {Unit} - {Description}\n";
         }
-        /// <summary>
-        /// Method used for writing an Ingredient to a file
-        /// </summary>
-        /// <param name="Writer">StreamWriter passed as parameter</param>
         public void Serilize (StreamWriter Writer)
         {
             Writer.WriteLine(Name);
@@ -67,11 +63,7 @@ namespace Assignment5
             Writer.WriteLine(Quantity);
             Writer.WriteLine(Unit);
         }
-        /// <summary>
-        /// static method used for reading Ingredient data from a file
-        /// </summary>
-        /// <param name="Reader">StreamReader used for reading file path</param>
-        /// <returns></returns>
+        
         public static Ingredient Deserialize (StreamReader Reader)
         {
             string RName = Reader.ReadLine();
@@ -80,6 +72,27 @@ namespace Assignment5
             string RUnit = Reader.ReadLine();
             return new Ingredient(RName, RDescription, RQuantity, RUnit);
         }
-        public static string IngredientsFileAddress = @"Ingredients.txt";
+        public static List<Ingredient> InitialIngredient(int ingredientCount, bool IsTest = false,StringBuilder sb = null)
+        {
+            List<Ingredient> takenFromUser = new List<Ingredient>();
+            for (int i = 0; i < ingredientCount; i++)
+            {
+                Console.WriteLine($"Please Enter name of ingredient {i+1} :");
+                string name = Console.ReadLine();
+                
+                Console.WriteLine($"Please Enter description of ingredient {i+1} :");
+                string description = Console.ReadLine();
+                
+                Console.WriteLine($"Please Enter the unit of ingredient {i+1} :");
+                string unit = Console.ReadLine();
+                
+                Console.WriteLine($"Please Enter the quantity of ingredient {i+1} :");
+                double quantity = double.Parse(Console.ReadLine());
+                takenFromUser.Add(new Ingredient(name, description, quantity, unit));
+                
+            }
+            return takenFromUser;
+        }
+
     }
 }

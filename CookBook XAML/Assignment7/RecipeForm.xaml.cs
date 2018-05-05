@@ -99,10 +99,10 @@ namespace Assignment7
                 }
                 if (Counter > 0)
                     throw new NullReferenceException();
-                TempRec = new Recipe(TitleBox.Text, "Instructions", IngList.ToArray(), int.Parse(SCountBox.Text), CuisineBox.Text, KeywordsBox.Text.Split());
+                TempRec = new Recipe(TitleBox.Text, "Instructions", IngList, int.Parse(SCountBox.Text), CuisineBox.Text, KeywordsBox.Text.Split());
                 DialogResult = true;
             }
-            catch (System.FormatException Exp1)
+            catch (System.FormatException)
             {
                 SCountBlock.Foreground = Brushes.Red;
                 MessageBox.Show("Please Enter a Valid Positive Number \n Complete All Fields");
@@ -112,7 +112,7 @@ namespace Assignment7
 
             
             
-            catch (NullReferenceException Exp)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("Please Complete All Fields");
                 Hide();

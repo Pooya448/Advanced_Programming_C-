@@ -84,17 +84,25 @@ namespace Assignment5
             IngredientCount = ingredientCount;
 
         }
-        public Recipe(List<Ingredient> list)
+        /// <summary>
+        /// third constructor used for testing only
+        /// </summary>
+        /// <param name="list"></param>
+        public Recipe (List<Ingredient> list)
         {
             this.IngredientsList = list;
         }
-
+        /// <summary>
+        /// method for searching a ingredient in a recipe's ingredient list
+        /// </summary>
+        /// <param name="selectedTitle"></param>
+        /// <returns>found ingredient</returns>
         public Ingredient IngLookUp (string selectedTitle)
         {
             foreach (Ingredient item in IngredientsList)
-            {
+            
                 if (item.Name == selectedTitle) return item;
-            }
+            
             return null;
             
         }
@@ -148,16 +156,27 @@ namespace Assignment5
        
 
         
-
+        /// <summary>
+        /// file address for save and load
+        /// </summary>
         public static string RecipeFileAddress { get; internal set; } = @"Recipe.txt";
+        /// <summary>
+        /// string showing the method which the recipe is resulted
+        /// </summary>
         public string SearchMethod { get; set; }
-
+        /// <summary>
+        /// override for the system to string method
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $" Title : {Title}\n Instructions : {Instructions}\n Cuisine : {Cuisine}\n Serving Count : {ServingCount} \n Ingredients Count : {IngredientsList.Count}\n";
 
         }
-
+        /// <summary>
+        /// method for writing recipe info into file
+        /// </summary>
+        /// <param name="Writer"></param>
         public void Serialize (StreamWriter Writer)
         {
             Writer.WriteLine(Title);
@@ -172,6 +191,11 @@ namespace Assignment5
                 }
 
         }
+        /// <summary>
+        /// method for reading recipe info from a file
+        /// </summary>
+        /// <param name="Reader"></param>
+        /// <returns></returns>
         public static Recipe Deserialize (StreamReader Reader)
         {
             string RTitle = Reader.ReadLine();

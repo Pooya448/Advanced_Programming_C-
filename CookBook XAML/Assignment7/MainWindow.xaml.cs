@@ -213,15 +213,22 @@ namespace Assignment7
         /// <param name="e"></param>
         private void BtnDel_Click(object sender, RoutedEventArgs e)
         {
-
-            if (IsInAllSearch)
+            try
             {
-                RemoveAction((RecipeListBox.SelectedItem.ToString()).Remove((RecipeListBox.SelectedItem.ToString()).IndexOf(" :")));
+                if (IsInAllSearch)
+                {
+                    RemoveAction((RecipeListBox.SelectedItem.ToString()).Remove((RecipeListBox.SelectedItem.ToString()).IndexOf(" :")));
+                }
+                else
+                {
+                    RemoveAction(RecipeListBox.SelectedItem.ToString());
+                }
             }
-            else
+            catch (NullReferenceException)
             {
-                RemoveAction(RecipeListBox.SelectedItem.ToString());
+                return;
             }
+            
             
         }
         /// <summary>
@@ -270,15 +277,22 @@ namespace Assignment7
         /// <param name="e"></param>
         private void BtnView_Click(object sender, RoutedEventArgs e)
         {
-
-            if (IsInAllSearch)
+            try
             {
-                ViewAction((RecipeListBox.SelectedItem.ToString()).Remove((RecipeListBox.SelectedItem.ToString()).IndexOf(" : ")));
+                if (IsInAllSearch)
+                {
+                    ViewAction((RecipeListBox.SelectedItem.ToString()).Remove((RecipeListBox.SelectedItem.ToString()).IndexOf(" : ")));
+                }
+                else
+                {
+                    ViewAction(RecipeListBox.SelectedItem.ToString());
+                }
             }
-            else
+            catch (NullReferenceException)
             {
-                ViewAction(RecipeListBox.SelectedItem.ToString());
+                return;
             }
+            
         }
         /// <summary>
         /// method called when keyword search method clicked

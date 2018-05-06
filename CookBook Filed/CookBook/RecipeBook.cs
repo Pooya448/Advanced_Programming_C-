@@ -135,6 +135,11 @@ namespace Assignment5
             else
                 return recipeFound;
         }
+        /// <summary>
+        /// method usewd for showing a recipe information
+        /// </summary>
+        /// <param name="recipe">the selected recipe</param>
+        /// <returns></returns>
         public bool ShowRecipe (Recipe recipe)
         {
             Console.WriteLine();
@@ -151,6 +156,11 @@ namespace Assignment5
             return false;
 
         }
+        /// <summary>
+        /// method used for listing the total number of recipes
+        /// </summary>
+        /// <param name="list">list of recipes which needs to be shown</param>
+        /// <returns></returns>
         public bool ListRecipes (List<Recipe> list)
         {
             for(int i = 0; i < list.Count; i++)
@@ -160,9 +170,14 @@ namespace Assignment5
             return true;
         }
         
-        
+        /// <summary>
+        /// method for saving the entire recipebook to a file
+        /// </summary>
+        /// <param name="Path">path for saving the recipebook</param>
         public void Save (string Path)
         {
+            if (Path == string.Empty)
+                return;
             using (StreamWriter Writer = new StreamWriter(Path, false, Encoding.UTF8))
             {
                 foreach (Recipe sample in ListOfRecipes)
@@ -172,6 +187,11 @@ namespace Assignment5
                 }
             }
         }
+        /// <summary>
+        /// method for loading a recipebook from file
+        /// </summary>
+        /// <param name="Path">path for loading file</param>
+        /// <returns></returns>
         public bool Load (string Path)
         {
             if (File.Exists(Path))

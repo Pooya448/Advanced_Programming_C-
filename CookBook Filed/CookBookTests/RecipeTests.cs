@@ -13,6 +13,46 @@ namespace Assignment5.Tests
     public class RecipeTests
     {
         [TestMethod()]
+        public void ThirdConstructorTest ()
+        {
+            string InName = "Name";
+            string InDiscription = "Discription";
+            double InQuantity = 0.350;
+            string InUnit = "Unit";
+            Ingredient testIn = new Ingredient(InName, InDiscription, InQuantity, InUnit);
+            List<Ingredient> testList = new List<Ingredient>();
+            testList.Add(testIn);
+            Recipe testRecipe = new Recipe(testList);
+            foreach (Ingredient item in testRecipe.IngredientsList)
+            {
+                Assert.AreEqual(item.Description, testIn.Description);
+                Assert.AreEqual(item.Unit, testIn.Unit);
+                Assert.AreEqual(item.Quantity, testIn.Quantity);
+                Assert.AreEqual(item.Name, testIn.Name);
+            }
+        }
+        [TestMethod()]
+        public void IngLookUpTest ()
+        {
+            string InName = "Name";
+            string InDiscription = "Discription";
+            double InQuantity = 0.350;
+            string InUnit = "Unit";
+            Ingredient testIn = new Ingredient(InName, InDiscription, InQuantity, InUnit);
+            List<Ingredient> testList = new List<Ingredient>();
+            testList.Add(testIn);
+            Recipe testRecipe = new Recipe(testList);
+            Assert.AreEqual(testRecipe.IngLookUp(InName), testIn);
+            Assert.AreEqual(testRecipe.IngLookUp(InName).Name, testIn.Name);
+            Assert.AreEqual(testRecipe.IngLookUp(InName).Description, testIn.Description);
+            Assert.AreEqual(testRecipe.IngLookUp(InName).Quantity, testIn.Quantity);
+            Assert.AreEqual(testRecipe.IngLookUp(InName).Unit, testIn.Unit);
+            Assert.IsNotNull(testRecipe.IngLookUp(InName));
+            testRecipe.RemoveIngredient(InName);
+            Assert.IsNull(testRecipe.IngLookUp(InName));
+
+        }
+        [TestMethod()]
         public void RecipeAddRemoveTest()
         {
 

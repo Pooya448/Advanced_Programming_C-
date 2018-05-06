@@ -56,6 +56,10 @@ namespace Assignment5
         {
             return $"{Name}:\t{Quantity} {Unit} - {Description}\n";
         }
+        /// <summary>
+        /// method for writing ingredient data into file
+        /// </summary>
+        /// <param name="Writer"></param>
         public void Serilize (StreamWriter Writer)
         {
             Writer.WriteLine(Name);
@@ -63,7 +67,11 @@ namespace Assignment5
             Writer.WriteLine(Quantity);
             Writer.WriteLine(Unit);
         }
-        
+        /// <summary>
+        /// method for reading ingredients data from a file
+        /// </summary>
+        /// <param name="Reader"></param>
+        /// <returns></returns>
         public static Ingredient Deserialize (StreamReader Reader)
         {
             string RName = Reader.ReadLine();
@@ -72,6 +80,13 @@ namespace Assignment5
             string RUnit = Reader.ReadLine();
             return new Ingredient(RName, RDescription, RQuantity, RUnit);
         }
+        /// <summary>
+        /// method for getting ingredient data from user when creating a recipe by calling the first constructor
+        /// </summary>
+        /// <param name="ingredientCount"></param>
+        /// <param name="IsTest"></param>
+        /// <param name="sb"></param>
+        /// <returns></returns>
         public static List<Ingredient> InitialIngredient(int ingredientCount, bool IsTest = false,StringBuilder sb = null)
         {
             List<Ingredient> takenFromUser = new List<Ingredient>();

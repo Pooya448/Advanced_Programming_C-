@@ -141,8 +141,16 @@ namespace Assignment7
         /// <param name="e"></param>
         private void BtnDel_Click(object sender, RoutedEventArgs e)
         {
-            IngList.Remove(TempRec.IngLookUp(IngredientsListBox.SelectedItem.ToString()));
-            UpdateIngredientListbox();
+            try
+            {
+                IngList.Remove(TempRec.IngLookUp(IngredientsListBox.SelectedItem.ToString()));
+                UpdateIngredientListbox();
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+            
         }
         /// <summary>
         /// viewing selected ingredient from the list box
@@ -151,9 +159,16 @@ namespace Assignment7
         /// <param name="e"></param>
         private void BtnView_Click(object sender, RoutedEventArgs e)
         {  
-            Ingredient Result = TempRec.IngLookUp(IngredientsListBox.SelectedItem.ToString());
-            IngredientShowForm ShowIng = new IngredientShowForm(Result);
-            ShowIng.ShowDialog();
+            try
+            {
+                Ingredient Result = TempRec.IngLookUp(IngredientsListBox.SelectedItem.ToString());
+                IngredientShowForm ShowIng = new IngredientShowForm(Result);
+                ShowIng.ShowDialog();
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
         }
         /// <summary>
         /// cancling the recipe adding procedure

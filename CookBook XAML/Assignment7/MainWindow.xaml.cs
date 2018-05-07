@@ -77,15 +77,23 @@ namespace Assignment7
         /// <param name="e"></param>
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         {
-            IsInSearch = false;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            string LoadFilePath = null;
-            if (openFileDialog.ShowDialog().Value)
+            try
             {
-                LoadFilePath = openFileDialog.FileName;
-                MainBook.ListOfRecipes.Clear();
-                MainBook.Load(LoadFilePath);
-                UpdateRecipeListBox();
+
+                IsInSearch = false;
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                string LoadFilePath = null;
+                if (openFileDialog.ShowDialog().Value)
+                {
+                    LoadFilePath = openFileDialog.FileName;
+                    MainBook.ListOfRecipes.Clear();
+                    MainBook.Load(LoadFilePath);
+                    UpdateRecipeListBox();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Invalid file selected.");
             }
             
                

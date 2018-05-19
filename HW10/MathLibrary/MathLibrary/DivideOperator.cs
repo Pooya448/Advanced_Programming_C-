@@ -5,13 +5,13 @@ namespace OOCalculator
 {
     public class DivideOperator : BinaryOperator
     {
-        public DivideOperator(TextReader reader)
+        public DivideOperator(TextReader reader) : base(reader)
         {
-            throw new NotImplementedException();
+           
         }
 
-        public override string OperatorSymbol => throw new NotImplementedException();
+        public override string OperatorSymbol => "/";
 
-        public override double Evaluate() => throw new NotImplementedException();
+        public override double Evaluate() => LHS.Evaluate() / RHS.Evaluate();
     }
 }

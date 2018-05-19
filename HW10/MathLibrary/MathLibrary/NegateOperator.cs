@@ -5,13 +5,13 @@ namespace OOCalculator
 {
     public class NegateOperator : UnaryOperator
     {
-       public NegateOperator(TextReader reader)
+       public NegateOperator(TextReader reader): base (reader)
         {
-            throw new NotImplementedException();
+           
         }
 
-        public override string OperatorSymbol => throw new NotImplementedException();
+        public override string OperatorSymbol => "-";
 
-        public override double Evaluate() => throw new NotImplementedException(); 
+        public override double Evaluate() => Operand.Evaluate() * -1; 
     }
 }

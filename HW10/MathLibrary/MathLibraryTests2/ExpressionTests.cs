@@ -23,8 +23,8 @@ namespace OOCalculator.Tests
                 "3\n" +
                 "Divide\n" +
                 "2\n" +
-                "Sqrt\n" +
-                "Substract\n" +
+                "SquareRoot\n" +
+                "Subtract\n" +
                 "5\n" +
                 "Square\n" +
                 "2";

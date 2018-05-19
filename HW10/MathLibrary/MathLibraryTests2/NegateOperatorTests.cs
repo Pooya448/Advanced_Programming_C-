@@ -20,8 +20,8 @@ namespace OOCalculator.Tests
             string filePath = @"negateTest.txt";
             File.WriteAllText(filePath, "8");
             NegateOperator negateOp = new NegateOperator(File.OpenText(filePath));
-            Assert.AreEqual(negateOp.Evaluate(), -5);
-            Assert.AreEqual(negateOp.ToString(), "-(5)");
+            Assert.AreEqual(negateOp.Evaluate(), -8);
+            Assert.AreEqual(negateOp.ToString(), "-(8)");
         }
     }
 }

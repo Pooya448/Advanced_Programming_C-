@@ -2,20 +2,20 @@
 <CoverageSession xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="4.6.0.0">
   <Summary numSequencePoints="124" visitedSequencePoints="124" numBranchPoints="58" visitedBranchPoints="50" sequenceCoverage="100" branchCoverage="86.21" maxCyclomaticComplexity="17" minCyclomaticComplexity="1" maxCrapScore="17" minCrapScore="1" visitedClasses="19" numClasses="19" visitedMethods="38" numMethods="38" />
   <Modules>
-    <Module hash="70-01-50-D1-82-EB-AD-D2-3E-B5-25-A0-3A-EC-5A-25-86-26-F9-E9">
+    <Module hash="A2-28-60-14-52-D5-2F-96-65-28-64-29-AA-95-11-E9-8D-BE-2B-35">
       <Summary numSequencePoints="57" visitedSequencePoints="57" numBranchPoints="8" visitedBranchPoints="8" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" maxCrapScore="2" minCrapScore="1" visitedClasses="8" numClasses="8" visitedMethods="8" numMethods="8" />
-      <ModulePath>C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibraryTests2\bin\Debug\MathLibraryTests2.dll</ModulePath>
-      <ModuleTime>2018-05-19T17:56:18.3425457Z</ModuleTime>
-      <ModuleName>MathLibraryTests2</ModuleName>
+      <ModulePath>C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLibTests\bin\Debug\MathLibTests.dll</ModulePath>
+      <ModuleTime>2018-05-19T18:34:58.7851232Z</ModuleTime>
+      <ModuleName>MathLibTests</ModuleName>
       <Files>
-        <File uid="1" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibraryTests2\AddOperatorTests.cs" />
-        <File uid="2" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibraryTests2\DivideOperatorTests.cs" />
-        <File uid="3" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibraryTests2\ExpressionTests.cs" />
-        <File uid="4" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibraryTests2\MultiplyOperatorTests.cs" />
-        <File uid="5" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibraryTests2\NegateOperatorTests.cs" />
-        <File uid="6" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibraryTests2\SqrtOperatorTests.cs" />
-        <File uid="7" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibraryTests2\SquareOperatorTests.cs" />
-        <File uid="8" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibraryTests2\SubtractOperatorTests.cs" />
+        <File uid="1" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLibTests\AddOperatorTests.cs" />
+        <File uid="2" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLibTests\DivideOperatorTests.cs" />
+        <File uid="3" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLibTests\ExpressionTests.cs" />
+        <File uid="4" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLibTests\MultiplyOperatorTests.cs" />
+        <File uid="5" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLibTests\NegateOperatorTests.cs" />
+        <File uid="6" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLibTests\SqrtOperatorTests.cs" />
+        <File uid="7" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLibTests\SquareOperatorTests.cs" />
+        <File uid="8" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLibTests\SubtractOperatorTests.cs" />
       </Files>
       <Classes>
         <Class>
@@ -539,23 +539,23 @@
         <TrackedMethod uid="8" token="100663311" name="System.Void OOCalculator.Tests.SubtractOperatorTests::SubtractOperatorTest()" strategy="MSTestTest" />
       </TrackedMethods>
     </Module>
-    <Module hash="81-68-F2-B2-2C-01-C9-F8-07-B6-2A-50-82-C3-0B-21-D0-7A-D2-53">
+    <Module hash="86-19-30-B2-C7-18-EF-77-60-74-1C-FF-FA-BD-14-C2-5A-2D-80-59">
       <Summary numSequencePoints="67" visitedSequencePoints="67" numBranchPoints="50" visitedBranchPoints="42" sequenceCoverage="100" branchCoverage="84" maxCyclomaticComplexity="17" minCyclomaticComplexity="1" maxCrapScore="17" minCrapScore="1" visitedClasses="11" numClasses="11" visitedMethods="30" numMethods="30" />
-      <ModulePath>C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibraryTests2\bin\Debug\MathLibrary.dll</ModulePath>
-      <ModuleTime>2018-05-19T17:55:07.8428238Z</ModuleTime>
-      <ModuleName>MathLibrary</ModuleName>
+      <ModulePath>C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLibTests\bin\Debug\MathLib.dll</ModulePath>
+      <ModuleTime>2018-05-19T18:34:58.439648Z</ModuleTime>
+      <ModuleName>MathLib</ModuleName>
       <Files>
-        <File uid="17" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\AddOperator.cs" />
-        <File uid="18" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\BinaryOperator.cs" />
-        <File uid="19" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\DivideOperator.cs" />
-        <File uid="20" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\Expression.cs" />
-        <File uid="21" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\MultiplyOperator.cs" />
-        <File uid="22" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\NegateOperator.cs" />
-        <File uid="23" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\NumberExpression.cs" />
-        <File uid="24" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\SqrtOperator.cs" />
-        <File uid="25" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\SquareOperator.cs" />
-        <File uid="26" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\SubtractOperator.cs" />
-        <File uid="27" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLibrary\MathLibrary\UnaryOperator.cs" />
+        <File uid="17" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\AddOperator.cs" />
+        <File uid="18" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\BinaryOperator.cs" />
+        <File uid="19" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\DivideOperator.cs" />
+        <File uid="20" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\Expression.cs" />
+        <File uid="21" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\MultiplyOperator.cs" />
+        <File uid="22" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\NegateOperator.cs" />
+        <File uid="23" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\NumberExpression.cs" />
+        <File uid="24" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\SqrtOperator.cs" />
+        <File uid="25" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\SquareOperator.cs" />
+        <File uid="26" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\SubtractOperator.cs" />
+        <File uid="27" fullPath="C:\Users\Pooya\source\repos\APClass Main\HW10\MathLib\MathLib\UnaryOperator.cs" />
       </Files>
       <Classes>
         <Class>

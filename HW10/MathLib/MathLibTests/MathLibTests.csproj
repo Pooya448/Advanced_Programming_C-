@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8DC108D-ADF7-4625-9755-E4E2C09041F7}</ProjectGuid>
+    <ProjectGuid>{3EC7FDD6-E791-4533-BEDC-799052C4DC2A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MathLibraryTests1</RootNamespace>
-    <AssemblyName>MathLibraryTests1</AssemblyName>
+    <RootNamespace>MathLibTests</RootNamespace>
+    <AssemblyName>MathLibTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,16 +56,23 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="AddOperatorTests.cs" />
+    <Compile Include="DivideOperatorTests.cs" />
+    <Compile Include="ExpressionTests.cs" />
+    <Compile Include="MultiplyOperatorTests.cs" />
     <Compile Include="NegateOperatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqrtOperatorTests.cs" />
+    <Compile Include="SquareOperatorTests.cs" />
+    <Compile Include="SubtractOperatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MathLibrary\MathLibrary.csproj">
-      <Project>{4AE1BF90-512D-4D43-BEE3-A8EABDC80039}</Project>
-      <Name>MathLibrary</Name>
+    <ProjectReference Include="..\MathLib\MathLib.csproj">
+      <Project>{71B66C53-56E2-42B9-B154-274076C4BB4E}</Project>
+      <Name>MathLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

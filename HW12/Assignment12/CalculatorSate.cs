@@ -25,6 +25,7 @@ namespace SimpleCalculator
         protected IState ProcessOperator(IState nextState, char? op = null)
         {
             try
+            {
                 this.Calc.Evalute();
                 this.Calc.UpdateDisplay();
                 this.Calc.PendingOperator = op;

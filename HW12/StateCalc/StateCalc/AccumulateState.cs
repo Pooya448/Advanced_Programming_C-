@@ -16,7 +16,7 @@ namespace SimpleCalculator
         }
 
         
-        public override IState EnterOperator(char c) => ProcessOperator(new ComputeState(this.Calc),c);
+        public override IState EnterOperator(char c) => ProcessOperator(new StartState(this.Calc),c);
 
         public override IState EnterPoint()
         {

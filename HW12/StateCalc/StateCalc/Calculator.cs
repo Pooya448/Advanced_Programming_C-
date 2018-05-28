@@ -24,9 +24,9 @@ namespace SimpleCalculator
                 ['^'] = (x, y) => Math.Pow(x,y),
             };
 
-        public void PrintDisplay()
+        public void PrintDisplay(Action Clear)
         {
-            Console.Clear();
+            Clear();
             Console.Write(this.Display);
         }
 

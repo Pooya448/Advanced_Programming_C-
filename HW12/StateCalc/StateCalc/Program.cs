@@ -6,15 +6,15 @@ namespace SimpleCalculator
     {
         static void Main(string[] args)
         {
-            RunCalculator(() => Console.ReadKey().KeyChar);
+            RunCalculator(() => Console.ReadKey().KeyChar, () => Console.Clear());
         }
 
-        public static Calculator RunCalculator(Func<char> GetKey)
+        public static Calculator RunCalculator(Func<char> GetKey, Action Clear)
         {
             Calculator calc = new Calculator();
             while (true)
             {
-                calc.PrintDisplay();
+                calc.PrintDisplay(Clear);
                 char key = GetKey();
                 switch (key)
                 {

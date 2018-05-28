@@ -23,7 +23,7 @@
         public override IState EnterZeroDigit()
         {
             this.Calc.Display = "0";
-            return new AccumulateState(this.Calc);
+            return new StartState(this.Calc);
         }
 
         public override IState EnterOperator(char c)

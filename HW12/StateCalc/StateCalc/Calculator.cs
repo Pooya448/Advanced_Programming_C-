@@ -20,7 +20,8 @@ namespace SimpleCalculator
                 ['+'] = (x, y) => x + y,
                 ['-'] = (x, y) => x - y,
                 ['/'] = (x, y) => x / y,
-                ['*'] = (x, y) => x * y
+                ['*'] = (x, y) => x * y,
+                ['^'] = (x, y) => Math.Pow(x,y),
             };
 
         public void PrintDisplay()

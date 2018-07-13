@@ -56,6 +56,8 @@ namespace Logger
             Logger.Instance.Warn(LogSource.Client, "User national ID added", ("ID", "232-12-1212"));
             Logger.Instance.Debug(LogSource.UI, "Display error to user");
             Logger.Instance.Error(LogSource.Client, "Unable to add user", ("ID", "232-12-1212"));
+
+            Console.Read();
         }
     }
 }

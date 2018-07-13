@@ -13,6 +13,10 @@ namespace Logger
         {
             ConsoleLogger clogger = new ConsoleLogger();
 
+            Logger.Instance.OnLog += OnLogChars;
+
+            
+
             FileLogger<LockedLogWriter> errorLogger = new FileLogger<LockedLogWriter>(
                 CsvLogFormatter.Instance,
                 new PrivacyScrubber(PhoneNumberScrubber.Instance, IDScrubber.Instance, FullNameScrubber.Instance),
@@ -37,11 +41,31 @@ namespace Logger
                 LogSources.Create(LogSource.UI),
                 true);
 
+            // manual logger added
+            FileLogger<LockedLogWriter> addedLogger = new FileLogger<LockedLogWriter>(
+                CsvLogFormatter.Instance,
+                new PrivacyScrubber(IDScrubber.Instance, FullNameScrubber.Instance),
+                new IncrementalLogFileName(@"c:\log", "a13_added", CsvLogFormatter.Instance.FileExtention),
+                LogLevels.All,
+                LogSources.All,
+                true);
+
+            // client logger added
+            FileLogger<LockedLogWriter> clientLogger = new FileLogger<LockedLogWriter>(
+                CsvLogFormatter.Instance,
+                new PrivacyScrubber(IDScrubber.Instance, FullNameScrubber.Instance),
+                new IncrementalLogFileName(@"c:\log", "a13_client", CsvLogFormatter.Instance.FileExtention),
+                LogLevels.All,
+                LogSources.Create(LogSource.Client),
+                true);
 
             Logger.Loggers.Add(errorLogger);
             Logger.Loggers.Add(allLogger);
             Logger.Loggers.Add(clogger);
             Logger.Loggers.Add(uiLogger);
+            Logger.Loggers.Add(addedLogger);
+            Logger.Loggers.Add(clientLogger);
+
 
             // Logger is set up and ready to use
 
@@ -58,6 +82,16 @@ namespace Logger
             Logger.Instance.Error(LogSource.Client, "Unable to add user", ("ID", "232-12-1212"));
 
             Console.Read();
+        }
+        private static void OnLogChars(LogEntry entry)
+        {
+            int i;
+            i = entry.Message.ToCharArray().Length + entry.Level.ToString().Length;
+            for (int j = 0; j < entry.NameValuePairs.Count; j++)
+            {
+                i += entry.NameValuePairs[j].ToString().Length;
+            }
+            Console.WriteLine(i);
         }
     }
 }

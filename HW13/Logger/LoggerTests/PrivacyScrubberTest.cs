@@ -38,9 +38,37 @@ namespace LoggerTest
             string testString = "Ali's SSN is  432-12-3232";
             string expectedString = "Ali's SSN is  XXX-XX-XXXX";
 
-            string scrubbedString = IDScrubber.Instance.Scrub(testString);
-            Assert.AreEqual(scrubbedString, expectedString);
+            string testStringIr = "Ali's SSN is  127-295625-3";
+            string expectedStringIr = "Ali's SSN is  XXX-XXXXXX-X";
 
+            string scrubbedString = IDScrubber.Instance.Scrub(testString);
+            string scrubbedStringIr = IDScrubber.Instance.Scrub(testStringIr);
+
+            Assert.AreEqual(expectedStringIr, scrubbedStringIr);
+            Assert.AreEqual(expectedString,scrubbedString);
+
+        }
+        // email test added
+        [TestMethod]
+        public void EmailTest()
+        {
+            string testString = "Ali's Email is  ali_test@gmail.com";
+            string expectedString = "Ali's Email is  xxx_xxxx@xxxxx.xxx";
+
+            string scrubbedString = EmailScrubber.Instance.Scrub(testString);
+
+            Assert.AreEqual(expectedString, scrubbedString);
+        }
+        // cc test added
+        [TestMethod]
+        public void CCTest()
+        {
+            string testString = "Ali's CC is  1234567891234567 and 1234-1223-1234-1234";
+            string expectedString = "Ali's CC is  XXXXXXXXXXXXXXXX and XXXX-XXXX-XXXX-XXXX";
+
+            string scrubbedString = CCScrubber.Instance.Scrub(testString);
+
+            Assert.AreEqual(expectedString, scrubbedString);
         }
 
         [TestMethod]

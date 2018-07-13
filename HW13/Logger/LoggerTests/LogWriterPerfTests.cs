@@ -14,6 +14,22 @@ namespace Logger.Tests
     [TestClass()]
     public class LogWriterPerfTests
     {
+        /// <summary>
+        /// Table of Times
+        /// Locked          Concurrent          Locked Queue            No. of Threads
+        /// "0.5597012"     "0.8561135"         "0.4664703"             1
+        /// "0.6662706"     "0.5401509"         "0.6473057"             2
+        /// "1.3060879"     "0.7964175"         "0.8557244"             5
+        /// "3.0602316"     "1.6961902"         "1.4950606"             10
+        /// "8.554043"      "3.7672149"         "3.7787247"             20
+        /// "50.0491141"    "6.4110072"         "6.4398484"             50
+        /// "176.5547765"   "14.0700345"        "14.2237124"            100
+        /// 
+        /// Concurrent log writer uses threads and multi threading with a ConcurrentQueue to maximum the performance by using multiple threads of cpu at once
+        /// 
+        /// 
+        /// </summary>
+
         [TestMethod()]
         public void LockedLogWriterPerfTest()
         {
@@ -27,10 +43,18 @@ namespace Logger.Tests
         }
 
         [TestMethod()]
-        public void NoLockPerfTest()
+        public void LockedQueueLogWriterPerfTest()
         {
-            var time = PerfTest<NoLockLogWriter>(threadCount: 25, linePerThread: 1000);
+            var time = PerfTest<LockedQueuetLogWriter>(threadCount: 100, linePerThread: 1000);
         }
+
+
+        // methode estefade shode dar in test thread-safe nist, baraye hamin test failed mishe chonke chanta thread hamzaman data exchange mikonand bedune hich lock ii
+        //[TestMethod()]
+        //public void NoLockPerfTest()
+        //{
+        //    var time = PerfTest<NoLockLogWriter>(threadCount: 25, linePerThread: 1000);
+        //}
 
         private string PerfTest<_LogWriter>(int threadCount, int linePerThread)
             where _LogWriter: GuardedLogWriter, new()

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Color { Red,Yellow,Purple,Violet,Blue,Green,Grey}
+    public enum Color { Red,Yellow,Purple,Violet,Blue,Green,Grey,Default}
     public class Note
     {
         public Note()

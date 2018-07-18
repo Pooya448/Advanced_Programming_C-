@@ -31,367 +31,170 @@ namespace UITest
     {
         
         /// <summary>
-        /// PlusButton1
+        /// RecordedMethod1
         /// </summary>
-        public void PlusButton1()
+        public void RecordedMethod1()
         {
             #region Variable Declarations
             WpfButton uIItemButton = this.UIMainWindowWindow.UIItemButton;
+            WpfButton uIItemButton1 = this.UINoteViewWindow.UIItemButton;
+            WpfListItem uITitleGoesHereListItem = this.UIMainWindowWindow.UINoteListBoxList.UITitleGoesHereListItem;
+            WpfButton uIItemButton11 = this.UINoteViewWindow.UIItemButton1;
+            WpfButton uIGreyButton = this.UIColorsWindow.UIGreyButton;
+            WpfButton uIRedButton = this.UIColorsWindow.UIRedButton;
+            WpfButton uIVioletButton = this.UIColorsWindow.UIVioletButton;
+            WpfButton uIBlueButton = this.UIColorsWindow.UIBlueButton;
+            WpfButton uIPinkButton = this.UIColorsWindow.UIPinkButton;
+            WpfButton uIGreenButton = this.UIColorsWindow.UIGreenButton;
+            WpfButton uIYellowButton = this.UIColorsWindow.UIYellowButton;
+            WpfButton uIItemButton111 = this.UINoteViewWindow.UIItemButton11;
+            WpfListItem uITitleGoesHereListItem1 = this.UIMainWindowWindow.UINoteListBoxList.UITitleGoesHereListItem1;
+            WpfButton uIDelButton = this.UINoteViewWindow.UIDelButton;
             #endregion
 
             // Click '+' button
-            Mouse.Click(uIItemButton, new Point(53, 45));
+            Mouse.Click(uIItemButton, new Point(50, 46));
+
+            // Click '+' button
+            Mouse.Click(uIItemButton1, new Point(50, 34));
+
+            // Click 'Title Goes Here' list item
+            Mouse.Click(uITitleGoesHereListItem, new Point(326, 36));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton11, new Point(48, 50));
+
+            // Click 'Grey' button
+            Mouse.Click(uIGreyButton, new Point(46, 56));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton11, new Point(50, 52));
+
+            // Click 'Red' button
+            Mouse.Click(uIRedButton, new Point(102, 40));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton11, new Point(52, 56));
+
+            // Click 'Violet' button
+            Mouse.Click(uIVioletButton, new Point(64, 32));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton11, new Point(58, 58));
+
+            // Click 'Blue' button
+            Mouse.Click(uIBlueButton, new Point(22, 60));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton11, new Point(16, 62));
+
+            // Click 'Pink' button
+            Mouse.Click(uIPinkButton, new Point(58, 54));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton11, new Point(56, 28));
+
+            // Click 'Green' button
+            Mouse.Click(uIGreenButton, new Point(96, 20));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton11, new Point(42, 44));
+
+            // Click 'Yellow' button
+            Mouse.Click(uIYellowButton, new Point(54, 42));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton11, new Point(46, 48));
+
+            // Click 'Grey' button
+            Mouse.Click(uIGreyButton, new Point(90, 52));
+
+            // Click '+' button
+            Mouse.Click(uIItemButton111, new Point(38, 14));
+
+            // Click 'Title Goes Here' list item
+            Mouse.Click(uITitleGoesHereListItem1, new Point(596, 42));
+
+            // Click 'Del' button
+            Mouse.Click(uIDelButton, new Point(56, 54));
+
+            // Click '+' button
+            Mouse.Click(uIItemButton, new Point(58, 38));
         }
         
         /// <summary>
-        /// Assertion1 - Use 'Assertion1ExpectedValues' to pass parameters into this method.
+        /// AssertMethod1 - Use 'AssertMethod1ExpectedValues' to pass parameters into this method.
         /// </summary>
-        public void Assertion1()
+        public void AssertMethod1()
+        {
+            #region Variable Declarations
+            WpfEdit uITitleBoxEdit = this.UINoteViewWindow.UITitleBoxEdit;
+            WpfEdit uIFullTextBoxEdit = this.UINoteViewWindow.UIFullTextBoxEdit;
+            WpfButton uIItemButton1 = this.UINoteViewWindow.UIItemButton1;
+            #endregion
+
+            // Verify that the 'Text' property of 'TitleBox' text box equals 'Title Goes Here'
+            Assert.AreEqual(this.AssertMethod1ExpectedValues.UITitleBoxEditText, uITitleBoxEdit.Text);
+
+            // Verify that the 'Text' property of 'FullTextBox' text box equals 'Full Note Text Goes Here'
+            Assert.AreEqual(this.AssertMethod1ExpectedValues.UIFullTextBoxEditText, uIFullTextBoxEdit.Text);
+
+            // Verify that the 'ControlType' property of '...' button equals 'Button'
+            Assert.AreEqual(this.AssertMethod1ExpectedValues.UIItemButton1ControlType, uIItemButton1.ControlType.ToString());
+        }
+        
+        /// <summary>
+        /// RecordedMethod2
+        /// </summary>
+        public void RecordedMethod2()
+        {
+            #region Variable Declarations
+            WpfButton uIItemButton1 = this.UINoteViewWindow.UIItemButton1;
+            WpfButton uIVioletButton = this.UIColorsWindow.UIVioletButton;
+            #endregion
+
+            // Click '...' button
+            Mouse.Click(uIItemButton1, new Point(18, 46));
+
+            // Click 'Violet' button
+            Mouse.Click(uIVioletButton, new Point(86, 40));
+        }
+        
+        /// <summary>
+        /// AssertMethod2 - Use 'AssertMethod2ExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void AssertMethod2()
         {
             #region Variable Declarations
             WpfEdit uIFullTextBoxEdit = this.UINoteViewWindow.UIFullTextBoxEdit;
-            WpfEdit uITitleBoxEdit = this.UINoteViewWindow.UITitleBoxEdit;
-            WpfButton uIItemButton = this.UINoteViewWindow.UIItemButton;
-            WpfButton uIItemButton1 = this.UINoteViewWindow.UIItemButton1;
-            WpfButton uIDelButton = this.UINoteViewWindow.UIDelButton;
             #endregion
-
-            // Verify that the 'AutomationId' property of 'FullTextBox' text box equals 'FullTextBox'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIFullTextBoxEditAutomationId, uIFullTextBoxEdit.AutomationId);
 
             // Verify that the 'Font' property of 'FullTextBox' text box equals 'Segoe UI'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIFullTextBoxEditFont, uIFullTextBoxEdit.Font);
-
-            // Verify that the 'Text' property of 'FullTextBox' text box equals 'Full Note Text Goes Here'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIFullTextBoxEditText, uIFullTextBoxEdit.Text);
-
-            // Verify that the 'Height' property of 'FullTextBox' text box equals '708'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIFullTextBoxEditHeight, uIFullTextBoxEdit.Height);
-
-            // Verify that the 'Width' property of 'FullTextBox' text box equals '890'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIFullTextBoxEditWidth, uIFullTextBoxEdit.Width);
-
-            // Verify that the 'Font' property of 'TitleBox' text box equals 'Segoe UI'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UITitleBoxEditFont, uITitleBoxEdit.Font);
-
-            // Verify that the 'AutomationId' property of 'TitleBox' text box equals 'TitleBox'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UITitleBoxEditAutomationId, uITitleBoxEdit.AutomationId);
-
-            // Verify that the 'Text' property of 'TitleBox' text box equals 'Title Goes Here'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UITitleBoxEditText, uITitleBoxEdit.Text);
-
-            // Verify that the 'Height' property of 'TitleBox' text box equals '82'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UITitleBoxEditHeight, uITitleBoxEdit.Height);
-
-            // Verify that the 'Width' property of 'TitleBox' text box equals '712'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UITitleBoxEditWidth, uITitleBoxEdit.Width);
-
-            // Verify that the 'FriendlyName' property of '+' button equals '+'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIItemButtonFriendlyName, uIItemButton.FriendlyName);
-
-            // Verify that the 'Enabled' property of '+' button equals 'True'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIItemButtonEnabled, uIItemButton.Enabled);
-
-            // Verify that the 'Height' property of '+' button equals '82'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIItemButtonHeight, uIItemButton.Height);
-
-            // Verify that the 'Width' property of '+' button equals '80'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIItemButtonWidth, uIItemButton.Width);
-
-            // Verify that the 'DisplayText' property of '+' button equals '+'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIItemButtonDisplayText, uIItemButton.DisplayText);
-
-            // Verify that the 'DisplayText' property of '...' button equals '...'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIItemButton1DisplayText, uIItemButton1.DisplayText);
-
-            // Verify that the 'Enabled' property of '...' button equals 'True'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIItemButton1Enabled, uIItemButton1.Enabled);
-
-            // Verify that the 'Height' property of '...' button equals '82'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIItemButton1Height, uIItemButton1.Height);
-
-            // Verify that the 'Width' property of '...' button equals '80'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIItemButton1Width, uIItemButton1.Width);
-
-            // Verify that the 'FriendlyName' property of 'Del' button equals 'Del'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIDelButtonFriendlyName, uIDelButton.FriendlyName);
-
-            // Verify that the 'Name' property of 'Del' button equals 'Del'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIDelButtonName, uIDelButton.Name);
-
-            // Verify that the 'Enabled' property of 'Del' button equals 'True'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIDelButtonEnabled, uIDelButton.Enabled);
-
-            // Verify that the 'Height' property of 'Del' button equals '80'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIDelButtonHeight, uIDelButton.Height);
-
-            // Verify that the 'Width' property of 'Del' button equals '80'
-            Assert.AreEqual(this.Assertion1ExpectedValues.UIDelButtonWidth, uIDelButton.Width);
-        }
-        
-        /// <summary>
-        /// NoteViewTested
-        /// </summary>
-        public void NoteViewTested()
-        {
-            #region Variable Declarations
-            WpfButton uIItemButton = this.UINoteViewWindow.UIItemButton;
-            WpfListItem uITitleGoesHereListItem = this.UIMainWindowWindow.UINoteListBoxList.UITitleGoesHereListItem;
-            WpfButton uIItemButton1 = this.UINoteViewWindow.UIItemButton1;
-            WpfButton uIGreyButton = this.UIColorsWindow.UIGreyButton;
-            WpfButton uIRedButton = this.UIColorsWindow.UIRedButton;
-            WpfButton uIVioletButton = this.UIColorsWindow.UIVioletButton;
-            WpfButton uIBlueButton = this.UIColorsWindow.UIBlueButton;
-            WpfButton uIPinkButton = this.UIColorsWindow.UIPinkButton;
-            WpfButton uIGreenButton = this.UIColorsWindow.UIGreenButton;
-            WpfButton uIYellowButton = this.UIColorsWindow.UIYellowButton;
-            WpfButton uIDelButton = this.UINoteViewWindow.UIDelButton;
-            WpfButton uIItemButton2 = this.UIMainWindowWindow.UIItemButton;
-            #endregion
-
-            // Click '+' button
-            Mouse.Click(uIItemButton, new Point(61, 37));
-
-            // Click 'Title Goes Here' list item
-            Mouse.Click(uITitleGoesHereListItem, new Point(619, 25));
-
-            // Click '...' button
-            Mouse.Click(uIItemButton1, new Point(25, 37));
-
-            // Click 'Grey' button
-            Mouse.Click(uIGreyButton, new Point(49, 29));
-
-            // Click '...' button
-            Mouse.Click(uIItemButton1, new Point(27, 25));
-
-            // Click 'Red' button
-            Mouse.Click(uIRedButton, new Point(65, 51));
-
-            // Click '...' button
-            Mouse.Click(uIItemButton1, new Point(41, 33));
-
-            // Click 'Violet' button
-            Mouse.Click(uIVioletButton, new Point(73, 61));
-
-            // Click '...' button
-            Mouse.Click(uIItemButton1, new Point(23, 53));
-
-            // Click 'Blue' button
-            Mouse.Click(uIBlueButton, new Point(15, 77));
-
-            // Click '...' button
-            Mouse.Click(uIItemButton1, new Point(39, 49));
-
-            // Click 'Pink' button
-            Mouse.Click(uIPinkButton, new Point(73, 91));
-
-            // Click '...' button
-            Mouse.Click(uIItemButton1, new Point(25, 39));
-
-            // Click 'Green' button
-            Mouse.Click(uIGreenButton, new Point(27, 33));
-
-            // Click '...' button
-            Mouse.Click(uIItemButton1, new Point(45, 33));
-
-            // Click 'Yellow' button
-            Mouse.Click(uIYellowButton, new Point(77, 53));
-
-            // Click 'Del' button
-            Mouse.Click(uIDelButton, new Point(61, 25));
-
-            // Click '+' button
-            Mouse.Click(uIItemButton2, new Point(61, 47));
-
-            // Click '...' button
-            Mouse.Click(uIItemButton1, new Point(47, 49));
-        }
-        
-        /// <summary>
-        /// ColorButtonsAssertion - Use 'ColorButtonsAssertionExpectedValues' to pass parameters into this method.
-        /// </summary>
-        public void ColorButtonsAssertion()
-        {
-            #region Variable Declarations
-            WpfButton uIYellowButton = this.UIColorsWindow.UIYellowButton;
-            WpfButton uIGreenButton = this.UIColorsWindow.UIGreenButton;
-            WpfButton uIPinkButton = this.UIColorsWindow.UIPinkButton;
-            WpfButton uIBlueButton = this.UIColorsWindow.UIBlueButton;
-            WpfButton uIVioletButton = this.UIColorsWindow.UIVioletButton;
-            WpfButton uIRedButton = this.UIColorsWindow.UIRedButton;
-            WpfButton uIGreyButton = this.UIColorsWindow.UIGreyButton;
-            #endregion
-
-            // Verify that the 'FriendlyName' property of 'Yellow' button equals 'Yellow'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIYellowButtonFriendlyName, uIYellowButton.FriendlyName);
-
-            // Verify that the 'Enabled' property of 'Yellow' button equals 'True'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIYellowButtonEnabled, uIYellowButton.Enabled);
-
-            // Verify that the 'Height' property of 'Yellow' button equals '114'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIYellowButtonHeight, uIYellowButton.Height);
-
-            // Verify that the 'Width' property of 'Yellow' button equals '128'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIYellowButtonWidth, uIYellowButton.Width);
-
-            // Verify that the 'Height' property of 'Green' button equals '114'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIGreenButtonHeight, uIGreenButton.Height);
-
-            // Verify that the 'Width' property of 'Green' button equals '128'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIGreenButtonWidth, uIGreenButton.Width);
-
-            // Verify that the 'Enabled' property of 'Green' button equals 'True'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIGreenButtonEnabled, uIGreenButton.Enabled);
-
-            // Verify that the 'FriendlyName' property of 'Green' button equals 'Green'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIGreenButtonFriendlyName, uIGreenButton.FriendlyName);
-
-            // Verify that the 'AutomationId' property of 'Pink' button equals 'Pink'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIPinkButtonAutomationId, uIPinkButton.AutomationId);
-
-            // Verify that the 'AutomationId' property of 'Blue' button equals 'Blue'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIBlueButtonAutomationId, uIBlueButton.AutomationId);
-
-            // Verify that the 'AutomationId' property of 'Violet' button equals 'Violet'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIVioletButtonAutomationId, uIVioletButton.AutomationId);
-
-            // Verify that the 'AutomationId' property of 'Red' button equals 'Red'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIRedButtonAutomationId, uIRedButton.AutomationId);
-
-            // Verify that the 'AutomationId' property of 'Grey' button equals 'Grey'
-            Assert.AreEqual(this.ColorButtonsAssertionExpectedValues.UIGreyButtonAutomationId, uIGreyButton.AutomationId);
-        }
-        
-        /// <summary>
-        /// FinishingUp
-        /// </summary>
-        public void FinishingUp()
-        {
-            #region Variable Declarations
-            WpfButton uIYellowButton = this.UIColorsWindow.UIYellowButton;
-            WpfButton uIDelButton = this.UINoteViewWindow.UIDelButton;
-            #endregion
-
-            // Click 'Yellow' button
-            Mouse.Click(uIYellowButton, new Point(25, 51));
-
-            // Click 'Del' button
-            Mouse.Click(uIDelButton, new Point(39, 63));
-        }
-        
-        /// <summary>
-        /// ListBoxAssertion - Use 'ListBoxAssertionExpectedValues' to pass parameters into this method.
-        /// </summary>
-        public void ListBoxAssertion()
-        {
-            #region Variable Declarations
-            WpfList uINoteListBoxList = this.UIMainWindowWindow.UINoteListBoxList;
-            #endregion
-
-            // Verify that the 'Enabled' property of 'NoteListBox' list box equals 'True'
-            Assert.AreEqual(this.ListBoxAssertionExpectedValues.UINoteListBoxListEnabled, uINoteListBoxList.Enabled);
-
-            // Verify that the 'FriendlyName' property of 'NoteListBox' list box equals 'NoteListBox'
-            Assert.AreEqual(this.ListBoxAssertionExpectedValues.UINoteListBoxListFriendlyName, uINoteListBoxList.FriendlyName);
-        }
-        
-        /// <summary>
-        /// OpeningTheFile
-        /// </summary>
-        public void OpeningTheFile()
-        {
-            #region Variable Declarations
-            WinTreeItem uIThisPCTreeItem = this.UIFileExplorerWindow.UITreeViewWindow.UIDesktopTreeItem.UIThisPCTreeItem;
-            WinEdit uIAvailablespaceEdit = this.UIFileExplorerWindow.UIItemWindow.UILocalDiskCListItem.UIAvailablespaceEdit;
-            WinEdit uINameEdit = this.UIFileExplorerWindow.UIItemWindow1.UIUsersListItem.UINameEdit;
-            WinEdit uINameEdit1 = this.UIFileExplorerWindow.UIItemWindow2.UIPooyaListItem.UINameEdit;
-            WinEdit uINameEdit2 = this.UIFileExplorerWindow.UIItemWindow3.UIDocumentsListItem.UINameEdit;
-            WinEdit uINameEdit3 = this.UIFileExplorerWindow.UIItemWindow4.UIAPClassMainListItem.UINameEdit;
-            WinEdit uINameEdit4 = this.UIFileExplorerWindow.UIItemWindow5.UIFinalProjectListItem.UINameEdit;
-            WinEdit uINameEdit5 = this.UIFileExplorerWindow.UIItemWindow6.UIUIListItem.UINameEdit;
-            WinEdit uINameEdit6 = this.UIFileExplorerWindow.UIItemWindow7.UIUIListItem.UINameEdit;
-            WinEdit uINameEdit7 = this.UIFileExplorerWindow.UIItemWindow8.UIBinListItem.UINameEdit;
-            WinEdit uINameEdit8 = this.UIFileExplorerWindow.UIItemWindow9.UIDebugListItem.UINameEdit;
-            WinEdit uINameEdit9 = this.UIFileExplorerWindow.UIItemWindow10.UIUIListItem.UINameEdit;
-            #endregion
-
-            // To test Windows Store apps, use the Coded UI Test project template for Windows Store apps under the Windows Store node.
-
-            // To test Windows Store apps, use the Coded UI Test project template for Windows Store apps under the Windows Store node.
-
-            // To test Windows Store apps, use the Coded UI Test project template for Windows Store apps under the Windows Store node.
-
-            // Click 'Desktop' -> 'This PC' tree item
-            Mouse.Click(uIThisPCTreeItem, new Point(68, 24));
-
-            // Double-Click 'Available space' text box
-            Mouse.DoubleClick(uIAvailablespaceEdit, new Point(65, 20));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit, new Point(123, 22));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit1, new Point(101, 32));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit2, new Point(71, 14));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit3, new Point(87, 30));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit4, new Point(87, 30));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit5, new Point(87, 30));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit6, new Point(19, 24));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit7, new Point(87, 24));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit8, new Point(87, 24));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit9, new Point(149, 12));
+            Assert.AreEqual(this.AssertMethod2ExpectedValues.UIFullTextBoxEditFont, uIFullTextBoxEdit.Font);
         }
         
         #region Properties
-        public virtual Assertion1ExpectedValues Assertion1ExpectedValues
+        public virtual AssertMethod1ExpectedValues AssertMethod1ExpectedValues
         {
             get
             {
-                if ((this.mAssertion1ExpectedValues == null))
+                if ((this.mAssertMethod1ExpectedValues == null))
                 {
-                    this.mAssertion1ExpectedValues = new Assertion1ExpectedValues();
+                    this.mAssertMethod1ExpectedValues = new AssertMethod1ExpectedValues();
                 }
-                return this.mAssertion1ExpectedValues;
+                return this.mAssertMethod1ExpectedValues;
             }
         }
         
-        public virtual ColorButtonsAssertionExpectedValues ColorButtonsAssertionExpectedValues
+        public virtual AssertMethod2ExpectedValues AssertMethod2ExpectedValues
         {
             get
             {
-                if ((this.mColorButtonsAssertionExpectedValues == null))
+                if ((this.mAssertMethod2ExpectedValues == null))
                 {
-                    this.mColorButtonsAssertionExpectedValues = new ColorButtonsAssertionExpectedValues();
+                    this.mAssertMethod2ExpectedValues = new AssertMethod2ExpectedValues();
                 }
-                return this.mColorButtonsAssertionExpectedValues;
-            }
-        }
-        
-        public virtual ListBoxAssertionExpectedValues ListBoxAssertionExpectedValues
-        {
-            get
-            {
-                if ((this.mListBoxAssertionExpectedValues == null))
-                {
-                    this.mListBoxAssertionExpectedValues = new ListBoxAssertionExpectedValues();
-                }
-                return this.mListBoxAssertionExpectedValues;
+                return this.mAssertMethod2ExpectedValues;
             }
         }
         
@@ -442,14 +245,24 @@ namespace UITest
                 return this.mUIFileExplorerWindow;
             }
         }
+        
+        public UIItemWindow11 UIItemWindow
+        {
+            get
+            {
+                if ((this.mUIItemWindow == null))
+                {
+                    this.mUIItemWindow = new UIItemWindow11();
+                }
+                return this.mUIItemWindow;
+            }
+        }
         #endregion
         
         #region Fields
-        private Assertion1ExpectedValues mAssertion1ExpectedValues;
+        private AssertMethod1ExpectedValues mAssertMethod1ExpectedValues;
         
-        private ColorButtonsAssertionExpectedValues mColorButtonsAssertionExpectedValues;
-        
-        private ListBoxAssertionExpectedValues mListBoxAssertionExpectedValues;
+        private AssertMethod2ExpectedValues mAssertMethod2ExpectedValues;
         
         private UIMainWindowWindow mUIMainWindowWindow;
         
@@ -458,26 +271,23 @@ namespace UITest
         private UIColorsWindow mUIColorsWindow;
         
         private UIFileExplorerWindow mUIFileExplorerWindow;
+        
+        private UIItemWindow11 mUIItemWindow;
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'Assertion1'
+    /// Parameters to be passed into 'AssertMethod1'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class Assertion1ExpectedValues
+    public class AssertMethod1ExpectedValues
     {
         
         #region Fields
         /// <summary>
-        /// Verify that the 'AutomationId' property of 'FullTextBox' text box equals 'FullTextBox'
+        /// Verify that the 'Text' property of 'TitleBox' text box equals 'Title Goes Here'
         /// </summary>
-        public string UIFullTextBoxEditAutomationId = "FullTextBox";
-        
-        /// <summary>
-        /// Verify that the 'Font' property of 'FullTextBox' text box equals 'Segoe UI'
-        /// </summary>
-        public string UIFullTextBoxEditFont = "Segoe UI";
+        public string UITitleBoxEditText = "Title Goes Here";
         
         /// <summary>
         /// Verify that the 'Text' property of 'FullTextBox' text box equals 'Full Note Text Goes Here'
@@ -485,204 +295,24 @@ namespace UITest
         public string UIFullTextBoxEditText = "Full Note Text Goes Here";
         
         /// <summary>
-        /// Verify that the 'Height' property of 'FullTextBox' text box equals '708'
+        /// Verify that the 'ControlType' property of '...' button equals 'Button'
         /// </summary>
-        public int UIFullTextBoxEditHeight = 708;
-        
-        /// <summary>
-        /// Verify that the 'Width' property of 'FullTextBox' text box equals '890'
-        /// </summary>
-        public int UIFullTextBoxEditWidth = 890;
-        
-        /// <summary>
-        /// Verify that the 'Font' property of 'TitleBox' text box equals 'Segoe UI'
-        /// </summary>
-        public string UITitleBoxEditFont = "Segoe UI";
-        
-        /// <summary>
-        /// Verify that the 'AutomationId' property of 'TitleBox' text box equals 'TitleBox'
-        /// </summary>
-        public string UITitleBoxEditAutomationId = "TitleBox";
-        
-        /// <summary>
-        /// Verify that the 'Text' property of 'TitleBox' text box equals 'Title Goes Here'
-        /// </summary>
-        public string UITitleBoxEditText = "Title Goes Here";
-        
-        /// <summary>
-        /// Verify that the 'Height' property of 'TitleBox' text box equals '82'
-        /// </summary>
-        public int UITitleBoxEditHeight = 82;
-        
-        /// <summary>
-        /// Verify that the 'Width' property of 'TitleBox' text box equals '712'
-        /// </summary>
-        public int UITitleBoxEditWidth = 712;
-        
-        /// <summary>
-        /// Verify that the 'FriendlyName' property of '+' button equals '+'
-        /// </summary>
-        public string UIItemButtonFriendlyName = "+";
-        
-        /// <summary>
-        /// Verify that the 'Enabled' property of '+' button equals 'True'
-        /// </summary>
-        public bool UIItemButtonEnabled = true;
-        
-        /// <summary>
-        /// Verify that the 'Height' property of '+' button equals '82'
-        /// </summary>
-        public int UIItemButtonHeight = 82;
-        
-        /// <summary>
-        /// Verify that the 'Width' property of '+' button equals '80'
-        /// </summary>
-        public int UIItemButtonWidth = 80;
-        
-        /// <summary>
-        /// Verify that the 'DisplayText' property of '+' button equals '+'
-        /// </summary>
-        public string UIItemButtonDisplayText = "+";
-        
-        /// <summary>
-        /// Verify that the 'DisplayText' property of '...' button equals '...'
-        /// </summary>
-        public string UIItemButton1DisplayText = "...";
-        
-        /// <summary>
-        /// Verify that the 'Enabled' property of '...' button equals 'True'
-        /// </summary>
-        public bool UIItemButton1Enabled = true;
-        
-        /// <summary>
-        /// Verify that the 'Height' property of '...' button equals '82'
-        /// </summary>
-        public int UIItemButton1Height = 82;
-        
-        /// <summary>
-        /// Verify that the 'Width' property of '...' button equals '80'
-        /// </summary>
-        public int UIItemButton1Width = 80;
-        
-        /// <summary>
-        /// Verify that the 'FriendlyName' property of 'Del' button equals 'Del'
-        /// </summary>
-        public string UIDelButtonFriendlyName = "Del";
-        
-        /// <summary>
-        /// Verify that the 'Name' property of 'Del' button equals 'Del'
-        /// </summary>
-        public string UIDelButtonName = "Del";
-        
-        /// <summary>
-        /// Verify that the 'Enabled' property of 'Del' button equals 'True'
-        /// </summary>
-        public bool UIDelButtonEnabled = true;
-        
-        /// <summary>
-        /// Verify that the 'Height' property of 'Del' button equals '80'
-        /// </summary>
-        public int UIDelButtonHeight = 80;
-        
-        /// <summary>
-        /// Verify that the 'Width' property of 'Del' button equals '80'
-        /// </summary>
-        public int UIDelButtonWidth = 80;
+        public string UIItemButton1ControlType = "Button";
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'ColorButtonsAssertion'
+    /// Parameters to be passed into 'AssertMethod2'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class ColorButtonsAssertionExpectedValues
+    public class AssertMethod2ExpectedValues
     {
         
         #region Fields
         /// <summary>
-        /// Verify that the 'FriendlyName' property of 'Yellow' button equals 'Yellow'
+        /// Verify that the 'Font' property of 'FullTextBox' text box equals 'Segoe UI'
         /// </summary>
-        public string UIYellowButtonFriendlyName = "Yellow";
-        
-        /// <summary>
-        /// Verify that the 'Enabled' property of 'Yellow' button equals 'True'
-        /// </summary>
-        public bool UIYellowButtonEnabled = true;
-        
-        /// <summary>
-        /// Verify that the 'Height' property of 'Yellow' button equals '114'
-        /// </summary>
-        public int UIYellowButtonHeight = 114;
-        
-        /// <summary>
-        /// Verify that the 'Width' property of 'Yellow' button equals '128'
-        /// </summary>
-        public int UIYellowButtonWidth = 128;
-        
-        /// <summary>
-        /// Verify that the 'Height' property of 'Green' button equals '114'
-        /// </summary>
-        public int UIGreenButtonHeight = 114;
-        
-        /// <summary>
-        /// Verify that the 'Width' property of 'Green' button equals '128'
-        /// </summary>
-        public int UIGreenButtonWidth = 128;
-        
-        /// <summary>
-        /// Verify that the 'Enabled' property of 'Green' button equals 'True'
-        /// </summary>
-        public bool UIGreenButtonEnabled = true;
-        
-        /// <summary>
-        /// Verify that the 'FriendlyName' property of 'Green' button equals 'Green'
-        /// </summary>
-        public string UIGreenButtonFriendlyName = "Green";
-        
-        /// <summary>
-        /// Verify that the 'AutomationId' property of 'Pink' button equals 'Pink'
-        /// </summary>
-        public string UIPinkButtonAutomationId = "Pink";
-        
-        /// <summary>
-        /// Verify that the 'AutomationId' property of 'Blue' button equals 'Blue'
-        /// </summary>
-        public string UIBlueButtonAutomationId = "Blue";
-        
-        /// <summary>
-        /// Verify that the 'AutomationId' property of 'Violet' button equals 'Violet'
-        /// </summary>
-        public string UIVioletButtonAutomationId = "Violet";
-        
-        /// <summary>
-        /// Verify that the 'AutomationId' property of 'Red' button equals 'Red'
-        /// </summary>
-        public string UIRedButtonAutomationId = "Red";
-        
-        /// <summary>
-        /// Verify that the 'AutomationId' property of 'Grey' button equals 'Grey'
-        /// </summary>
-        public string UIGreyButtonAutomationId = "Grey";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'ListBoxAssertion'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class ListBoxAssertionExpectedValues
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Verify that the 'Enabled' property of 'NoteListBox' list box equals 'True'
-        /// </summary>
-        public bool UINoteListBoxListEnabled = true;
-        
-        /// <summary>
-        /// Verify that the 'FriendlyName' property of 'NoteListBox' list box equals 'NoteListBox'
-        /// </summary>
-        public string UINoteListBoxListFriendlyName = "NoteListBox";
+        public string UIFullTextBoxEditFont = "Segoe UI";
         #endregion
     }
     
@@ -765,10 +395,28 @@ namespace UITest
                 return this.mUITitleGoesHereListItem;
             }
         }
+        
+        public WpfListItem UITitleGoesHereListItem1
+        {
+            get
+            {
+                if ((this.mUITitleGoesHereListItem1 == null))
+                {
+                    this.mUITitleGoesHereListItem1 = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUITitleGoesHereListItem1.SearchProperties[WpfListItem.PropertyNames.Name] = "Title Goes Here";
+                    this.mUITitleGoesHereListItem1.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUITitleGoesHereListItem1;
+            }
+        }
         #endregion
         
         #region Fields
         private WpfListItem mUITitleGoesHereListItem;
+        
+        private WpfListItem mUITitleGoesHereListItem1;
         #endregion
     }
     
@@ -865,6 +513,22 @@ namespace UITest
                 return this.mUIDelButton;
             }
         }
+        
+        public WpfButton UIItemButton11
+        {
+            get
+            {
+                if ((this.mUIItemButton11 == null))
+                {
+                    this.mUIItemButton11 = new WpfButton(this);
+                    #region Search Criteria
+                    this.mUIItemButton11.SearchProperties[WpfButton.PropertyNames.AutomationId] = "AddNoteBtn";
+                    this.mUIItemButton11.WindowTitles.Add("NoteView");
+                    #endregion
+                }
+                return this.mUIItemButton11;
+            }
+        }
         #endregion
         
         #region Fields
@@ -877,6 +541,8 @@ namespace UITest
         private WpfButton mUIItemButton1;
         
         private WpfButton mUIDelButton;
+        
+        private WpfButton mUIItemButton11;
         #endregion
     }
     
@@ -2049,5 +1715,18 @@ namespace UITest
         #region Fields
         private WinEdit mUINameEdit;
         #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIItemWindow11 : WinWindow
+    {
+        
+        public UIItemWindow11()
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.AccessibleName] = "Desktop 1";
+            this.SearchProperties[WinWindow.PropertyNames.ClassName] = "#32769";
+            #endregion
+        }
     }
 }

@@ -63,9 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="Migrations\201807161224401_db.cs" />
-    <Compile Include="Migrations\201807161224401_db.Designer.cs">
-      <DependentUpon>201807161224401_db.cs</DependentUpon>
+    <Compile Include="Migrations\201807181128231_migration1.cs" />
+    <Compile Include="Migrations\201807181128231_migration1.Designer.cs">
+      <DependentUpon>201807181128231_migration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NoteRepository.cs" />
@@ -94,17 +94,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NoteBase.mdf">
+    <Content Include="Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="NoteBase_log.ldf">
+    <Content Include="Database_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>NoteBase.mdf</DependentUpon>
+      <DependentUpon>Database.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807161224401_db.resx">
-      <DependentUpon>201807161224401_db.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807181128231_migration1.resx">
+      <DependentUpon>201807181128231_migration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

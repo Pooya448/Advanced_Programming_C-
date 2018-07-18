@@ -46,7 +46,9 @@ namespace UI
             InitializeComponent();
             Logic = new NoteLogic();
             UpdateListBox(Logic.ReadAll());
-            
+            string startupPath = System.IO.Directory.GetCurrentDirectory();
+            Console.WriteLine(startupPath);
+
         }
 
         private void AddNoteBtn_Click(object sender, RoutedEventArgs e)

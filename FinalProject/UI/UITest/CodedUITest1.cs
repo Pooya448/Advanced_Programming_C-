@@ -26,13 +26,15 @@ namespace UITest
         public void CodedUITestMethod1()
         {
 
-            this.UIMap.ListBoxAssertion();
+            this.UIMap.OpeningTheFile();
+
             // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
             this.UIMap.PlusButton1();
             this.UIMap.Assertion1();
             this.UIMap.NoteViewTested();
             this.UIMap.ColorButtonsAssertion();
             this.UIMap.FinishingUp();
+            this.UIMap.ListBoxAssertion();
         }
 
         #region Additional test attributes

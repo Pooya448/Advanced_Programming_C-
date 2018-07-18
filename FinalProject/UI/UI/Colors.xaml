@@ -1,0 +1,21 @@
+﻿<Window x:Class="UI.Colors"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        Title="Colors" Height="62" Width="450" WindowStyle="None">
+    <Grid>
+        <Button Click="Yellow_Click" Name="Yellow" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="57" Background="#FFB901" BorderBrush="{x:Null}" Foreground="{x:Null}"  />
+        <Button Click="Green_Click" Name="Green" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="57" Background="#118905" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="64,0,0,0"  />
+        <Button Click="Pink_Click" Name="Pink" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="57" Background="#D901A9" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="126,0,0,0"  />
+        <Button Click="Blue_Click" Name="Blue" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="57" Background="#0179D7" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="189,0,0,0"  />
+        <Button Click="Violet_Click" Name="Violet" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="57" Background="#5D249B" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="253,0,0,0"  />
+        <Button Click="Red_Click" Name="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="57" Background="#FFF10E4C" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="317,0,0,0"  />
+        <Button Click="Grey_Click" Name="Grey" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="57" Background="#777777" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="381,0,0,0"  />
+
+
+
+    </Grid>
+</Window>

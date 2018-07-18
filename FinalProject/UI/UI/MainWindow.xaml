@@ -1,0 +1,25 @@
+﻿<Window x:Class="UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="450" WindowStyle="None" WindowStartupLocation="CenterOwner"  >
+    <Grid>
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="445" Background="#FFB901">
+            <Button Click="AddNoteBtn_Click" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" x:Name="AddNoteBtn" Height="41" Background="#FFB901" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="0" BorderBrush="{x:Null}"/>
+
+           
+        </Grid>
+        <Grid Name="TextGrid" HorizontalAlignment="Left" Height="354" Margin="0,41,0,0" VerticalAlignment="Top" Width="445" Background="#FFF2B5">
+            <ListBox FontSize="15" SelectionChanged="NoteListBox_SelectionChanged" HorizontalAlignment="Left" Height="354" VerticalAlignment="Top" Width="445" Name="NoteListBox" Background="{x:Null}" BorderBrush="{x:Null}" />
+
+        </Grid>
+
+
+    </Grid>
+</Window>

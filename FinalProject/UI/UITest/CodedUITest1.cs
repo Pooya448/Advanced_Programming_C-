@@ -26,6 +26,8 @@ namespace UITest
         public void CodedUITestMethod1()
         {
 
+            this.UIMap.opened();
+
             this.UIMap.RecordedMethod1();
             this.UIMap.AssertMethod1();
             this.UIMap.RecordedMethod2();

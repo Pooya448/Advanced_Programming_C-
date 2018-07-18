@@ -173,6 +173,49 @@ namespace UITest
             Assert.AreEqual(this.AssertMethod2ExpectedValues.UIFullTextBoxEditFont, uIFullTextBoxEdit.Font);
         }
         
+        /// <summary>
+        /// opened
+        /// </summary>
+        public void opened()
+        {
+            #region Variable Declarations
+            WinTreeItem uIDocumentspinnedTreeItem = this.UIFileExplorerWindow.UITreeViewWindow.UIQuickaccessTreeItem.UIDocumentspinnedTreeItem;
+            WinEdit uINameEdit = this.UIFileExplorerWindow.UIItemWindow.UIAPClassMainListItem.UINameEdit;
+            WinEdit uINameEdit1 = this.UIFileExplorerWindow.UIItemWindow1.UIFinalProjectListItem.UINameEdit;
+            WinEdit uINameEdit2 = this.UIFileExplorerWindow.UIItemWindow2.UIUIListItem.UINameEdit;
+            WinEdit uINameEdit3 = this.UIFileExplorerWindow.UIItemWindow3.UIUIListItem.UINameEdit;
+            WinEdit uINameEdit4 = this.UIFileExplorerWindow.UIItemWindow4.UIBinListItem.UINameEdit;
+            WinEdit uINameEdit5 = this.UIFileExplorerWindow.UIItemWindow5.UIDebugListItem.UINameEdit;
+            WinEdit uINameEdit6 = this.UIFileExplorerWindow.UIItemWindow6.UIUIListItem.UINameEdit;
+            #endregion
+
+            // Click 'Quick access' -> 'Documents (pinned)' tree item
+            Mouse.Click(uIDocumentspinnedTreeItem, new Point(70, 24));
+
+            // Double-Click 'Name' text box
+            Mouse.DoubleClick(uINameEdit, new Point(193, 22));
+
+            // Double-Click 'Name' text box
+            Mouse.DoubleClick(uINameEdit1, new Point(193, 22));
+
+            // Double-Click 'Name' text box
+            Mouse.DoubleClick(uINameEdit2, new Point(193, 22));
+
+            // Double-Click 'Name' text box
+            Mouse.DoubleClick(uINameEdit3, new Point(167, 6));
+
+            // Double-Click 'Name' text box
+            Mouse.DoubleClick(uINameEdit4, new Point(151, 16));
+
+            // Element not available
+
+            // Double-Click 'Name' text box
+            Mouse.DoubleClick(uINameEdit5, new Point(151, 16));
+
+            // Double-Click 'Name' text box
+            Mouse.DoubleClick(uINameEdit6, new Point(169, 14));
+        }
+        
         #region Properties
         public virtual AssertMethod1ExpectedValues AssertMethod1ExpectedValues
         {
@@ -911,10 +954,24 @@ namespace UITest
                 return this.mUIDesktopTreeItem;
             }
         }
+        
+        public UIQuickaccessTreeItem UIQuickaccessTreeItem
+        {
+            get
+            {
+                if ((this.mUIQuickaccessTreeItem == null))
+                {
+                    this.mUIQuickaccessTreeItem = new UIQuickaccessTreeItem(this);
+                }
+                return this.mUIQuickaccessTreeItem;
+            }
+        }
         #endregion
         
         #region Fields
         private UIDesktopTreeItem mUIDesktopTreeItem;
+        
+        private UIQuickaccessTreeItem mUIQuickaccessTreeItem;
         #endregion
     }
     
@@ -959,6 +1016,46 @@ namespace UITest
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIQuickaccessTreeItem : WinTreeItem
+    {
+        
+        public UIQuickaccessTreeItem(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinTreeItem.PropertyNames.Name] = "Quick access";
+            this.SearchProperties["Value"] = "0";
+            this.WindowTitles.Add("File Explorer");
+            #endregion
+        }
+        
+        #region Properties
+        public WinTreeItem UIDocumentspinnedTreeItem
+        {
+            get
+            {
+                if ((this.mUIDocumentspinnedTreeItem == null))
+                {
+                    this.mUIDocumentspinnedTreeItem = new WinTreeItem(this);
+                    #region Search Criteria
+                    this.mUIDocumentspinnedTreeItem.SearchProperties[WinTreeItem.PropertyNames.Name] = "Documents (pinned)";
+                    this.mUIDocumentspinnedTreeItem.SearchProperties["Value"] = "1";
+                    this.mUIDocumentspinnedTreeItem.SearchConfigurations.Add(SearchConfiguration.ExpandWhileSearching);
+                    this.mUIDocumentspinnedTreeItem.SearchConfigurations.Add(SearchConfiguration.NextSibling);
+                    this.mUIDocumentspinnedTreeItem.WindowTitles.Add("File Explorer");
+                    #endregion
+                }
+                return this.mUIDocumentspinnedTreeItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinTreeItem mUIDocumentspinnedTreeItem;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
     public class UIItemWindow : WinWindow
     {
         
@@ -969,6 +1066,7 @@ namespace UITest
             this.SearchProperties[WinWindow.PropertyNames.AccessibleName] = "Items View";
             this.SearchProperties[WinWindow.PropertyNames.ClassName] = "DirectUIHWND";
             this.WindowTitles.Add("This PC");
+            this.WindowTitles.Add("Documents");
             #endregion
         }
         
@@ -984,10 +1082,24 @@ namespace UITest
                 return this.mUILocalDiskCListItem;
             }
         }
+        
+        public UIAPClassMainListItem UIAPClassMainListItem
+        {
+            get
+            {
+                if ((this.mUIAPClassMainListItem == null))
+                {
+                    this.mUIAPClassMainListItem = new UIAPClassMainListItem(this);
+                }
+                return this.mUIAPClassMainListItem;
+            }
+        }
         #endregion
         
         #region Fields
         private UILocalDiskCListItem mUILocalDiskCListItem;
+        
+        private UIAPClassMainListItem mUIAPClassMainListItem;
         #endregion
     }
     
@@ -1028,6 +1140,42 @@ namespace UITest
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIAPClassMainListItem : WinListItem
+    {
+        
+        public UIAPClassMainListItem(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinListItem.PropertyNames.Name] = "APClassMain";
+            this.WindowTitles.Add("Documents");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UINameEdit
+        {
+            get
+            {
+                if ((this.mUINameEdit == null))
+                {
+                    this.mUINameEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUINameEdit.SearchProperties[WinEdit.PropertyNames.Name] = "Name";
+                    this.mUINameEdit.WindowTitles.Add("Documents");
+                    #endregion
+                }
+                return this.mUINameEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUINameEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
     public class UIItemWindow1 : WinWindow
     {
         
@@ -1038,6 +1186,7 @@ namespace UITest
             this.SearchProperties[WinWindow.PropertyNames.AccessibleName] = "Items View";
             this.SearchProperties[WinWindow.PropertyNames.ClassName] = "DirectUIHWND";
             this.WindowTitles.Add("Local Disk (C:)");
+            this.WindowTitles.Add("APClassMain");
             #endregion
         }
         
@@ -1053,10 +1202,24 @@ namespace UITest
                 return this.mUIUsersListItem;
             }
         }
+        
+        public UIFinalProjectListItem UIFinalProjectListItem
+        {
+            get
+            {
+                if ((this.mUIFinalProjectListItem == null))
+                {
+                    this.mUIFinalProjectListItem = new UIFinalProjectListItem(this);
+                }
+                return this.mUIFinalProjectListItem;
+            }
+        }
         #endregion
         
         #region Fields
         private UIUsersListItem mUIUsersListItem;
+        
+        private UIFinalProjectListItem mUIFinalProjectListItem;
         #endregion
     }
     
@@ -1097,6 +1260,42 @@ namespace UITest
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIFinalProjectListItem : WinListItem
+    {
+        
+        public UIFinalProjectListItem(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinListItem.PropertyNames.Name] = "FinalProject";
+            this.WindowTitles.Add("APClassMain");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UINameEdit
+        {
+            get
+            {
+                if ((this.mUINameEdit == null))
+                {
+                    this.mUINameEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUINameEdit.SearchProperties[WinEdit.PropertyNames.Name] = "Name";
+                    this.mUINameEdit.WindowTitles.Add("APClassMain");
+                    #endregion
+                }
+                return this.mUINameEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUINameEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
     public class UIItemWindow2 : WinWindow
     {
         
@@ -1107,6 +1306,7 @@ namespace UITest
             this.SearchProperties[WinWindow.PropertyNames.AccessibleName] = "Items View";
             this.SearchProperties[WinWindow.PropertyNames.ClassName] = "DirectUIHWND";
             this.WindowTitles.Add("Users");
+            this.WindowTitles.Add("FinalProject");
             #endregion
         }
         
@@ -1122,10 +1322,24 @@ namespace UITest
                 return this.mUIPooyaListItem;
             }
         }
+        
+        public UIUIListItem UIUIListItem
+        {
+            get
+            {
+                if ((this.mUIUIListItem == null))
+                {
+                    this.mUIUIListItem = new UIUIListItem(this);
+                }
+                return this.mUIUIListItem;
+            }
+        }
         #endregion
         
         #region Fields
         private UIPooyaListItem mUIPooyaListItem;
+        
+        private UIUIListItem mUIUIListItem;
         #endregion
     }
     
@@ -1166,6 +1380,42 @@ namespace UITest
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIUIListItem : WinListItem
+    {
+        
+        public UIUIListItem(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinListItem.PropertyNames.Name] = "UI";
+            this.WindowTitles.Add("FinalProject");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UINameEdit
+        {
+            get
+            {
+                if ((this.mUINameEdit == null))
+                {
+                    this.mUINameEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUINameEdit.SearchProperties[WinEdit.PropertyNames.Name] = "Name";
+                    this.mUINameEdit.WindowTitles.Add("FinalProject");
+                    #endregion
+                }
+                return this.mUINameEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUINameEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
     public class UIItemWindow3 : WinWindow
     {
         
@@ -1176,6 +1426,7 @@ namespace UITest
             this.SearchProperties[WinWindow.PropertyNames.AccessibleName] = "Items View";
             this.SearchProperties[WinWindow.PropertyNames.ClassName] = "DirectUIHWND";
             this.WindowTitles.Add("pooya");
+            this.WindowTitles.Add("UI");
             #endregion
         }
         
@@ -1191,10 +1442,24 @@ namespace UITest
                 return this.mUIDocumentsListItem;
             }
         }
+        
+        public UIUIListItem1 UIUIListItem
+        {
+            get
+            {
+                if ((this.mUIUIListItem == null))
+                {
+                    this.mUIUIListItem = new UIUIListItem1(this);
+                }
+                return this.mUIUIListItem;
+            }
+        }
         #endregion
         
         #region Fields
         private UIDocumentsListItem mUIDocumentsListItem;
+        
+        private UIUIListItem1 mUIUIListItem;
         #endregion
     }
     
@@ -1235,6 +1500,42 @@ namespace UITest
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIUIListItem1 : WinListItem
+    {
+        
+        public UIUIListItem1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinListItem.PropertyNames.Name] = "UI";
+            this.WindowTitles.Add("UI");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UINameEdit
+        {
+            get
+            {
+                if ((this.mUINameEdit == null))
+                {
+                    this.mUINameEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUINameEdit.SearchProperties[WinEdit.PropertyNames.Name] = "Name";
+                    this.mUINameEdit.WindowTitles.Add("UI");
+                    #endregion
+                }
+                return this.mUINameEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUINameEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
     public class UIItemWindow4 : WinWindow
     {
         
@@ -1245,33 +1546,48 @@ namespace UITest
             this.SearchProperties[WinWindow.PropertyNames.AccessibleName] = "Items View";
             this.SearchProperties[WinWindow.PropertyNames.ClassName] = "DirectUIHWND";
             this.WindowTitles.Add("Documents");
+            this.WindowTitles.Add("UI");
             #endregion
         }
         
         #region Properties
-        public UIAPClassMainListItem UIAPClassMainListItem
+        public UIAPClassMainListItem1 UIAPClassMainListItem
         {
             get
             {
                 if ((this.mUIAPClassMainListItem == null))
                 {
-                    this.mUIAPClassMainListItem = new UIAPClassMainListItem(this);
+                    this.mUIAPClassMainListItem = new UIAPClassMainListItem1(this);
                 }
                 return this.mUIAPClassMainListItem;
+            }
+        }
+        
+        public UIBinListItem UIBinListItem
+        {
+            get
+            {
+                if ((this.mUIBinListItem == null))
+                {
+                    this.mUIBinListItem = new UIBinListItem(this);
+                }
+                return this.mUIBinListItem;
             }
         }
         #endregion
         
         #region Fields
-        private UIAPClassMainListItem mUIAPClassMainListItem;
+        private UIAPClassMainListItem1 mUIAPClassMainListItem;
+        
+        private UIBinListItem mUIBinListItem;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class UIAPClassMainListItem : WinListItem
+    public class UIAPClassMainListItem1 : WinListItem
     {
         
-        public UIAPClassMainListItem(UITestControl searchLimitContainer) : 
+        public UIAPClassMainListItem1(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -1304,6 +1620,42 @@ namespace UITest
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIBinListItem : WinListItem
+    {
+        
+        public UIBinListItem(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinListItem.PropertyNames.Name] = "bin";
+            this.WindowTitles.Add("UI");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UINameEdit
+        {
+            get
+            {
+                if ((this.mUINameEdit == null))
+                {
+                    this.mUINameEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUINameEdit.SearchProperties[WinEdit.PropertyNames.Name] = "Name";
+                    this.mUINameEdit.WindowTitles.Add("UI");
+                    #endregion
+                }
+                return this.mUINameEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUINameEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
     public class UIItemWindow5 : WinWindow
     {
         
@@ -1314,33 +1666,48 @@ namespace UITest
             this.SearchProperties[WinWindow.PropertyNames.AccessibleName] = "Items View";
             this.SearchProperties[WinWindow.PropertyNames.ClassName] = "DirectUIHWND";
             this.WindowTitles.Add("APClassMain");
+            this.WindowTitles.Add("bin");
             #endregion
         }
         
         #region Properties
-        public UIFinalProjectListItem UIFinalProjectListItem
+        public UIFinalProjectListItem1 UIFinalProjectListItem
         {
             get
             {
                 if ((this.mUIFinalProjectListItem == null))
                 {
-                    this.mUIFinalProjectListItem = new UIFinalProjectListItem(this);
+                    this.mUIFinalProjectListItem = new UIFinalProjectListItem1(this);
                 }
                 return this.mUIFinalProjectListItem;
+            }
+        }
+        
+        public UIDebugListItem UIDebugListItem
+        {
+            get
+            {
+                if ((this.mUIDebugListItem == null))
+                {
+                    this.mUIDebugListItem = new UIDebugListItem(this);
+                }
+                return this.mUIDebugListItem;
             }
         }
         #endregion
         
         #region Fields
-        private UIFinalProjectListItem mUIFinalProjectListItem;
+        private UIFinalProjectListItem1 mUIFinalProjectListItem;
+        
+        private UIDebugListItem mUIDebugListItem;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class UIFinalProjectListItem : WinListItem
+    public class UIFinalProjectListItem1 : WinListItem
     {
         
-        public UIFinalProjectListItem(UITestControl searchLimitContainer) : 
+        public UIFinalProjectListItem1(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -1373,6 +1740,42 @@ namespace UITest
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIDebugListItem : WinListItem
+    {
+        
+        public UIDebugListItem(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinListItem.PropertyNames.Name] = "Debug";
+            this.WindowTitles.Add("bin");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UINameEdit
+        {
+            get
+            {
+                if ((this.mUINameEdit == null))
+                {
+                    this.mUINameEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUINameEdit.SearchProperties[WinEdit.PropertyNames.Name] = "Name";
+                    this.mUINameEdit.WindowTitles.Add("bin");
+                    #endregion
+                }
+                return this.mUINameEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUINameEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
     public class UIItemWindow6 : WinWindow
     {
         
@@ -1387,13 +1790,13 @@ namespace UITest
         }
         
         #region Properties
-        public UIUIListItem UIUIListItem
+        public UIUIListItem2 UIUIListItem
         {
             get
             {
                 if ((this.mUIUIListItem == null))
                 {
-                    this.mUIUIListItem = new UIUIListItem(this);
+                    this.mUIUIListItem = new UIUIListItem2(this);
                 }
                 return this.mUIUIListItem;
             }
@@ -1401,15 +1804,15 @@ namespace UITest
         #endregion
         
         #region Fields
-        private UIUIListItem mUIUIListItem;
+        private UIUIListItem2 mUIUIListItem;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class UIUIListItem : WinListItem
+    public class UIUIListItem2 : WinListItem
     {
         
-        public UIUIListItem(UITestControl searchLimitContainer) : 
+        public UIUIListItem2(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -1456,13 +1859,13 @@ namespace UITest
         }
         
         #region Properties
-        public UIUIListItem1 UIUIListItem
+        public UIUIListItem3 UIUIListItem
         {
             get
             {
                 if ((this.mUIUIListItem == null))
                 {
-                    this.mUIUIListItem = new UIUIListItem1(this);
+                    this.mUIUIListItem = new UIUIListItem3(this);
                 }
                 return this.mUIUIListItem;
             }
@@ -1470,15 +1873,15 @@ namespace UITest
         #endregion
         
         #region Fields
-        private UIUIListItem1 mUIUIListItem;
+        private UIUIListItem3 mUIUIListItem;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class UIUIListItem1 : WinListItem
+    public class UIUIListItem3 : WinListItem
     {
         
-        public UIUIListItem1(UITestControl searchLimitContainer) : 
+        public UIUIListItem3(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -1525,13 +1928,13 @@ namespace UITest
         }
         
         #region Properties
-        public UIBinListItem UIBinListItem
+        public UIBinListItem1 UIBinListItem
         {
             get
             {
                 if ((this.mUIBinListItem == null))
                 {
-                    this.mUIBinListItem = new UIBinListItem(this);
+                    this.mUIBinListItem = new UIBinListItem1(this);
                 }
                 return this.mUIBinListItem;
             }
@@ -1539,15 +1942,15 @@ namespace UITest
         #endregion
         
         #region Fields
-        private UIBinListItem mUIBinListItem;
+        private UIBinListItem1 mUIBinListItem;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class UIBinListItem : WinListItem
+    public class UIBinListItem1 : WinListItem
     {
         
-        public UIBinListItem(UITestControl searchLimitContainer) : 
+        public UIBinListItem1(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -1594,13 +1997,13 @@ namespace UITest
         }
         
         #region Properties
-        public UIDebugListItem UIDebugListItem
+        public UIDebugListItem1 UIDebugListItem
         {
             get
             {
                 if ((this.mUIDebugListItem == null))
                 {
-                    this.mUIDebugListItem = new UIDebugListItem(this);
+                    this.mUIDebugListItem = new UIDebugListItem1(this);
                 }
                 return this.mUIDebugListItem;
             }
@@ -1608,15 +2011,15 @@ namespace UITest
         #endregion
         
         #region Fields
-        private UIDebugListItem mUIDebugListItem;
+        private UIDebugListItem1 mUIDebugListItem;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class UIDebugListItem : WinListItem
+    public class UIDebugListItem1 : WinListItem
     {
         
-        public UIDebugListItem(UITestControl searchLimitContainer) : 
+        public UIDebugListItem1(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria
@@ -1663,13 +2066,13 @@ namespace UITest
         }
         
         #region Properties
-        public UIUIListItem2 UIUIListItem
+        public UIUIListItem4 UIUIListItem
         {
             get
             {
                 if ((this.mUIUIListItem == null))
                 {
-                    this.mUIUIListItem = new UIUIListItem2(this);
+                    this.mUIUIListItem = new UIUIListItem4(this);
                 }
                 return this.mUIUIListItem;
             }
@@ -1677,15 +2080,15 @@ namespace UITest
         #endregion
         
         #region Fields
-        private UIUIListItem2 mUIUIListItem;
+        private UIUIListItem4 mUIUIListItem;
         #endregion
     }
     
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class UIUIListItem2 : WinListItem
+    public class UIUIListItem4 : WinListItem
     {
         
-        public UIUIListItem2(UITestControl searchLimitContainer) : 
+        public UIUIListItem4(UITestControl searchLimitContainer) : 
                 base(searchLimitContainer)
         {
             #region Search Criteria

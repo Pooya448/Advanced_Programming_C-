@@ -21,19 +21,23 @@ namespace UITest
         public CodedUITest1()
         {
         }
-
         [TestMethod]
-        public void CodedUITestMethod1()
+        public void OpenAndCloseTest()
         {
-
-            this.UIMap.opened();
-
-            this.UIMap.RecordedMethod1();
-            this.UIMap.AssertMethod1();
-            this.UIMap.RecordedMethod2();
-            this.UIMap.AssertMethod2();
+            this.UIMap.Open();
+            this.UIMap.Close();
 
         }
+        [TestMethod]
+        public void MainFunctionalityTest()
+        {
+
+            this.UIMap.Open();
+            this.UIMap.AddStoreNote();
+            this.UIMap.ColoringAfterStore();
+            this.UIMap.Close();
+        }
+        
 
         #region Additional test attributes
 

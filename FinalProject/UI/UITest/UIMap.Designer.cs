@@ -31,213 +31,203 @@ namespace UITest
     {
         
         /// <summary>
-        /// RecordedMethod1
+        /// AddStoreNote - Use 'AddStoreNoteParams' to pass parameters into this method.
         /// </summary>
-        public void RecordedMethod1()
+        public void AddStoreNote()
         {
             #region Variable Declarations
             WpfButton uIItemButton = this.UIMainWindowWindow.UIItemButton;
-            WpfButton uIItemButton1 = this.UINoteViewWindow.UIItemButton;
-            WpfListItem uITitleGoesHereListItem = this.UIMainWindowWindow.UINoteListBoxList.UITitleGoesHereListItem;
-            WpfButton uIItemButton11 = this.UINoteViewWindow.UIItemButton1;
+            WpfEdit uITitleBoxEdit = this.UINoteViewWindow.UITitleBoxEdit;
+            WpfButton uIItemButton1 = this.UINoteViewWindow.UIItemButton1;
+            WpfButton uIYellowButton = this.UIColorsWindow.UIYellowButton;
+            WpfButton uIGreenButton = this.UIColorsWindow.UIGreenButton;
+            WpfButton uIPinkButton = this.UIColorsWindow.UIPinkButton;
+            WpfButton uIBlueButton = this.UIColorsWindow.UIBlueButton;
+            WpfButton uIVioletButton = this.UIColorsWindow.UIVioletButton;
+            WpfEdit uIFullTextBoxEdit = this.UINoteViewWindow.UIFullTextBoxEdit;
+            WpfButton uIRedButton = this.UIColorsWindow.UIRedButton;
             WpfButton uIGreyButton = this.UIColorsWindow.UIGreyButton;
+            WpfButton uIItemButton2 = this.UINoteViewWindow.UIItemButton;
+            WpfListItem uITestStoreListItem = this.UIMainWindowWindow.UINoteListBoxList.UITestStoreListItem;
+            #endregion
+
+            // Click '+' button
+            Mouse.Click(uIItemButton, new Point(48, 54));
+
+            // Move 'TitleBox' text box
+            Mouse.StartDragging(uITitleBoxEdit, new Point(588, 30));
+            Mouse.StopDragging(uITitleBoxEdit, -432, 16);
+
+            // Click '...' button
+            Mouse.Click(uIItemButton1, new Point(22, 36));
+
+            // Click 'Yellow' button
+            Mouse.Click(uIYellowButton, new Point(76, 58));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton1, new Point(72, 56));
+
+            // Click 'Green' button
+            Mouse.Click(uIGreenButton, new Point(70, 38));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton1, new Point(32, 64));
+
+            // Click 'Pink' button
+            Mouse.Click(uIPinkButton, new Point(84, 28));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton1, new Point(56, 56));
+
+            // Click 'Blue' button
+            Mouse.Click(uIBlueButton, new Point(80, 60));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton1, new Point(10, 60));
+
+            // Click 'Violet' button
+            Mouse.Click(uIVioletButton, new Point(88, 48));
+
+            // Click 'FullTextBox' text box
+            Mouse.Click(uIFullTextBoxEdit, new Point(754, 0));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton1, new Point(42, 26));
+
+            // Click 'Red' button
+            Mouse.Click(uIRedButton, new Point(90, 64));
+
+            // Click '...' button
+            Mouse.Click(uIItemButton1, new Point(38, 72));
+
+            // Click 'Grey' button
+            Mouse.Click(uIGreyButton, new Point(36, 48));
+
+            // Type 'TestStore' in 'TitleBox' text box
+            uITitleBoxEdit.Text = this.AddStoreNoteParams.UITitleBoxEditText;
+
+            // Type 'Test Store' in 'FullTextBox' text box
+            uIFullTextBoxEdit.Text = this.AddStoreNoteParams.UIFullTextBoxEditText;
+
+            // Click '+' button
+            Mouse.Click(uIItemButton2, new Point(68, 50));
+
+            // Click 'TestStore' list item
+            Mouse.Click(uITestStoreListItem, new Point(318, 24));
+        }
+        
+        /// <summary>
+        /// Close
+        /// </summary>
+        public void Close()
+        {
+            #region Variable Declarations
+            WinButton uIUI1runningwindowButton = this.UIRunningapplicationsWindow.UIRunningapplicationsToolBar.UIUI1runningwindowButton;
+            #endregion
+
+            // Right-Click 'UI - 1 running window' button
+            Mouse.Click(uIUI1runningwindowButton, MouseButtons.Right, ModifierKeys.None, new Point(39, 62));
+
+            // To test Windows Store apps, use the Coded UI Test project template for Windows Store apps under the Windows Store node.
+
+            // To test Windows Store apps, use the Coded UI Test project template for Windows Store apps under the Windows Store node.
+        }
+        
+        /// <summary>
+        /// ColoringAfterStore
+        /// </summary>
+        public void ColoringAfterStore()
+        {
+            #region Variable Declarations
+            WpfButton uIItemButton1 = this.UINoteViewWindow.UIItemButton1;
             WpfButton uIRedButton = this.UIColorsWindow.UIRedButton;
             WpfButton uIVioletButton = this.UIColorsWindow.UIVioletButton;
             WpfButton uIBlueButton = this.UIColorsWindow.UIBlueButton;
             WpfButton uIPinkButton = this.UIColorsWindow.UIPinkButton;
             WpfButton uIGreenButton = this.UIColorsWindow.UIGreenButton;
             WpfButton uIYellowButton = this.UIColorsWindow.UIYellowButton;
-            WpfButton uIItemButton111 = this.UINoteViewWindow.UIItemButton11;
-            WpfListItem uITitleGoesHereListItem1 = this.UIMainWindowWindow.UINoteListBoxList.UITitleGoesHereListItem1;
+            WpfButton uIGreyButton = this.UIColorsWindow.UIGreyButton;
             WpfButton uIDelButton = this.UINoteViewWindow.UIDelButton;
             #endregion
 
-            // Click '+' button
-            Mouse.Click(uIItemButton, new Point(50, 46));
-
-            // Click '+' button
-            Mouse.Click(uIItemButton1, new Point(50, 34));
-
-            // Click 'Title Goes Here' list item
-            Mouse.Click(uITitleGoesHereListItem, new Point(326, 36));
-
             // Click '...' button
-            Mouse.Click(uIItemButton11, new Point(48, 50));
-
-            // Click 'Grey' button
-            Mouse.Click(uIGreyButton, new Point(46, 56));
-
-            // Click '...' button
-            Mouse.Click(uIItemButton11, new Point(50, 52));
+            Mouse.Click(uIItemButton1, new Point(56, 34));
 
             // Click 'Red' button
-            Mouse.Click(uIRedButton, new Point(102, 40));
+            Mouse.Click(uIRedButton, new Point(120, 36));
 
             // Click '...' button
-            Mouse.Click(uIItemButton11, new Point(52, 56));
+            Mouse.Click(uIItemButton1, new Point(50, 46));
 
             // Click 'Violet' button
-            Mouse.Click(uIVioletButton, new Point(64, 32));
+            Mouse.Click(uIVioletButton, new Point(68, 12));
 
             // Click '...' button
-            Mouse.Click(uIItemButton11, new Point(58, 58));
+            Mouse.Click(uIItemButton1, new Point(42, 48));
 
             // Click 'Blue' button
-            Mouse.Click(uIBlueButton, new Point(22, 60));
+            Mouse.Click(uIBlueButton, new Point(98, 46));
 
             // Click '...' button
-            Mouse.Click(uIItemButton11, new Point(16, 62));
+            Mouse.Click(uIItemButton1, new Point(26, 60));
 
             // Click 'Pink' button
-            Mouse.Click(uIPinkButton, new Point(58, 54));
+            Mouse.Click(uIPinkButton, new Point(102, 36));
 
             // Click '...' button
-            Mouse.Click(uIItemButton11, new Point(56, 28));
+            Mouse.Click(uIItemButton1, new Point(40, 70));
 
             // Click 'Green' button
-            Mouse.Click(uIGreenButton, new Point(96, 20));
+            Mouse.Click(uIGreenButton, new Point(68, 68));
 
             // Click '...' button
-            Mouse.Click(uIItemButton11, new Point(42, 44));
+            Mouse.Click(uIItemButton1, new Point(42, 50));
 
             // Click 'Yellow' button
-            Mouse.Click(uIYellowButton, new Point(54, 42));
+            Mouse.Click(uIYellowButton, new Point(92, 74));
 
             // Click '...' button
-            Mouse.Click(uIItemButton11, new Point(46, 48));
+            Mouse.Click(uIItemButton1, new Point(26, 52));
 
             // Click 'Grey' button
-            Mouse.Click(uIGreyButton, new Point(90, 52));
-
-            // Click '+' button
-            Mouse.Click(uIItemButton111, new Point(38, 14));
-
-            // Click 'Title Goes Here' list item
-            Mouse.Click(uITitleGoesHereListItem1, new Point(596, 42));
+            Mouse.Click(uIGreyButton, new Point(38, 54));
 
             // Click 'Del' button
-            Mouse.Click(uIDelButton, new Point(56, 54));
-
-            // Click '+' button
-            Mouse.Click(uIItemButton, new Point(58, 38));
+            Mouse.Click(uIDelButton, new Point(44, 24));
         }
         
         /// <summary>
-        /// AssertMethod1 - Use 'AssertMethod1ExpectedValues' to pass parameters into this method.
+        /// Open - Use 'OpenParams' to pass parameters into this method.
         /// </summary>
-        public void AssertMethod1()
+        public void Open()
         {
-            #region Variable Declarations
-            WpfEdit uITitleBoxEdit = this.UINoteViewWindow.UITitleBoxEdit;
-            WpfEdit uIFullTextBoxEdit = this.UINoteViewWindow.UIFullTextBoxEdit;
-            WpfButton uIItemButton1 = this.UINoteViewWindow.UIItemButton1;
-            #endregion
 
-            // Verify that the 'Text' property of 'TitleBox' text box equals 'Title Goes Here'
-            Assert.AreEqual(this.AssertMethod1ExpectedValues.UITitleBoxEditText, uITitleBoxEdit.Text);
-
-            // Verify that the 'Text' property of 'FullTextBox' text box equals 'Full Note Text Goes Here'
-            Assert.AreEqual(this.AssertMethod1ExpectedValues.UIFullTextBoxEditText, uIFullTextBoxEdit.Text);
-
-            // Verify that the 'ControlType' property of '...' button equals 'Button'
-            Assert.AreEqual(this.AssertMethod1ExpectedValues.UIItemButton1ControlType, uIItemButton1.ControlType.ToString());
-        }
-        
-        /// <summary>
-        /// RecordedMethod2
-        /// </summary>
-        public void RecordedMethod2()
-        {
-            #region Variable Declarations
-            WpfButton uIItemButton1 = this.UINoteViewWindow.UIItemButton1;
-            WpfButton uIVioletButton = this.UIColorsWindow.UIVioletButton;
-            #endregion
-
-            // Click '...' button
-            Mouse.Click(uIItemButton1, new Point(18, 46));
-
-            // Click 'Violet' button
-            Mouse.Click(uIVioletButton, new Point(86, 40));
-        }
-        
-        /// <summary>
-        /// AssertMethod2 - Use 'AssertMethod2ExpectedValues' to pass parameters into this method.
-        /// </summary>
-        public void AssertMethod2()
-        {
-            #region Variable Declarations
-            WpfEdit uIFullTextBoxEdit = this.UINoteViewWindow.UIFullTextBoxEdit;
-            #endregion
-
-            // Verify that the 'Font' property of 'FullTextBox' text box equals 'Segoe UI'
-            Assert.AreEqual(this.AssertMethod2ExpectedValues.UIFullTextBoxEditFont, uIFullTextBoxEdit.Font);
-        }
-        
-        /// <summary>
-        /// opened
-        /// </summary>
-        public void opened()
-        {
-            #region Variable Declarations
-            WinTreeItem uIDocumentspinnedTreeItem = this.UIFileExplorerWindow.UITreeViewWindow.UIQuickaccessTreeItem.UIDocumentspinnedTreeItem;
-            WinEdit uINameEdit = this.UIFileExplorerWindow.UIItemWindow.UIAPClassMainListItem.UINameEdit;
-            WinEdit uINameEdit1 = this.UIFileExplorerWindow.UIItemWindow1.UIFinalProjectListItem.UINameEdit;
-            WinEdit uINameEdit2 = this.UIFileExplorerWindow.UIItemWindow2.UIUIListItem.UINameEdit;
-            WinEdit uINameEdit3 = this.UIFileExplorerWindow.UIItemWindow3.UIUIListItem.UINameEdit;
-            WinEdit uINameEdit4 = this.UIFileExplorerWindow.UIItemWindow4.UIBinListItem.UINameEdit;
-            WinEdit uINameEdit5 = this.UIFileExplorerWindow.UIItemWindow5.UIDebugListItem.UINameEdit;
-            WinEdit uINameEdit6 = this.UIFileExplorerWindow.UIItemWindow6.UIUIListItem.UINameEdit;
-            #endregion
-
-            // Click 'Quick access' -> 'Documents (pinned)' tree item
-            Mouse.Click(uIDocumentspinnedTreeItem, new Point(70, 24));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit, new Point(193, 22));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit1, new Point(193, 22));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit2, new Point(193, 22));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit3, new Point(167, 6));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit4, new Point(151, 16));
-
-            // Element not available
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit5, new Point(151, 16));
-
-            // Double-Click 'Name' text box
-            Mouse.DoubleClick(uINameEdit6, new Point(169, 14));
+            // Launch '%USERPROFILE%\Documents\APClassMain\FinalProject\UI\UI\bin\Debug\UI.exe'
+            ApplicationUnderTest uIApplication = ApplicationUnderTest.Launch(this.OpenParams.ExePath, this.OpenParams.AlternateExePath);
         }
         
         #region Properties
-        public virtual AssertMethod1ExpectedValues AssertMethod1ExpectedValues
+        public virtual AddStoreNoteParams AddStoreNoteParams
         {
             get
             {
-                if ((this.mAssertMethod1ExpectedValues == null))
+                if ((this.mAddStoreNoteParams == null))
                 {
-                    this.mAssertMethod1ExpectedValues = new AssertMethod1ExpectedValues();
+                    this.mAddStoreNoteParams = new AddStoreNoteParams();
                 }
-                return this.mAssertMethod1ExpectedValues;
+                return this.mAddStoreNoteParams;
             }
         }
         
-        public virtual AssertMethod2ExpectedValues AssertMethod2ExpectedValues
+        public virtual OpenParams OpenParams
         {
             get
             {
-                if ((this.mAssertMethod2ExpectedValues == null))
+                if ((this.mOpenParams == null))
                 {
-                    this.mAssertMethod2ExpectedValues = new AssertMethod2ExpectedValues();
+                    this.mOpenParams = new OpenParams();
                 }
-                return this.mAssertMethod2ExpectedValues;
+                return this.mOpenParams;
             }
         }
         
@@ -300,12 +290,36 @@ namespace UITest
                 return this.mUIItemWindow;
             }
         }
+        
+        public UIRunningapplicationsWindow UIRunningapplicationsWindow
+        {
+            get
+            {
+                if ((this.mUIRunningapplicationsWindow == null))
+                {
+                    this.mUIRunningapplicationsWindow = new UIRunningapplicationsWindow();
+                }
+                return this.mUIRunningapplicationsWindow;
+            }
+        }
+        
+        public UIProgramManagerWindow UIProgramManagerWindow
+        {
+            get
+            {
+                if ((this.mUIProgramManagerWindow == null))
+                {
+                    this.mUIProgramManagerWindow = new UIProgramManagerWindow();
+                }
+                return this.mUIProgramManagerWindow;
+            }
+        }
         #endregion
         
         #region Fields
-        private AssertMethod1ExpectedValues mAssertMethod1ExpectedValues;
+        private AddStoreNoteParams mAddStoreNoteParams;
         
-        private AssertMethod2ExpectedValues mAssertMethod2ExpectedValues;
+        private OpenParams mOpenParams;
         
         private UIMainWindowWindow mUIMainWindowWindow;
         
@@ -316,46 +330,50 @@ namespace UITest
         private UIFileExplorerWindow mUIFileExplorerWindow;
         
         private UIItemWindow11 mUIItemWindow;
+        
+        private UIRunningapplicationsWindow mUIRunningapplicationsWindow;
+        
+        private UIProgramManagerWindow mUIProgramManagerWindow;
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'AssertMethod1'
+    /// Parameters to be passed into 'AddStoreNote'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class AssertMethod1ExpectedValues
+    public class AddStoreNoteParams
     {
         
         #region Fields
         /// <summary>
-        /// Verify that the 'Text' property of 'TitleBox' text box equals 'Title Goes Here'
+        /// Type 'TestStore' in 'TitleBox' text box
         /// </summary>
-        public string UITitleBoxEditText = "Title Goes Here";
+        public string UITitleBoxEditText = "TestStore";
         
         /// <summary>
-        /// Verify that the 'Text' property of 'FullTextBox' text box equals 'Full Note Text Goes Here'
+        /// Type 'Test Store' in 'FullTextBox' text box
         /// </summary>
-        public string UIFullTextBoxEditText = "Full Note Text Goes Here";
-        
-        /// <summary>
-        /// Verify that the 'ControlType' property of '...' button equals 'Button'
-        /// </summary>
-        public string UIItemButton1ControlType = "Button";
+        public string UIFullTextBoxEditText = "Test Store";
         #endregion
     }
     
     /// <summary>
-    /// Parameters to be passed into 'AssertMethod2'
+    /// Parameters to be passed into 'Open'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
-    public class AssertMethod2ExpectedValues
+    public class OpenParams
     {
         
         #region Fields
         /// <summary>
-        /// Verify that the 'Font' property of 'FullTextBox' text box equals 'Segoe UI'
+        /// Launch '%USERPROFILE%\Documents\APClassMain\FinalProject\UI\UI\bin\Debug\UI.exe'
         /// </summary>
-        public string UIFullTextBoxEditFont = "Segoe UI";
+        public string ExePath = "C:\\Users\\pooya\\Documents\\APClassMain\\FinalProject\\UI\\UI\\bin\\Debug\\UI.exe";
+        
+        /// <summary>
+        /// Launch '%USERPROFILE%\Documents\APClassMain\FinalProject\UI\UI\bin\Debug\UI.exe'
+        /// </summary>
+        public string AlternateExePath = "%USERPROFILE%\\Documents\\APClassMain\\FinalProject\\UI\\UI\\bin\\Debug\\UI.exe";
         #endregion
     }
     
@@ -454,12 +472,228 @@ namespace UITest
                 return this.mUITitleGoesHereListItem1;
             }
         }
+        
+        public WpfListItem UITestassertionListItem
+        {
+            get
+            {
+                if ((this.mUITestassertionListItem == null))
+                {
+                    this.mUITestassertionListItem = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUITestassertionListItem.SearchProperties[WpfListItem.PropertyNames.Name] = "Test assertion";
+                    this.mUITestassertionListItem.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUITestassertionListItem;
+            }
+        }
+        
+        public WpfListItem UITestNoteListItem
+        {
+            get
+            {
+                if ((this.mUITestNoteListItem == null))
+                {
+                    this.mUITestNoteListItem = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUITestNoteListItem.SearchProperties[WpfListItem.PropertyNames.Name] = "Test Note";
+                    this.mUITestNoteListItem.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUITestNoteListItem;
+            }
+        }
+        
+        public WpfListItem UIDataBaseTestListItem
+        {
+            get
+            {
+                if ((this.mUIDataBaseTestListItem == null))
+                {
+                    this.mUIDataBaseTestListItem = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIDataBaseTestListItem.SearchProperties[WpfListItem.PropertyNames.Name] = "DataBase Test";
+                    this.mUIDataBaseTestListItem.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUIDataBaseTestListItem;
+            }
+        }
+        
+        public WpfListItem UITestStoreListItem
+        {
+            get
+            {
+                if ((this.mUITestStoreListItem == null))
+                {
+                    this.mUITestStoreListItem = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUITestStoreListItem.SearchProperties[WpfListItem.PropertyNames.Name] = "TestStore";
+                    this.mUITestStoreListItem.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUITestStoreListItem;
+            }
+        }
+        
+        public WpfListItem UIDbTestListItem
+        {
+            get
+            {
+                if ((this.mUIDbTestListItem == null))
+                {
+                    this.mUIDbTestListItem = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIDbTestListItem.SearchProperties[WpfListItem.PropertyNames.Name] = "DbTest";
+                    this.mUIDbTestListItem.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUIDbTestListItem;
+            }
+        }
+        
+        public WpfListItem UIDbTestListItem1
+        {
+            get
+            {
+                if ((this.mUIDbTestListItem1 == null))
+                {
+                    this.mUIDbTestListItem1 = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIDbTestListItem1.SearchProperties[WpfListItem.PropertyNames.Name] = "DbTest";
+                    this.mUIDbTestListItem1.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUIDbTestListItem1;
+            }
+        }
+        
+        public WpfListItem UIDBtestListItem2
+        {
+            get
+            {
+                if ((this.mUIDBtestListItem2 == null))
+                {
+                    this.mUIDBtestListItem2 = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIDBtestListItem2.SearchProperties[WpfListItem.PropertyNames.Name] = "DBtest";
+                    this.mUIDBtestListItem2.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUIDBtestListItem2;
+            }
+        }
+        
+        public WpfListItem UIDBtestListItem3
+        {
+            get
+            {
+                if ((this.mUIDBtestListItem3 == null))
+                {
+                    this.mUIDBtestListItem3 = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIDBtestListItem3.SearchProperties[WpfListItem.PropertyNames.Name] = "DBtest";
+                    this.mUIDBtestListItem3.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUIDBtestListItem3;
+            }
+        }
+        
+        public WpfListItem UIDBtestListItem4
+        {
+            get
+            {
+                if ((this.mUIDBtestListItem4 == null))
+                {
+                    this.mUIDBtestListItem4 = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIDBtestListItem4.SearchProperties[WpfListItem.PropertyNames.Name] = "DBtest";
+                    this.mUIDBtestListItem4.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUIDBtestListItem4;
+            }
+        }
+        
+        public WpfListItem UIDBtestListItem5
+        {
+            get
+            {
+                if ((this.mUIDBtestListItem5 == null))
+                {
+                    this.mUIDBtestListItem5 = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIDBtestListItem5.SearchProperties[WpfListItem.PropertyNames.Name] = "DBtest";
+                    this.mUIDBtestListItem5.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUIDBtestListItem5;
+            }
+        }
+        
+        public WpfListItem UIDBtestListItem6
+        {
+            get
+            {
+                if ((this.mUIDBtestListItem6 == null))
+                {
+                    this.mUIDBtestListItem6 = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIDBtestListItem6.SearchProperties[WpfListItem.PropertyNames.Name] = "DBtest";
+                    this.mUIDBtestListItem6.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUIDBtestListItem6;
+            }
+        }
+        
+        public WpfListItem UIDBtestListItem7
+        {
+            get
+            {
+                if ((this.mUIDBtestListItem7 == null))
+                {
+                    this.mUIDBtestListItem7 = new WpfListItem(this);
+                    #region Search Criteria
+                    this.mUIDBtestListItem7.SearchProperties[WpfListItem.PropertyNames.Name] = "DBtest";
+                    this.mUIDBtestListItem7.WindowTitles.Add("MainWindow");
+                    #endregion
+                }
+                return this.mUIDBtestListItem7;
+            }
+        }
         #endregion
         
         #region Fields
         private WpfListItem mUITitleGoesHereListItem;
         
         private WpfListItem mUITitleGoesHereListItem1;
+        
+        private WpfListItem mUITestassertionListItem;
+        
+        private WpfListItem mUITestNoteListItem;
+        
+        private WpfListItem mUIDataBaseTestListItem;
+        
+        private WpfListItem mUITestStoreListItem;
+        
+        private WpfListItem mUIDbTestListItem;
+        
+        private WpfListItem mUIDbTestListItem1;
+        
+        private WpfListItem mUIDBtestListItem2;
+        
+        private WpfListItem mUIDBtestListItem3;
+        
+        private WpfListItem mUIDBtestListItem4;
+        
+        private WpfListItem mUIDBtestListItem5;
+        
+        private WpfListItem mUIDBtestListItem6;
+        
+        private WpfListItem mUIDBtestListItem7;
         #endregion
     }
     
@@ -2131,5 +2365,141 @@ namespace UITest
             this.SearchProperties[WinWindow.PropertyNames.ClassName] = "#32769";
             #endregion
         }
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIRunningapplicationsWindow : WinWindow
+    {
+        
+        public UIRunningapplicationsWindow()
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.Name] = "Running applications";
+            this.SearchProperties[WinWindow.PropertyNames.ClassName] = "MSTaskSwWClass";
+            this.WindowTitles.Add("Running applications");
+            #endregion
+        }
+        
+        #region Properties
+        public UIRunningapplicationsToolBar UIRunningapplicationsToolBar
+        {
+            get
+            {
+                if ((this.mUIRunningapplicationsToolBar == null))
+                {
+                    this.mUIRunningapplicationsToolBar = new UIRunningapplicationsToolBar(this);
+                }
+                return this.mUIRunningapplicationsToolBar;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIRunningapplicationsToolBar mUIRunningapplicationsToolBar;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIRunningapplicationsToolBar : WinToolBar
+    {
+        
+        public UIRunningapplicationsToolBar(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinToolBar.PropertyNames.Name] = "Running applications";
+            this.WindowTitles.Add("Running applications");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIUI1runningwindowButton
+        {
+            get
+            {
+                if ((this.mUIUI1runningwindowButton == null))
+                {
+                    this.mUIUI1runningwindowButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIUI1runningwindowButton.SearchProperties[WinButton.PropertyNames.Name] = "UI - 1 running window";
+                    this.mUIUI1runningwindowButton.WindowTitles.Add("Running applications");
+                    #endregion
+                }
+                return this.mUIUI1runningwindowButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIUI1runningwindowButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIProgramManagerWindow : WinWindow
+    {
+        
+        public UIProgramManagerWindow()
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.Name] = "Program Manager";
+            this.SearchProperties[WinWindow.PropertyNames.ClassName] = "Progman";
+            this.WindowTitles.Add("Program Manager");
+            #endregion
+        }
+        
+        #region Properties
+        public UIFolderViewWindow UIFolderViewWindow
+        {
+            get
+            {
+                if ((this.mUIFolderViewWindow == null))
+                {
+                    this.mUIFolderViewWindow = new UIFolderViewWindow(this);
+                }
+                return this.mUIFolderViewWindow;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIFolderViewWindow mUIFolderViewWindow;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "15.0.26208.0")]
+    public class UIFolderViewWindow : WinWindow
+    {
+        
+        public UIFolderViewWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "1";
+            this.WindowTitles.Add("Program Manager");
+            #endregion
+        }
+        
+        #region Properties
+        public WinList UIDesktopList
+        {
+            get
+            {
+                if ((this.mUIDesktopList == null))
+                {
+                    this.mUIDesktopList = new WinList(this);
+                    #region Search Criteria
+                    this.mUIDesktopList.SearchProperties[WinList.PropertyNames.Name] = "Desktop";
+                    this.mUIDesktopList.WindowTitles.Add("Program Manager");
+                    #endregion
+                }
+                return this.mUIDesktopList;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinList mUIDesktopList;
+        #endregion
     }
 }
